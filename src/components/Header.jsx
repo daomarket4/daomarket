@@ -47,7 +47,6 @@ const Header = ({ profileImage }) => {
           <div className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <DropDown />
           </div>
-
           <div>
             <DarkmodeToggle />
           </div>
@@ -76,7 +75,7 @@ const Header = ({ profileImage }) => {
                   )}
                   {view && (
                     <>
-                      <ul className="absolute mt-2 bg-slate-300 dark:bg-slate-600 top-28 p-4 rounded-xl">
+                      <ul className="absolute -mt-6 -ml-8 bg-slate-300 dark:bg-slate-600 top-28 p-4 rounded-xl">
                         <li className="pb-4">
                           <Link to="/MyPage">마이페이지</Link>
                         </li>
