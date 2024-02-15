@@ -46,6 +46,7 @@ const ProposalDetail = () => {
         const proposal = await contract.methods
           .getProposal(parsedProposalId)
           .call();
+
         setProposal(proposal);
       } catch (error) {
         console.error("안건 정보를 불러오는 중 오류 발생:", error);
@@ -86,7 +87,9 @@ const ProposalDetail = () => {
                   설명 : {proposal.description}
                 </p>
                 <span className="title-font font-medium text-2xl text-gray-900 dark:text-white flex mb-4">
-                  목표 금액: &nbsp; {proposal.fundingGoal.toString()} ETH
+                  목표 금액: &nbsp;{" "}
+                  {web3.utils.fromWei(proposal.fundingGoal.toString(), "ether")}{" "}
+                  ETH
                 </span>
                 <div className="text-xl">
                   <p className="mb-2">

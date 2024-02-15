@@ -3,10 +3,13 @@
 import React, { useState } from "react";
 import ProposalDataFetcher from "../components/ProposalDataFetcher";
 import { Link } from "react-router-dom";
+import Web3 from "web3";
 
 const MyAgenda = () => {
   const [proposals, setProposals] = useState([]);
   const [accounts, setAccounts] = useState([]);
+
+  const web3 = new Web3(window.ethereum);
 
   const handleDataFetched = (fetchedProposals, fetchedAccounts) => {
     setProposals(fetchedProposals);
@@ -45,7 +48,12 @@ const MyAgenda = () => {
                   </p>
                   <div className="flex mb-4 items-center">
                     <span className="text-md font-medium text-gray-500">
-                      목표: {proposal.fundingGoal.toString()} ETH
+                      목표:{" "}
+                      {web3.utils.fromWei(
+                        proposal.fundingGoal.toString(),
+                        "ether"
+                      )}{" "}
+                      ETH
                     </span>
                   </div>
                   <div className="text-md">
