@@ -36,7 +36,7 @@ const ProposalParticipation = ({ proposalId }) => {
     }
 
     try {
-      const amountInWei = Web3.utils.toWei(fundAmount, "wei");
+      const amountInWei = Web3.utils.toWei(fundAmount, "ether");
       await contract.methods.fundProposal(proposalId).send({
         from: accounts[0],
         value: amountInWei,
