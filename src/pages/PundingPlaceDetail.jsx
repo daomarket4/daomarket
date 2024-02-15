@@ -113,8 +113,10 @@ const ProposalDetail = () => {
                   </div>
                   <div className="bg-gray-300 w-full rounded-full"></div>
                 </div>
-                <ProposalParticipation proposalId={proposalId} />
               </div>
+            </div>
+            <div className="w-64 mx-auto mt-12">
+              <ProposalParticipation proposalId={proposalId} />
             </div>
           </div>
         </section>

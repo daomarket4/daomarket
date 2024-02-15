@@ -9,13 +9,13 @@ const Main = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowTitle(true);
-    }, 1000);
+    }, 800);
     setTimeout(() => {
       setShowP(true);
-    }, 2000);
+    }, 1600);
     setTimeout(() => {
       setShowButton(true);
-    }, 3000);
+    }, 2400);
   }, []);
 
   const titleStyles = {

@@ -153,7 +153,7 @@ const Agenda = () => {
                     if (value === "" || !isNaN(value)) {
                       setFundingGoal(value);
                     } else {
-                      alert("숫자만 입력하세요.");
+                      alert("숫자만 입력해 주세요.");
                     }
                   }}
                 />
@@ -176,7 +176,7 @@ const Agenda = () => {
                     if (value === "" || !isNaN(value)) {
                       setDurationInDays(value);
                     } else {
-                      alert("숫자만 입력하세요.");
+                      alert("숫자만 입력해 주세요.");
                     }
                   }}
                 />
