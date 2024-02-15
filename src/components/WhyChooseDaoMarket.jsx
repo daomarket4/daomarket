@@ -1,6 +1,7 @@
 import suggestion from "../images/suggestion.png";
 import safe from "../images/safe.png";
 import trade from "../images/trade.png";
+import multiSig from "../images/multiSig.png";
 
 const WhyChooseDaoMarket = () => {
   return (
@@ -11,14 +12,15 @@ const WhyChooseDaoMarket = () => {
             왜 DAOM을 선택해야 하나요?
           </h1>
           <p className="text-2xl leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">
-            당신이 차별화된 DAOM을 선택해야 하는 이유 3가지 요소입니다.
+            당신이 차별화된 DAOM을 선택해야 하는 이유 4가지 요소입니다.
           </p>
           <div className="flex mt-6 justify-center">
             <div className="w-16 h-1 rounded-full bg-gray-500 inline-flex"></div>
           </div>
         </div>
         <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
-          <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
+          {/* 누구나 참여 가능한 시스템 */}
+          <div className="p-4 md:w-1/4 flex flex-col text-center items-center">
             <img
               src={suggestion}
               alt="suggestion"
@@ -34,8 +36,10 @@ const WhyChooseDaoMarket = () => {
               </p>
             </div>
           </div>
-          <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-            <img src={safe} alt="safe" className="w-24 mr-2 mb-12" />
+          {/* 누구나 참여 가능한 시스템 */}
+          {/* 지분의 NFT화 */}
+          <div className="p-4 md:w-1/4 flex flex-col text-center items-center">
+            <img src={safe} alt="safe" className="w-24 mr-2 mb-14" />
             <div className="flex-grow">
               <h2 className="text-gray-900 text-3xl title-font font-medium mb-3">
                 지분의 NFT화
@@ -46,8 +50,24 @@ const WhyChooseDaoMarket = () => {
               </p>
             </div>
           </div>
-          <div className="p-4 md:w-1/3 flex flex-col text-center items-center">
-            <img src={trade} alt="trade" className="w-28 mr-2 mb-12" />
+          {/* 지분의 NFT화 */}
+          {/* MultiSig */}
+          <div className="p-4 md:w-1/4 flex flex-col text-center items-center">
+            <img src={multiSig} alt="multiSig" className="w-28 mr-2 mb-10" />
+            <div className="flex-grow">
+              <h2 className="text-gray-900 text-3xl title-font font-medium mb-3">
+                MultiSig
+              </h2>
+              <p className="leading-relaxed text-lg">
+                DAOM에서는 다중 서명(MultiSig) 기능을 통해 안전한 거래를
+                보장합니다.
+              </p>
+            </div>
+          </div>
+          {/* MultiSig */}
+          {/* Marketplace */}
+          <div className="p-4 md:w-1/4 flex flex-col text-center items-center">
+            <img src={trade} alt="trade" className="w-28 mr-2 mb-10" />
             <div className="flex-grow">
               <h2 className="text-gray-900 text-3xl title-font font-medium mb-3">
                 Dao NFT Marketplace
@@ -57,6 +77,7 @@ const WhyChooseDaoMarket = () => {
               </p>
             </div>
           </div>
+          {/* Marketplace */}
         </div>
       </div>
     </>
