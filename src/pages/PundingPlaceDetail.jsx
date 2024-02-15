@@ -6,14 +6,14 @@ import Layout from "../components/Layout";
 import { PROPOSAL_CONTRACT } from "../abis/contractsaddress.js";
 import { IoIosArrowBack } from "react-icons/io";
 import ProposalParticipation from "../components/ProposalParticipation";
+import Progressbar from "../components/Progressbar";
 
 const ProposalDetail = () => {
   const { proposalId } = useParams();
+  const navigate = useNavigate();
   const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
-  const [proposal, setProposal] = useState(null);
-
-  const navigate = useNavigate();
+  const [proposal, setProposal] = useState({});
 
   useEffect(() => {
     const loadWeb3 = async () => {
@@ -40,24 +40,40 @@ const ProposalDetail = () => {
   useEffect(() => {
     const fetchProposal = async () => {
       try {
-        if (!contract || isNaN(proposalId)) return;
-
         const parsedProposalId = parseInt(proposalId);
-        const proposal = await contract.methods
+        const fetchedProposal = await contract.methods
           .getProposal(parsedProposalId)
           .call();
-
-        setProposal(proposal);
+        setProposal(fetchedProposal);
       } catch (error) {
         console.error("안건 정보를 불러오는 중 오류 발생:", error);
       }
-      console.log(proposalId);
     };
 
     fetchProposal();
   }, [contract, proposalId]);
 
-  if (!proposal) {
+  // ether 단위로 변환
+  const amountRaisedInEther =
+    proposal && web3
+      ? web3.utils.fromWei(proposal.amountRaised || "0", "ether")
+      : "0";
+  const fundingGoalInEther =
+    proposal && web3
+      ? web3.utils.fromWei(proposal.fundingGoal || "0", "ether")
+      : "0";
+
+  // 진행율 계산
+  const percentage =
+    (Number(amountRaisedInEther) / Number(fundingGoalInEther)) * 100;
+
+  // 펀딩 성공 팝업 닫기
+  const handleClosePopup = () => {
+    // 팝업 닫을 때 페이지 새로고침
+    window.location.reload();
+  };
+
+  if (!proposal.title) {
     return <div>Loading...</div>;
   }
 
@@ -91,6 +107,7 @@ const ProposalDetail = () => {
                   {web3.utils.fromWei(proposal.fundingGoal.toString(), "ether")}{" "}
                   ETH
                 </span>
+
                 <div className="text-xl">
                   <p className="mb-2">
                     펀딩 시작 시간:{" "}
@@ -103,23 +120,18 @@ const ProposalDetail = () => {
                     {new Date(Number(proposal.endTime) * 1000).toLocaleString()}
                   </p>
                 </div>
-
                 <div className="flex items-center mt-4">
                   <span className="w-40 mr-3 mt-6 text-lg">진행율: &nbsp;</span>
-                  <div className="bg-gray-300 w-full rounded-full">
-                    <div
-                      className="bg-blue-500 text-xs leading-none py-1 text-center text-white rounded-full"
-                      style={{ width: "50%" }}
-                    >
-                      0%
-                    </div>
-                  </div>
-                  <div className="bg-gray-300 w-full rounded-full"></div>
+                  <Progressbar percentage={percentage.toFixed(2)} />{" "}
+                  {/* 진행율 바에 진행율 전달 */}
                 </div>
               </div>
             </div>
             <div className="w-64 mx-auto mt-12">
-              <ProposalParticipation proposalId={proposalId} />
+              <ProposalParticipation
+                proposalId={proposalId}
+                onClosePopup={handleClosePopup}
+              />
             </div>
           </div>
         </section>
