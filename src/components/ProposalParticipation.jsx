@@ -3,13 +3,12 @@ import Web3 from "web3";
 import proposal_ABI from "../abis/proposal_ABI";
 import { PROPOSAL_CONTRACT } from "../abis/contractsaddress";
 
-const ProposalParticipation = ({ proposalId }) => {
+const ProposalParticipation = ({ proposalId, onClosePopup }) => {
   const [web3, setWeb3] = useState(null);
   const [accounts, setAccounts] = useState([]);
   const [contract, setContract] = useState(null);
   const [fundAmount, setFundAmount] = useState("");
 
-  // Web3와 계약 인스턴스 초기화
   useEffect(() => {
     const initWeb3 = async () => {
       if (window.ethereum) {
@@ -28,7 +27,7 @@ const ProposalParticipation = ({ proposalId }) => {
     initWeb3();
   }, []);
 
-  // 펀딩 참여 로직
+  // 펀딩 참여 함수
   const handleParticipate = async () => {
     if (!contract || !fundAmount) {
       alert("펀딩 금액을 입력해주세요.");
@@ -42,6 +41,8 @@ const ProposalParticipation = ({ proposalId }) => {
         value: amountInWei,
       });
       alert("펀딩에 성공적으로 참여했습니다.");
+      onClosePopup(); // 펀딩 성공 시 팝업 닫기
+      window.location.reload(); // 페이지 새로고침
     } catch (error) {
       console.error("펀딩 참여 중 에러 발생", error);
       alert("펀딩 참여에 실패했습니다.");
