@@ -50,12 +50,13 @@ const Agenda = () => {
 
   const handleProposalSubmit = async () => {
     try {
+      console.log(web3.utils.toWei(fundingGoal, "ether"));
       const response = await contract.methods
         .createProposalAndStartFunding(
           title,
           nftLink,
           imageLink,
-          fundingGoal,
+          web3.utils.toWei(fundingGoal, "ether"),
           durationInDays,
           description
         )

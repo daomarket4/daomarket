@@ -53,7 +53,7 @@ const ProposalDetail = () => {
     fetchProposal();
   }, [contract, proposalId]);
 
-  // ether 단위로 변환
+  // ether 단위로 변환 usestate로
   const amountRaisedInEther =
     proposal && web3
       ? web3.utils.fromWei(proposal.amountRaised || "0", "ether")
@@ -104,7 +104,7 @@ const ProposalDetail = () => {
                 </p>
                 <span className="title-font font-medium text-2xl text-gray-900 dark:text-white flex mb-4">
                   목표 금액: &nbsp;{" "}
-                  {web3.utils.fromWei(proposal.fundingGoal.toString(), "ether")}{" "}
+                  {web3.utils.fromWei(proposal.fundingGoal, "ether")}
                   ETH
                 </span>
 

@@ -29,6 +29,7 @@ const App = () => {
     localStorage.getItem("profileImage") || defaultProfileImage
   );
 
+  //account 여기로 옮김 useeffect 만들어서 localstorage.getitem? 가져오기
   // 이미지 변경 핸들러
   const handleImageChange = (imageURL) => {
     setProfileImage(imageURL);

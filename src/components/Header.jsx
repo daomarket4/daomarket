@@ -17,7 +17,7 @@ const Header = ({ profileImage }) => {
   const onClickMetaMask = async () => {
     try {
       const accounts = await sdk?.connect();
-
+      //localstorage.setitem ? 새로고침해도 메타마스크 로그아웃안되게하는거
       setAccount(accounts[0]);
     } catch (error) {
       console.error(error);
