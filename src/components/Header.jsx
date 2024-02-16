@@ -4,21 +4,36 @@ import Metamask from "../images/Metamask.png";
 import TopPopup from "./TopPopup";
 import { Link } from "react-router-dom";
 import { useSDK } from "@metamask/sdk-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropDown from "./DropDown";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import defaultProfileImage from "../images/img.png";
 
 const Header = ({ profileImage }) => {
   const { sdk } = useSDK();
-  const [account, setAccount] = useState("");
+  const [account, setAccount] = useState(null);
   const [view, setView] = useState(false);
+
+  // 새로고침 로그아웃 방지
+  useEffect(() => {
+    const savedAccount = localStorage.getItem("account");
+    if (savedAccount) {
+      setAccount(savedAccount);
+    }
+  }, []);
+
+  // 로그인 정보를 로컬 스토리지에 저장
+  const handleLogin = (account) => {
+    setAccount(account);
+    localStorage.setItem("account", account);
+  };
 
   const onClickMetaMask = async () => {
     try {
       const accounts = await sdk?.connect();
-      //localstorage.setitem ? 새로고침해도 메타마스크 로그아웃안되게하는거
-      setAccount(accounts[0]);
+      if (accounts.length > 0) {
+        handleLogin(accounts[0]);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -28,11 +43,12 @@ const Header = ({ profileImage }) => {
   // 우측 상단 마이페이지 아래 관리자 페이지가 추가됩니다. 프로젝트 제출 전 .env 처리 예정. 안 쓰는 계정 주소 입력 추천드립니다.
   // ** Admin.jsx에서 추가로 주소를 입력해야 정상적으로 관리자 페이지에 접속이 가능합니다.
   const isAdmin =
-    account.toLowerCase() === "0xe3cd9fc292b724095874522026fb68932329296c" ||
-    account.toLowerCase() === "0xeffc9eaf0cb26b4ca0614ea99aca0908ca468fb3" ||
-    account.toLowerCase() === "메타마스크 주소 입력" ||
-    account.toLowerCase() === "메타마스크 주소 입력" ||
-    account.toLowerCase() === "메타마스크 주소 입력";
+    account &&
+    (account.toLowerCase() === "0xe3cd9fc292b724095874522026fb68932329296c" ||
+      account.toLowerCase() === "0xeffc9eaf0cb26b4ca0614ea99aca0908ca468fb3" ||
+      account.toLowerCase() === "메타마스크 주소 입력" ||
+      account.toLowerCase() === "메타마스크 주소 입력" ||
+      account.toLowerCase() === "메타마스크 주소 입력");
 
   return (
     <>
@@ -75,7 +91,7 @@ const Header = ({ profileImage }) => {
                   )}
                   {view && (
                     <>
-                      <ul className="absolute -mt-6 -ml-8 bg-slate-300 dark:bg-slate-600 top-28 p-4 rounded-xl">
+                      <ul className="absolute mt-2 -ml-8 bg-slate-300 dark:bg-slate-600 top-28 p-4 rounded-xl">
                         <li className="pb-4">
                           <Link to="/MyPage">마이페이지</Link>
                         </li>
