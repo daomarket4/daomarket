@@ -50,20 +50,34 @@ const Agenda = () => {
 
   const handleProposalSubmit = async () => {
     try {
-      console.log(web3.utils.toWei(fundingGoal, "ether"));
+      // 사용자로부터 입력받은 목표 금액을 parseFloat로 변환
+      const fundingGoalEther = parseFloat(fundingGoal);
+
+      // 10%를 추가하고 소수점 두 자리까지 반올림
+      const finalFundingGoalEther = (
+        Math.round(fundingGoalEther * 1.1 * 100) / 100
+      ).toFixed(2);
+
+      // 반올림된 목표 금액을 Wei로 변환
+      const finalFundingGoalWei = web3.utils.toWei(
+        finalFundingGoalEther,
+        "ether"
+      );
+
+      console.log(finalFundingGoalWei); // 최종 목표 금액을 Wei 단위로 콘솔에 출력
+
       const response = await contract.methods
         .createProposalAndStartFunding(
           title,
           nftLink,
           imageLink,
-          web3.utils.toWei(fundingGoal, "ether"),
+          finalFundingGoalWei, // 수정된 최종 목표 금액을 사용
           durationInDays,
           description
         )
         .send({ from: accounts[0] });
-      // console.log(response);
+
       navigate("/PundingPlaceList");
-      // 경로지정
       console.log("안건 제안 및 펀딩 시작 완료");
     } catch (error) {
       console.error("안건 제안 및 펀딩 시작 실패:", error);
