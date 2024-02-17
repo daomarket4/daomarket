@@ -4,6 +4,7 @@ import Web3 from "web3";
 import ProposalDataFetcher from "./ProposalDataFetcher";
 import { Link, useParams } from "react-router-dom";
 import { PROPOSAL_CONTRACT } from "../abis/contractsaddress";
+import ProgressbarList from "./ProgressbarList";
 
 const PundingList = () => {
   const [proposals, setProposals] = useState([]);
@@ -15,6 +16,7 @@ const PundingList = () => {
   const { proposalId } = useParams();
   const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
+  const [proposal, setProposal] = useState({});
 
   useEffect(() => {
     const loadWeb3 = async () => {
@@ -45,6 +47,7 @@ const PundingList = () => {
         const fetchedProposal = await contract.methods
           .getProposal(parsedProposalId)
           .call();
+        setProposal(fetchedProposal);
       } catch (error) {
         console.error("안건 정보를 불러오는 중 오류 발생:", error);
       }
@@ -52,6 +55,20 @@ const PundingList = () => {
 
     fetchProposal();
   }, [contract, proposalId]);
+
+  // ether 단위로 변환 usestate로
+  const amountRaisedInEther =
+    proposal && web3
+      ? web3.utils.fromWei(proposal.amountRaised || "0", "ether")
+      : "0";
+  const fundingGoalInEther =
+    proposal && web3
+      ? web3.utils.fromWei(proposal.fundingGoal || "0", "ether")
+      : "0";
+
+  // 진행율 계산
+  const percentage =
+    (Number(amountRaisedInEther) / Number(fundingGoalInEther)) * 100;
 
   return (
     <>
@@ -73,7 +90,11 @@ const PundingList = () => {
                 <h2 className="text-gray-900 title-font text-3xl font-medium text-center -mt-8">
                   {proposal.title}
                 </h2>
-                <p className="mt-2 mb-8">펀딩 진행 상황</p>
+                <p className="mt-2 mb-8">
+                  {/* 진행상황 */}
+                  <ProgressbarList percentage={percentage.toFixed(2)} />맵 함수
+                  써야하나요..?
+                </p>
               </div>
             </div>
           </div>
