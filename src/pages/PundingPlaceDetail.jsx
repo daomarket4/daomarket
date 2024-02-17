@@ -92,7 +92,6 @@ const ProposalDetail = () => {
               <img
                 src={proposal.imageLink}
                 alt="NFT 이미지"
-                className=""
                 style={{ width: "530px", height: "530px" }}
               />
               <div className="lg:w-1/2 w-full pl-12  mt-6 lg:mt-0">
@@ -103,26 +102,26 @@ const ProposalDetail = () => {
                   설명 : {proposal.description}
                 </p>
                 <span className="title-font font-medium text-2xl text-gray-900 dark:text-white flex mb-4">
-                  목표 금액: &nbsp;{" "}
+                  목표 금액: &nbsp;
                   {web3.utils.fromWei(proposal.fundingGoal, "ether")}
                   ETH
                 </span>
 
                 <div className="text-xl">
                   <p className="mb-2">
-                    펀딩 시작 시간:{" "}
+                    펀딩 시작 시간:
                     {new Date(
                       Number(proposal.startTime) * 1000
                     ).toLocaleString()}
                   </p>
                   <p>
-                    펀딩 종료 시간:{" "}
+                    펀딩 종료 시간:
                     {new Date(Number(proposal.endTime) * 1000).toLocaleString()}
                   </p>
                 </div>
                 <div className="flex items-center mt-4">
                   <span className="w-40 mr-3 mt-6 text-lg">진행율: &nbsp;</span>
-                  <Progressbar percentage={percentage.toFixed(2)} />{" "}
+                  <Progressbar percentage={percentage.toFixed(2)} />
                   {/* 진행율 바에 진행율 전달 */}
                 </div>
               </div>
