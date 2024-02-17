@@ -70,10 +70,10 @@ const PundingList = () => {
                 </Link>
               </div>
               <div className="mt-4">
-                <h2 className="text-gray-900 title-font text-lg font-medium">
+                <h2 className="text-gray-900 title-font text-3xl font-medium text-center -mt-8">
                   {proposal.title}
                 </h2>
-                <p className="mt-1 mb-8">펀딩 진행 상황</p>
+                <p className="mt-2 mb-8">펀딩 진행 상황</p>
               </div>
             </div>
           </div>
