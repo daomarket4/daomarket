@@ -13,7 +13,6 @@ const PundingList = () => {
   };
 
   const { proposalId } = useParams();
-  const [proposal, setProposal] = useState({});
   const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
 
@@ -46,7 +45,6 @@ const PundingList = () => {
         const fetchedProposal = await contract.methods
           .getProposal(parsedProposalId)
           .call();
-        setProposal(fetchedProposal);
       } catch (error) {
         console.error("안건 정보를 불러오는 중 오류 발생:", error);
       }
