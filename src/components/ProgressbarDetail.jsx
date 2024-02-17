@@ -1,10 +1,10 @@
-// src/components/Progressbar.jsx
+// src/components/ProgressbarDetail.jsx
 import React from "react";
 
-const Progressbar = ({ percentage }) => {
+const ProgressbarDetail = ({ percentage }) => {
   return (
     <div
-      className="progress-bar-container"
+      className="progress-bar-container rounded-lg mt-6 -ml-20"
       style={{ width: "100%", backgroundColor: "#eee" }}
     >
       <div
@@ -16,6 +16,7 @@ const Progressbar = ({ percentage }) => {
           color: "white",
           lineHeight: "24px",
         }}
+        className="rounded-lg"
       >
         {percentage}%
       </div>
@@ -23,4 +24,4 @@ const Progressbar = ({ percentage }) => {
   );
 };
 
-export default Progressbar;
+export default ProgressbarDetail;

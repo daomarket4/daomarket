@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import { PROPOSAL_CONTRACT } from "../abis/contractsaddress.js";
 import { IoIosArrowBack } from "react-icons/io";
 import ProposalParticipation from "../components/ProposalParticipation";
-import Progressbar from "../components/Progressbar";
+import ProgressbarDetail from "../components/ProgressbarDetail.jsx";
 
 const ProposalDetail = () => {
   const { proposalId } = useParams();
@@ -120,8 +120,10 @@ const ProposalDetail = () => {
                   </p>
                 </div>
                 <div className="flex items-center mt-4">
-                  <span className="w-40 mr-3 mt-6 text-lg">진행율: &nbsp;</span>
-                  <Progressbar percentage={percentage.toFixed(2)} />
+                  <span className="w-40 mr-3 mt-6 text-lg">
+                    진행율 : &nbsp;
+                  </span>
+                  <ProgressbarDetail percentage={percentage.toFixed(2)} />
                   {/* 진행율 바에 진행율 전달 */}
                 </div>
               </div>
