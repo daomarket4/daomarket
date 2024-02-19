@@ -5,6 +5,7 @@ import ProposalDataFetcher from "./ProposalDataFetcher";
 import { Link, useParams } from "react-router-dom";
 import { PROPOSAL_CONTRACT } from "../abis/contractsaddress";
 import ProgressbarList from "./ProgressbarList";
+import CountdownTimer from "./CountdownTimer";
 
 const PundingList = () => {
   const [proposals, setProposals] = useState([]);
@@ -92,6 +93,8 @@ const PundingList = () => {
                 <ProgressbarList
                   percentage={isNaN(percentage) ? 0 : percentage.toFixed(2)}
                 />
+                <CountdownTimer endTime={proposal.endTime} />{" "}
+                {/* 수정된 부분 */}
               </div>
             </div>
           );
