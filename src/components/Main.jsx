@@ -115,7 +115,7 @@ const Main = () => {
               <b>DAOM</b>
               <div className="text-black dark:text-white">&nbsp;arket</div>
             </div>
-            <div style={pStyles}>
+            <div style={{ ...pStyles, whiteSpace: "nowrap" }}>
               <br className="hidden lg:inline-block" />
               <b>NFT</b>와 <b>DAO</b>의 조화로운 만남
               <br className="hidden lg:inline-block" />
