@@ -10,11 +10,12 @@ const AdminProposalDetail = () => {
   const navigate = useNavigate();
   const [proposalDetail, setProposalDetail] = useState(null);
   const [contributors, setContributors] = useState([]);
+  const [refundSuccess, setRefundSuccess] = useState(false); // 펀딩 환불 성공 상태 추가
   const web3 = new Web3(window.ethereum || "http://localhost:8545");
   const contract = new web3.eth.Contract(proposal_ABI, PROPOSAL_CONTRACT);
 
-  // Admin 컴포넌트에서 정의한 관리자 주소 가져오기
-  const YOUR_ADMIN_ADDRESS = "0xe3cd9fC292B724095874522026Fb68932329296C";
+  // 관리자 주소
+  const YOUR_ADMIN_ADDRESS = "0x32C1B6C8261F665Ac41a2b176C488d16ccD4109C"; // 관리자 주소로 설정해야 합니다.
 
   useEffect(() => {
     const fetchProposalDetail = async () => {
@@ -35,16 +36,27 @@ const AdminProposalDetail = () => {
       );
 
       setContributors(contributions);
+
+      // 펀딩 환불 성공 상태 확인
+      const isFundingGoalReached = await contract.methods
+        .isFundingGoalReached(proposalId)
+        .call();
+      if (isFundingGoalReached) {
+        setRefundSuccess(true);
+      }
     };
     fetchProposalDetail();
   }, [proposalId]);
 
   const finalizeAndRefund = async () => {
     try {
-      // 관리자 권한 확인
-      const isAdmin = await contract.methods
-        .isAdmin()
-        .call({ from: YOUR_ADMIN_ADDRESS });
+      // 관리자 여부 확인
+      const proposalDetail = await contract.methods
+        .getProposal(proposalId)
+        .call();
+      const isAdmin =
+        proposalDetail.proposer.toLowerCase() ===
+        YOUR_ADMIN_ADDRESS.toLowerCase();
       if (!isAdmin) {
         console.log("관리자만 펀딩을 종료할 수 있습니다.");
         return;
@@ -55,6 +67,7 @@ const AdminProposalDetail = () => {
         .finalizeAndRefund(proposalId)
         .send({ from: YOUR_ADMIN_ADDRESS });
       console.log("펀딩 종료 및 환불이 성공적으로 이루어졌습니다.");
+      setRefundSuccess(true); // 펀딩 환불 성공 상태 업데이트
     } catch (error) {
       console.error("펀딩 종료 및 환불 과정에서 오류가 발생했습니다:", error);
     }
@@ -117,12 +130,19 @@ const AdminProposalDetail = () => {
                     </li>
                   ))}
                 </ul>
-                <button
-                  onClick={finalizeAndRefund}
-                  className="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
-                >
-                  만료된 펀딩 환불
-                </button>
+                {refundSuccess ? (
+                  <p>펀딩 환불 완료</p>
+                ) : (
+                  <button
+                    onClick={finalizeAndRefund}
+                    disabled={refundSuccess} // refundSuccess가 true이면 버튼 비활성화
+                    className={`py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline ${
+                      refundSuccess ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                  >
+                    만료된 펀딩 환불
+                  </button>
+                )}
               </div>
             </div>
           </div>

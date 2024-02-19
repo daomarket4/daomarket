@@ -9,7 +9,8 @@ const ProposalParticipation = ({ proposalId, onClosePopup }) => {
   const [contract, setContract] = useState(null);
   const [fundAmount, setFundAmount] = useState("");
   const [isFundingGoalReached, setIsFundingGoalReached] = useState(false);
-  const [isFundingExpired, setIsFundingExpired] = useState(false); // 추가
+  const [isFundingExpired, setIsFundingExpired] = useState(false);
+  const [isFundingClosed, setIsFundingClosed] = useState(false); // 추가
 
   useEffect(() => {
     const initWeb3 = async () => {
@@ -45,15 +46,13 @@ const ProposalParticipation = ({ proposalId, onClosePopup }) => {
 
     checkFundingStatus();
 
-    // 펀딩 기간 종료 확인
     const checkFundingExpiration = async () => {
       if (contract) {
         try {
-          const result = await contract.methods
-            .finalizeAndRefund(proposalId)
-            .call(); // finalizeAndRefund 함수 호출
-          setIsFundingExpired(result); // 펀딩 기간 만료 상태 업데이트
+          await contract.methods.finalizeAndRefund(proposalId).send(); // finalizeAndRefund 함수 호출
+          setIsFundingExpired(true); // 펀딩 기간 만료 상태 업데이트
         } catch (error) {
+          setIsFundingExpired(false); // 에러 발생 시 펀딩 기간 만료 상태 false로 유지
           console.error("펀딩 종료 확인 중 오류 발생:", error);
         }
       }
@@ -66,6 +65,23 @@ const ProposalParticipation = ({ proposalId, onClosePopup }) => {
     }, 10000);
 
     return () => clearInterval(interval); // 컴포넌트가 언마운트될 때 인터벌 해제
+  }, [contract, proposalId]);
+
+  useEffect(() => {
+    const fetchFundingClosedStatus = async () => {
+      if (contract) {
+        try {
+          const proposalDetail = await contract.methods
+            .getProposal(proposalId)
+            .call();
+          setIsFundingClosed(proposalDetail.fundingClosed); // fundingClosed 상태 업데이트
+        } catch (error) {
+          console.error("펀딩 종료 상태 확인 중 오류 발생:", error);
+        }
+      }
+    };
+
+    fetchFundingClosedStatus(); // 컴포넌트가 마운트될 때 펀딩 종료 상태 확인
   }, [contract, proposalId]);
 
   // 펀딩 참여 함수
@@ -92,10 +108,12 @@ const ProposalParticipation = ({ proposalId, onClosePopup }) => {
 
   return (
     <div className="mt-4">
-      {isFundingExpired ? ( // 펀딩 기간이 만료되었을 때 메시지 표시
+      {isFundingExpired ? (
         <p>펀딩 기간이 만료되었습니다.</p>
-      ) : isFundingGoalReached ? ( // 펀딩 목표 달성 시 메시지 표시
+      ) : isFundingGoalReached ? (
         <p>펀딩 목표가 달성되어 더 이상 펀딩에 참여하실 수 없습니다.</p>
+      ) : isFundingClosed ? ( // fundingClosed 상태에 따라 버튼 비활성화
+        <p>펀딩이 종료되어 더 이상 펀딩에 참여하실 수 없습니다.</p>
       ) : (
         <>
           <label
@@ -114,8 +132,11 @@ const ProposalParticipation = ({ proposalId, onClosePopup }) => {
           />
           <div className="flex justify-center mt-4">
             <button
-              className="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
+              className={`py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline ${
+                isFundingClosed ? "opacity-50 cursor-not-allowed" : ""
+              }`}
               onClick={handleParticipate}
+              disabled={isFundingClosed} // fundingClosed 상태에 따라 버튼 비활성화
             >
               펀딩 참여
             </button>
