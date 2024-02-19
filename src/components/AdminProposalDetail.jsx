@@ -13,6 +13,9 @@ const AdminProposalDetail = () => {
   const web3 = new Web3(window.ethereum || "http://localhost:8545");
   const contract = new web3.eth.Contract(proposal_ABI, PROPOSAL_CONTRACT);
 
+  // Admin 컴포넌트에서 정의한 관리자 주소 가져오기
+  const YOUR_ADMIN_ADDRESS = "0xe3cd9fC292B724095874522026Fb68932329296C";
+
   useEffect(() => {
     const fetchProposalDetail = async () => {
       const detail = await contract.methods.getProposal(proposalId).call();
@@ -35,6 +38,27 @@ const AdminProposalDetail = () => {
     };
     fetchProposalDetail();
   }, [proposalId]);
+
+  const finalizeAndRefund = async () => {
+    try {
+      // 관리자 권한 확인
+      const isAdmin = await contract.methods
+        .isAdmin()
+        .call({ from: YOUR_ADMIN_ADDRESS });
+      if (!isAdmin) {
+        console.log("관리자만 펀딩을 종료할 수 있습니다.");
+        return;
+      }
+
+      // finalizeAndRefund 함수 호출
+      await contract.methods
+        .finalizeAndRefund(proposalId)
+        .send({ from: YOUR_ADMIN_ADDRESS });
+      console.log("펀딩 종료 및 환불이 성공적으로 이루어졌습니다.");
+    } catch (error) {
+      console.error("펀딩 종료 및 환불 과정에서 오류가 발생했습니다:", error);
+    }
+  };
 
   if (!proposalDetail) {
     return <div>Loading...</div>;
@@ -93,6 +117,12 @@ const AdminProposalDetail = () => {
                     </li>
                   ))}
                 </ul>
+                <button
+                  onClick={finalizeAndRefund}
+                  className="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
+                >
+                  만료된 펀딩 환불
+                </button>
               </div>
             </div>
           </div>
