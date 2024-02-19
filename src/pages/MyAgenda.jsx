@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import ProposalDataFetcher from "../components/ProposalDataFetcher";
 import { Link } from "react-router-dom";
 import Web3 from "web3";
+import CountdownTimer from "../components/CountdownTimer";
 
 const MyAgenda = () => {
   const [proposals, setProposals] = useState([]);
@@ -68,6 +69,9 @@ const MyAgenda = () => {
                       {new Date(
                         Number(proposal.endTime) * 1000
                       ).toLocaleString()}
+                    </p>
+                    <p className="mb-2">
+                      <CountdownTimer endTime={proposal.endTime} />
                     </p>
                   </div>
                 </div>
