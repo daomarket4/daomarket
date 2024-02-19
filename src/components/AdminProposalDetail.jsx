@@ -54,7 +54,7 @@ const AdminProposalDetail = () => {
               />
               <div className="ml-8">
                 <p>
-                  <strong>NFT URL:</strong>{" "}
+                  <strong>펀딩 희망 NFT URL:</strong>{" "}
                   <a
                     href={proposalDetail.nftLink}
                     target="_blank"
@@ -64,10 +64,10 @@ const AdminProposalDetail = () => {
                   </a>
                 </p>
                 <p>
-                  <strong>Proposer Address:</strong> {proposalDetail.proposer}
+                  <strong>제안자 지갑 주소:</strong> {proposalDetail.proposer}
                 </p>
                 <p>
-                  <strong>Funding Goal:</strong>{" "}
+                  <strong>펀딩 목표 금액:</strong>{" "}
                   {web3.utils.fromWei(proposalDetail.fundingGoal, "ether")} ETH
                 </p>
                 <p>
