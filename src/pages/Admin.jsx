@@ -50,7 +50,7 @@ const Admin = () => {
         <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font text-5xl dark:text-white">
           관리자페이지
           <div className="container px-5 py-24 mx-auto">
-            <Link to="/">
+            <Link to="/AdminAllProposal">
               <div className="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
                 <div className="sm:w-32 sm:h-36 h-24 w-24 sm:mr-10 inline-flex items-center justify-center rounded-full flex-shrink-0">
                   {/* <img src={invest} alt="invest" className="mb-8 mr-2" /> */}

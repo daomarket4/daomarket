@@ -23,6 +23,7 @@ import SuccessAgenda from "./pages/SuccessAgenda";
 import Admin from "./pages/Admin";
 import AdminWarning from "./pages/AdminWarning";
 import AdminLab from "./pages/AdminLab";
+import AdminAllProposals from "./pages/AdminAllProposals";
 
 const App = () => {
   const [profileImage, setProfileImage] = useState(
@@ -77,6 +78,7 @@ const App = () => {
           <Route path="/Admin" element={<Admin />} />
           <Route path="/AdminWarning" element={<AdminWarning />} />
           <Route path="/AdminLab" element={<AdminLab />} />
+          <Route path="/AdminAllProposal" element={<AdminAllProposals />} />
           <Route
             path="/MyProfile"
             element={
