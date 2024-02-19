@@ -93,8 +93,10 @@ const PundingList = () => {
                 <ProgressbarList
                   percentage={isNaN(percentage) ? 0 : percentage.toFixed(2)}
                 />
-                <CountdownTimer endTime={proposal.endTime} />{" "}
-                {/* 수정된 부분 */}
+                <div className="pt-4 text-gray-500">
+                  <CountdownTimer endTime={proposal.endTime} />{" "}
+                  {/* 수정된 부분 */}
+                </div>
               </div>
             </div>
           );

@@ -44,7 +44,8 @@ const CountdownTimer = ({ endTime }) => {
 
           return (
             <span key={interval}>
-              {timeLeft[interval]} {interval}{" "}
+              {timeLeft[interval]}
+              {interval}{" "}
             </span>
           );
         })
