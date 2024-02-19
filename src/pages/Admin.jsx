@@ -34,8 +34,8 @@ const Admin = () => {
       if (
         account !== "0xe3cd9fC292B724095874522026Fb68932329296C" &&
         account !== "0xeffc9eaf0cb26b4ca0614ea99aca0908ca468fb3" &&
-        account !== "메타마스크 주소 입력" &&
-        account !== "메타마스크 주소 입력" &&
+        account !== "0x32C1B6C8261F665Ac41a2b176C488d16ccD4109C" &&
+        account !== "0x11D539b3339A89633e4067E6036Ea2729E225467" &&
         account !== "메타마스크 주소 입력"
       ) {
         navigate("/AdminWarning");
