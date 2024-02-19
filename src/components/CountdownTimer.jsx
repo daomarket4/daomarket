@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const CountdownTimer = ({ endTime }) => {
   const calculateTimeLeft = () => {
-    // endTime을 밀리초 단위로 변환
     const difference = +new Date(Number(endTime) * 1000) - +new Date();
     let timeLeft = {};
 
@@ -10,7 +9,7 @@ const CountdownTimer = ({ endTime }) => {
       timeLeft = {
         d: Math.floor(difference / (1000 * 60 * 60 * 24)),
         h: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        m: Math.floor((difference / (1000 * 60)) % 60),
+        m: Math.floor((difference / 1000 / 60) % 60),
         s: Math.floor((difference / 1000) % 60),
       };
     }
@@ -21,30 +20,35 @@ const CountdownTimer = ({ endTime }) => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    const timerTimeout = setTimeout(() => {
+    const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => clearTimeout(timerTimeout);
+    return () => clearTimeout(timer);
   }, [timeLeft]);
 
-  const timerComponents = [];
-
-  Object.keys(timeLeft).forEach((interval) => {
-    if (!timeLeft[interval]) {
-      return;
-    }
-
-    timerComponents.push(
-      <span key={interval}>
-        {timeLeft[interval]} {interval}{" "}
-      </span>
-    );
+  // 남은 시간이 없을 때 표시할 메시지 처리
+  const timerIsFinished = Object.keys(timeLeft).every((interval) => {
+    return !timeLeft[interval];
   });
 
   return (
     <div>
-      {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+      {timerIsFinished ? (
+        <span>펀딩 종료</span>
+      ) : (
+        Object.keys(timeLeft).map((interval) => {
+          if (!timeLeft[interval]) {
+            return null;
+          }
+
+          return (
+            <span key={interval}>
+              {timeLeft[interval]} {interval}{" "}
+            </span>
+          );
+        })
+      )}
     </div>
   );
 };
