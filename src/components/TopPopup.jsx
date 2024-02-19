@@ -15,24 +15,23 @@ const TopPopup = () => {
     localStorage.setItem("topBannerClose1", "true");
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("topBannerClose1") === "true") {
-      setIsClose(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("topBannerClose1") === "true") {
+  //     setIsClose(true);
+  //   }
+  // }, []);
 
   return (
-    <div className="dark:bg-slate-800">
-      <div
-        className={`h-[35px] border-b border-gray-400 mx-16  ${
-          isClose && "hidden"
-        }`}
-      >
-        <div className="container flex justify-center items-center">
+    <div
+      className={`dark:bg-slate-800 flex items-center justify-center ${
+        isClose && "hidden"
+      }`}
+    >
+      <div className="h-[35px] border-b border-gray-400 mx-36 w-full">
+        <div className="flex justify-center items-center w-full">
           <Link to="/PundingPlaceList">
-            <div className="flex items-center justify-center ml-56 mt-1 w-full text-center font-semibold">
-              팝업을 클릭하여 DAOM에서 현재 펀딩이 진행 중인 물건들을 확인해
-              보세요! (이 상단팝업 뺄까요..? 고민 중,,,) -정준혁
+            <div className="flex mt-[6px] w-full text-center font-semibold">
+              DAOM에서 현재 진행 중인 펀딩을 지금 바로 확인하세요!
             </div>
           </Link>
           <button
@@ -46,5 +45,4 @@ const TopPopup = () => {
     </div>
   );
 };
-
 export default TopPopup;
