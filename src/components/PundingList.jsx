@@ -56,20 +56,6 @@ const PundingList = () => {
     fetchProposal();
   }, [contract, proposalId]);
 
-  // ether 단위로 변환 usestate로
-  const amountRaisedInEther =
-    proposal && web3
-      ? web3.utils.fromWei(proposal.amountRaised || "0", "ether")
-      : "0";
-  const fundingGoalInEther =
-    proposal && web3
-      ? web3.utils.fromWei(proposal.fundingGoal || "0", "ether")
-      : "0";
-
-  // 진행율 계산
-  const percentage =
-    (Number(amountRaisedInEther) / Number(fundingGoalInEther)) * 100;
-
   return (
     <>
       <ProposalDataFetcher onDataFetched={handleDataFetched} />
@@ -90,7 +76,7 @@ const PundingList = () => {
           return (
             <div
               key={index}
-              className="max-w-sm rounded overflow-hidden shadow-lg"
+              className="max-w-sm rounded-xl overflow-hidden shadow-lg mb-16"
             >
               <Link to={`/proposal/${index}`}>
                 <img
@@ -100,7 +86,9 @@ const PundingList = () => {
                 />
               </Link>
               <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">{proposal.title}</div>
+                <div className="font-semibold text-3xl text-center mb-2">
+                  {proposal.title}
+                </div>
                 <ProgressbarList
                   percentage={isNaN(percentage) ? 0 : percentage.toFixed(2)}
                 />
