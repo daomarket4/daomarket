@@ -74,7 +74,10 @@ const SuccessPunding = () => {
                 percentage={isNaN(percentage) ? 0 : percentage.toFixed(2)}
               />
               <div className="pt-4 text-gray-500">
-                <CountdownTimer endTime={endTime} />
+                <CountdownTimer
+                  endTime={proposal.endTime}
+                  percentage={percentage}
+                />
               </div>
             </div>
           </div>
