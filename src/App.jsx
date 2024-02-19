@@ -26,12 +26,14 @@ import AdminLab from "./pages/AdminLab";
 import AdminAllProposals from "./pages/AdminAllProposals";
 import AdminProposalDetail from "./components/AdminProposalDetail";
 
+//account 여기로 옮김 useeffect 만들어서 localstorage.getitem? 가져오기 - 강사님 피드백
+
 const App = () => {
   const [profileImage, setProfileImage] = useState(
     localStorage.getItem("profileImage") || defaultProfileImage
   );
 
-  //account 여기로 옮김 useeffect 만들어서 localstorage.getitem? 가져오기
+  const [nickname, setNickname] = useState("");
 
   // 이미지 변경 핸들러
   const handleImageChange = (imageURL) => {
@@ -55,7 +57,7 @@ const App = () => {
   return (
     <ThemeProvider attribute="class">
       <Router>
-        <Header profileImage={profileImage} />
+        <Header profileImage={profileImage} nickname={nickname} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/AboutUs" element={<AboutUs />} />
@@ -90,6 +92,7 @@ const App = () => {
               <MyProfile
                 onImageChange={handleImageChange}
                 onDeleteImage={handleDeleteImage}
+                setNickname={setNickname}
               />
             }
           />

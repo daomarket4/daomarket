@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import React, { useEffect, useState } from "react";
 import defaultProfileImage from "../images/img.png";
 
-const MyProfile = ({ onImageChange, onDeleteImage }) => {
+const MyProfile = ({ onImageChange, onDeleteImage, setNickname }) => {
   const [address, setAddress] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [profileImage, setProfileImage] = useState(
@@ -53,6 +53,17 @@ const MyProfile = ({ onImageChange, onDeleteImage }) => {
     setShowPopup(false);
   };
 
+  // 닉네임 변경 기능
+  const [tempNickname, setTempNickname] = useState(""); // 임시 닉네임 상태
+
+  const handleNicknameChange = (event) => {
+    setTempNickname(event.target.value); // 입력 필드의 값을 임시 상태에 저장
+  };
+
+  const handleNicknameSubmit = () => {
+    setNickname(tempNickname); // 확인 버튼을 눌렀을 때만 닉네임 상태 업데이트
+  };
+
   return (
     <div className="bg-darkMode">
       <Layout>
@@ -94,6 +105,34 @@ const MyProfile = ({ onImageChange, onDeleteImage }) => {
             </div>
           </div>
           {/* 파일 선택, 이미지 변경 및 이미지 삭제 버튼 */}
+          {/* 닉네임 지정 */}
+          <div className="container px-5 py-8 mx-auto flex flex-wrap">
+            <h2 className="sm:text-3xl text-2xl text-gray-900 font-medium title-font mb-2 md:w-2/5 text-center flex items-center justify-center">
+              닉네임 변경
+            </h2>
+            <div className="md:w-3/5 md:pl-6 flex">
+              <p className="leading-relaxed text-xl flex">
+                <input
+                  type="text"
+                  onChange={handleNicknameChange}
+                  className="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  onKeyPress={(event) => {
+                    if (event.key === "Enter") {
+                      handleNicknameSubmit();
+                    }
+                  }}
+                />
+                <button
+                  onClick={handleNicknameSubmit}
+                  className="text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg"
+                >
+                  확인
+                </button>
+                {/* 확인 버튼 추가 */}
+              </p>
+            </div>
+          </div>
+          {/* 닉네임 지정 */}
           {/* 메타마스크 주소 */}
           <div className="container px-5 py-8 mx-auto flex flex-wrap">
             <h2 className="sm:text-3xl text-2xl text-gray-900 font-medium title-font mb-2 md:w-2/5 text-center flex items-center justify-center">

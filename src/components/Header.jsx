@@ -9,7 +9,7 @@ import DropDown from "./DropDown";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import defaultProfileImage from "../images/img.png";
 
-const Header = ({ profileImage }) => {
+const Header = ({ profileImage, nickname }) => {
   const { sdk } = useSDK();
   const [account, setAccount] = useState(null);
   const [view, setView] = useState(false);
@@ -84,6 +84,7 @@ const Header = ({ profileImage }) => {
                     />
                   </div>
                   {/* 프로필 이미지만 표시 */}
+                  <div className="mx-4 text-lg">{nickname || "DAOM"}</div>
                   {view ? (
                     <MdKeyboardArrowUp className="w-6 h-6 hover:cursor-pointer" />
                   ) : (
