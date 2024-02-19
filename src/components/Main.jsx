@@ -47,10 +47,11 @@ const Main = () => {
   }, []);
   // 스마트 컨트랙트에서 데이터를 가져오는 부분
 
-  // 메인 페이지에서 3단계로 나눠서 보여주기 위한 애니메이션
+  // 메인 페이지에서 4단계로 나눠서 보여주기 위한 애니메이션
   const [showTitle, setShowTitle] = useState(false);
   const [showP, setShowP] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [showNFT, setShowNFT] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -62,6 +63,9 @@ const Main = () => {
     setTimeout(() => {
       setShowButton(true);
     }, 2400);
+    setTimeout(() => {
+      setShowNFT(true);
+    }, 3000);
   }, []);
 
   const titleStyles = {
@@ -79,7 +83,12 @@ const Main = () => {
     transform: `translateY(${showButton ? 0 : "20px"})`,
     transition: "opacity 1s ease-in-out, transform 1s ease-in-out",
   };
-  // 메인 페이지에서 3단계로 나눠서 보여주기 위한 애니메이션
+  const nftStyles = {
+    opacity: showNFT ? 1 : 0,
+    transform: `translateY(${showNFT ? 0 : "20px"})`,
+    transition: "opacity 1s ease-in-out, transform 1s ease-in-out",
+  };
+  // 메인 페이지에서 4단계로 나눠서 보여주기 위한 애니메이션
 
   // slick 애니메이션
   const settings = {
@@ -132,7 +141,10 @@ const Main = () => {
           </div>
         </div>
         {/* 애니메이션 */}
-        <div className="slider-container lg:flex-grow md:w-1/2">
+        <div
+          className="slider-container lg:flex-grow md:w-1/2"
+          style={nftStyles}
+        >
           <Slider {...settings}>
             {proposals.map((proposal, index) => {
               return (
