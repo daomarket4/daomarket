@@ -1,7 +1,53 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Web3 from "web3";
+import proposal_ABI from "../abis/proposal_ABI";
+import { PROPOSAL_CONTRACT } from "../abis/contractsaddress.js";
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Main = () => {
+  // 스마트 컨트랙트에서 데이터를 가져오는 부분
+  const [proposals, setProposals] = useState([]);
+
+  useEffect(() => {
+    const loadWeb3 = async () => {
+      if (window.ethereum) {
+        const web3Instance = new Web3(window.ethereum);
+        try {
+          await window.ethereum.request({ method: "eth_requestAccounts" });
+          const contractInstance = new web3Instance.eth.Contract(
+            proposal_ABI,
+            PROPOSAL_CONTRACT
+          );
+          const proposalsCount = await contractInstance.methods
+            .getProposalsCount()
+            .call();
+          const fetchedProposals = [];
+
+          for (let i = 0; i < proposalsCount; i++) {
+            const proposal = await contractInstance.methods
+              .getProposal(i)
+              .call();
+            fetchedProposals.push(proposal);
+          }
+
+          setProposals(fetchedProposals);
+        } catch (error) {
+          console.error("사용자 계정 권한 요청 실패:", error);
+        }
+      } else {
+        console.error("MetaMask가 설치되어 있지 않습니다.");
+      }
+    };
+
+    loadWeb3();
+  }, []);
+  // 스마트 컨트랙트에서 데이터를 가져오는 부분
+
+  // 메인 페이지에서 3단계로 나눠서 보여주기 위한 애니메이션
   const [showTitle, setShowTitle] = useState(false);
   const [showP, setShowP] = useState(false);
   const [showButton, setShowButton] = useState(false);
@@ -33,6 +79,20 @@ const Main = () => {
     transform: `translateY(${showButton ? 0 : "20px"})`,
     transition: "opacity 1s ease-in-out, transform 1s ease-in-out",
   };
+  // 메인 페이지에서 3단계로 나눠서 보여주기 위한 애니메이션
+
+  // slick 애니메이션
+  const settings = {
+    fade: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    waitForAnimate: false,
+    autoplay: true,
+    autoplaySpeed: 1500,
+  };
+  // slick 애니메이션
 
   return (
     <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
@@ -71,6 +131,23 @@ const Main = () => {
             </Link>
           </div>
         </div>
+        {/* 애니메이션 */}
+        <div className="slider-container lg:flex-grow md:w-1/2">
+          <Slider {...settings}>
+            {proposals.map((proposal, index) => {
+              return (
+                <div key={index}>
+                  <img
+                    src={proposal.imageLink}
+                    alt="proposal"
+                    className="w-96 ml-52"
+                  />
+                </div>
+              );
+            })}
+          </Slider>
+        </div>
+        {/* 애니메이션 */}
       </div>
     </section>
   );
