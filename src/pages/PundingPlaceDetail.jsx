@@ -7,6 +7,7 @@ import { PROPOSAL_CONTRACT } from "../abis/contractsaddress.js";
 import { IoIosArrowBack } from "react-icons/io";
 import ProposalParticipation from "../components/ProposalParticipation";
 import ProgressbarDetail from "../components/ProgressbarDetail.jsx";
+import CountdownTimer from "../components/CountdownTimer";
 
 const ProposalDetail = () => {
   const { proposalId } = useParams();
@@ -116,6 +117,9 @@ const ProposalDetail = () => {
                   <p>
                     펀딩 종료 시간 :&nbsp;
                     {new Date(Number(proposal.endTime) * 1000).toLocaleString()}
+                  </p>
+                  <p className="mb-2">
+                    <CountdownTimer endTime={proposal.endTime} />
                   </p>
                 </div>
                 <div className="flex items-center mt-4">
