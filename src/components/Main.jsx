@@ -152,7 +152,7 @@ const Main = () => {
                   <img
                     src={proposal.imageLink}
                     alt="proposal"
-                    className="w-96 ml-52"
+                    className="w-96 ml-52 rounded-2xl"
                   />
                 </div>
               );
