@@ -1,11 +1,12 @@
-// ProposalDataFetcher.jsx
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 import proposal_ABI from "../abis/proposal_ABI";
 import { PROPOSAL_CONTRACT } from "../abis/contractsaddress.js";
 
-const ProposalDataFetcher = ({ onDataFetched }) => {
+const ProposalDataFetcher = ({
+  onOngoingDataFetched,
+  onCompletedDataFetched,
+}) => {
   useEffect(() => {
     const loadWeb3 = async () => {
       if (window.ethereum) {
@@ -21,16 +22,27 @@ const ProposalDataFetcher = ({ onDataFetched }) => {
           const proposalsCount = await contractInstance.methods
             .getProposalsCount()
             .call();
-          const fetchedProposals = [];
+          const fetchedOngoingProposals = [];
+          const fetchedCompletedProposals = [];
 
           for (let i = 0; i < proposalsCount; i++) {
             const proposal = await contractInstance.methods
               .getProposal(i)
               .call();
-            fetchedProposals.push(proposal);
+
+            const isFundingGoalReached = await contractInstance.methods
+              .isFundingGoalReached(i)
+              .call();
+
+            if (isFundingGoalReached) {
+              fetchedCompletedProposals.push(proposal);
+            } else {
+              fetchedOngoingProposals.push(proposal);
+            }
           }
 
-          onDataFetched(fetchedProposals, accounts);
+          onOngoingDataFetched(fetchedOngoingProposals, accounts);
+          onCompletedDataFetched(fetchedCompletedProposals, accounts);
         } catch (error) {
           console.error("사용자 계정 권한 요청 실패:", error);
         }
@@ -40,7 +52,7 @@ const ProposalDataFetcher = ({ onDataFetched }) => {
     };
 
     loadWeb3();
-  }, [onDataFetched]);
+  }, [onOngoingDataFetched, onCompletedDataFetched]);
 
   return null;
 };

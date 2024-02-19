@@ -1,7 +1,17 @@
+import { useState } from "react";
 import Layout from "../components/Layout";
 import PundingList from "../components/PundingList";
+import SuccessPunding from "../components/SuccessPunding";
 
 const PundingPlaceList = () => {
+  const [isPunding, setIsPunding] = useState(true);
+
+  const onClickSuccess = () => {
+    setIsPunding(false);
+  };
+  const onClickProceeding = () => {
+    setIsPunding(true);
+  };
   return (
     <div className="bg-darkMode">
       <Layout>
@@ -19,7 +29,35 @@ const PundingPlaceList = () => {
               을 클릭하여 직접 안건을 제출해 보세요!
             </p>
           </div>
-          <PundingList />
+          <div className="">
+            <div className="border-b-2 border-gray-400 pb-4">
+              <button
+                onClick={onClickProceeding}
+                className={`mr-8 ${
+                  isPunding && "font-bold text-xl text-gray-400"
+                }`}
+              >
+                진행중인 펀딩
+              </button>
+              <button
+                onClick={onClickSuccess}
+                className={`mr-8 ${
+                  !isPunding && "font-bold text-xl text-gray-400"
+                }`}
+              >
+                완료된 펀딩
+              </button>
+            </div>
+            <div>
+              {isPunding ? (
+                <div>
+                  <PundingList />
+                </div>
+              ) : (
+                <SuccessPunding />
+              )}
+            </div>
+          </div>
         </section>
       </Layout>
     </div>
