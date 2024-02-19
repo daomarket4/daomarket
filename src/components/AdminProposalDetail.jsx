@@ -5,6 +5,26 @@ import proposal_ABI from "../abis/proposal_ABI.json";
 import { PROPOSAL_CONTRACT } from "../abis/contractsaddress";
 import Layout from "./Layout";
 
+//관리자 권한 (관리자가 아니면 페이지 접근 불가능)
+async function getAccount() {
+  if (window.ethereum) {
+    const web3 = new Web3(window.ethereum);
+    try {
+      await window.ethereum.enable();
+      const accounts = await web3.eth.getAccounts();
+      return accounts[0];
+    } catch (error) {
+      console.error("YOU ARE NOT ADMIN!");
+    }
+  } else if (window.web3) {
+    const web3 = new Web3(window.web3.currentProvider);
+    const accounts = await web3.eth.getAccounts();
+    return accounts[0];
+  } else {
+    console.log("USE CHROME! USE METAMASK!");
+  }
+}
+
 const AdminProposalDetail = () => {
   const { proposalId } = useParams();
   const navigate = useNavigate();
@@ -13,6 +33,23 @@ const AdminProposalDetail = () => {
   const [refundSuccess, setRefundSuccess] = useState(false); // 펀딩 환불 성공 상태 추가
   const web3 = new Web3(window.ethereum || "http://localhost:8545");
   const contract = new web3.eth.Contract(proposal_ABI, PROPOSAL_CONTRACT);
+
+  // 보안 기능입니다. 관리자 계정이 아니여도 주소창에 수동으로 입력하면 들어갈 수 있기 때문에 아래 주소가 아니면 바로 경고페이지로 보냅니다. 아래까지 입력해야 관리자 페이지에 접속이 가능합니다.
+  // 프로젝트 제출 전 .env 처리 예정
+  useEffect(() => {
+    getAccount().then((account) => {
+      if (
+        account !== "0xe3cd9fC292B724095874522026Fb68932329296C" &&
+        account !== "0xeFfC9eAf0CB26B4CA0614Ea99aCa0908Ca468FB3" &&
+        account !== "0x32C1B6C8261F665Ac41a2b176C488d16ccD4109C" &&
+        account !== "0x11D539b3339A89633e4067E6036Ea2729E225467" &&
+        account !== ""
+      ) {
+        navigate("/AdminWarning");
+      }
+    });
+  }, []);
+  // 관리자 권한
 
   // 관리자 주소
   const YOUR_ADMIN_ADDRESS = "0x32C1B6C8261F665Ac41a2b176C488d16ccD4109C"; // 관리자 주소로 설정해야 합니다.
