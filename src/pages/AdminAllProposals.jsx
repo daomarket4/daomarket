@@ -1,65 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Web3 from "web3";
-import proposal_ABI from "../abis/proposal_ABI";
+import proposal_ABI from "../abis/proposal_ABI.json";
 import { PROPOSAL_CONTRACT } from "../abis/contractsaddress";
+import { Link } from "react-router-dom";
 
-const AdminAllProposals = () => {
+const AdminAllProposalsComponent = () => {
   const [proposals, setProposals] = useState([]);
+  const web3 = new Web3(window.ethereum || "http://localhost:8545");
 
   useEffect(() => {
-    const loadWeb3 = async () => {
-      if (window.ethereum) {
-        window.web3 = new Web3(window.ethereum);
-        await window.ethereum.enable();
-      } else if (window.web3) {
-        window.web3 = new Web3(window.web3.currentProvider);
-      } else {
-        window.alert(
-          "Non-Ethereum browser detected. You should consider trying MetaMask!"
-        );
-      }
-    };
-
-    const loadProposals = async () => {
-      const web3 = window.web3;
-      const contract = new web3.eth.Contract(proposal_ABI, PROPOSAL_CONTRACT);
+    const contract = new web3.eth.Contract(proposal_ABI, PROPOSAL_CONTRACT);
+    const fetchProposals = async () => {
       const proposalsCount = await contract.methods.getProposalsCount().call();
-
-      const loadedProposals = [];
+      const proposalsData = [];
       for (let i = 0; i < proposalsCount; i++) {
         const proposal = await contract.methods.getProposal(i).call();
-        loadedProposals.push(proposal);
+        proposalsData.push(proposal);
       }
-
-      setProposals(loadedProposals);
+      setProposals(proposalsData);
     };
-
-    loadWeb3();
-    loadProposals();
+    fetchProposals();
   }, []);
 
   return (
-    <div>
-      <h2>전체 안건 보기</h2>
-      <div>
+    <div className="container">
+      <h1>전체 안건 보기</h1>
+      <div className="grid grid-cols-3 gap-4">
         {proposals.map((proposal, index) => (
-          <div key={index}>
-            <h3>{proposal.title}</h3>
-            <p>제안자 주소: {proposal.proposer}</p>
-            <p>
-              펀딩 목표: {Web3.utils.fromWei(proposal.fundingGoal, "ether")} ETH
-            </p>
-            <p>
-              현재 모금액: {Web3.utils.fromWei(proposal.amountRaised, "ether")}{" "}
-              ETH
-            </p>
-            <Link to={`/proposal/${index}`}>상세 보기</Link>
-          </div>
+          <Link
+            to={`/admin/proposal-detail/${index}`}
+            key={index}
+            className="border rounded-lg p-4 hover:shadow-lg"
+          >
+            <img
+              src={proposal.imageLink}
+              alt="Proposal"
+              className="w-full h-64 object-cover rounded-t-lg"
+            />
+            <h2 className="text-xl font-semibold mt-2">{proposal.title}</h2>
+          </Link>
         ))}
       </div>
     </div>
   );
 };
 
-export default AdminAllProposals;
+export default AdminAllProposalsComponent;

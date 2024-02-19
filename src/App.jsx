@@ -24,6 +24,7 @@ import Admin from "./pages/Admin";
 import AdminWarning from "./pages/AdminWarning";
 import AdminLab from "./pages/AdminLab";
 import AdminAllProposals from "./pages/AdminAllProposals";
+import AdminProposalDetail from "./components/AdminProposalDetail";
 
 const App = () => {
   const [profileImage, setProfileImage] = useState(
@@ -79,6 +80,10 @@ const App = () => {
           <Route path="/AdminWarning" element={<AdminWarning />} />
           <Route path="/AdminLab" element={<AdminLab />} />
           <Route path="/AdminAllProposal" element={<AdminAllProposals />} />
+          <Route
+            path="/admin/proposal-detail/:proposalId"
+            element={<AdminProposalDetail />}
+          />
           <Route
             path="/MyProfile"
             element={
