@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const CountdownTimer = ({ endTime }) => {
+const CountdownTimer = ({ endTime, percentage }) => {
   const calculateTimeLeft = () => {
     const difference = +new Date(Number(endTime) * 1000) - +new Date();
     let timeLeft = {};
@@ -27,7 +27,6 @@ const CountdownTimer = ({ endTime }) => {
     return () => clearTimeout(timer);
   }, [timeLeft]);
 
-  // 남은 시간이 없을 때 표시할 메시지 처리
   const timerIsFinished = Object.keys(timeLeft).every((interval) => {
     return !timeLeft[interval];
   });
@@ -36,6 +35,8 @@ const CountdownTimer = ({ endTime }) => {
     <div>
       {timerIsFinished ? (
         <span>펀딩 종료</span>
+      ) : percentage >= 100 ? (
+        <span>펀딩율 100% 도달!!</span>
       ) : (
         Object.keys(timeLeft).map((interval) => {
           if (!timeLeft[interval]) {

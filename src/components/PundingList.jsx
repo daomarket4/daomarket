@@ -76,8 +76,11 @@ const PundingList = () => {
                 <ProgressbarList
                   percentage={isNaN(percentage) ? 0 : percentage.toFixed(2)}
                 />
-                <div className="pt-4 text-gray-500">
-                  <CountdownTimer endTime={endTime} />
+                <div className="font-semibold text-1xl text-center mb-2">
+                  <CountdownTimer
+                    endTime={proposal.endTime}
+                    percentage={percentage}
+                  />
                 </div>
               </div>
             </div>

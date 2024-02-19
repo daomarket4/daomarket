@@ -119,7 +119,10 @@ const ProposalDetail = () => {
                     {new Date(Number(proposal.endTime) * 1000).toLocaleString()}
                   </p>
                   <p className="mb-2">
-                    <CountdownTimer endTime={proposal.endTime} />
+                    <CountdownTimer
+                      endTime={proposal.endTime}
+                      percentage={percentage}
+                    />
                   </p>
                 </div>
                 <div className="flex items-center mt-4">
