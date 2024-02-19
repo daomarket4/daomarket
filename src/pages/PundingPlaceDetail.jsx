@@ -95,27 +95,26 @@ const ProposalDetail = () => {
                 style={{ width: "530px", height: "530px" }}
               />
               <div className="lg:w-1/2 w-full pl-12  mt-6 lg:mt-0">
-                <h1 className="text-gray-900 text-6xl title-font font-medium mb-5">
+                <h1 className="text-gray-900 text-4xl title-font font-medium mb-5">
                   {proposal.title}
                 </h1>
-                <p className="leading-relaxed mb-4 text-3xl h-52 break-words line-clamp-4">
-                  설명 : {proposal.description}
+                <p className="leading-relaxed mb-4 text-2xl h-52 break-words line-clamp-4">
+                  {proposal.description}
                 </p>
-                <span className="title-font font-medium text-2xl text-gray-900 dark:text-white flex mb-4">
+                <span className="title-font font-medium text-2xl text-gray-900 dark:text-white flex mb-4 mt-16">
                   목표 금액: &nbsp;
                   {web3.utils.fromWei(proposal.fundingGoal, "ether")}
                   ETH
                 </span>
-
                 <div className="text-xl">
                   <p className="mb-2">
-                    펀딩 시작 시간:
+                    펀딩 시작 시간 :&nbsp;
                     {new Date(
                       Number(proposal.startTime) * 1000
                     ).toLocaleString()}
                   </p>
                   <p>
-                    펀딩 종료 시간:
+                    펀딩 종료 시간 :&nbsp;
                     {new Date(Number(proposal.endTime) * 1000).toLocaleString()}
                   </p>
                 </div>

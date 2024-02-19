@@ -52,7 +52,7 @@ const ProposalParticipation = ({ proposalId, onClosePopup }) => {
   return (
     <div className="mt-4">
       <label
-        className="block text-gray-700 text-sm font-bold mb-2"
+        className="block text-gray-700 text-md font-bold mb-2"
         htmlFor="funding-amount"
       >
         펀딩할 ETH 금액을 입력하세요.
@@ -62,8 +62,8 @@ const ProposalParticipation = ({ proposalId, onClosePopup }) => {
         id="funding-amount"
         value={fundAmount}
         onChange={(e) => setFundAmount(e.target.value)}
-        placeholder="ETH"
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="숫자만 입력해 주세요."
+        className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
       />
       <div className="flex justify-center mt-4">
         <button
