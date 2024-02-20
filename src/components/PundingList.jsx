@@ -25,13 +25,13 @@ const PundingList = () => {
             PROPOSAL_CONTRACT
           );
           const proposalsCount = await contractInstance.methods
-            .getTotalProposals()
+            .getProposalsCount()
             .call();
           const fetchedProposals = [];
 
           for (let i = 0; i < proposalsCount; i++) {
             const proposal = await contractInstance.methods
-              .getProposalDetails(i)
+              .getProposal(i)
               .call();
             fetchedProposals.push(proposal);
           }

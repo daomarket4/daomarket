@@ -61,12 +61,12 @@ const AdminProposalDetail = () => {
 
       // 펀딩 참여자 정보 설정
       const contributorAddresses = await contract.methods
-        .getProposalContributors(proposalId)
+        .getContributors(proposalId)
         .call();
       const contributions = await Promise.all(
         contributorAddresses.map(async (address) => {
           const amount = await contract.methods
-            .getContributionAmount(proposalId, address)
+            .getContributors(proposalId, address)
             .call();
           return { address, amount: web3.utils.fromWei(amount, "ether") };
         })

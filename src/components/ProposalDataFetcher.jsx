@@ -20,17 +20,17 @@ const ProposalDataFetcher = ({
           );
 
           const proposalsCount = await contractInstance.methods
-            .getTotalProposals()
+            .getProposalsCount()
             .call();
           const fetchedOngoingProposals = [];
           const fetchedCompletedProposals = [];
 
           for (let i = 0; i < proposalsCount; i++) {
             const proposal = await contractInstance.methods
-              .getProposalDetails(i)
+              .getProposal(i)
               .call();
 
-            /*  const isFundingGoalReached = await contractInstance.methods
+            const isFundingGoalReached = await contractInstance.methods
               .isFundingGoalReached(i)
               .call();
 
@@ -38,11 +38,11 @@ const ProposalDataFetcher = ({
               fetchedCompletedProposals.push(proposal);
             } else {
               fetchedOngoingProposals.push(proposal);
-            }*/
+            }
           }
 
-          //onOngoingDataFetched(fetchedOngoingProposals, accounts);
-          //onCompletedDataFetched(fetchedCompletedProposals, accounts);
+          onOngoingDataFetched(fetchedOngoingProposals, accounts);
+          onCompletedDataFetched(fetchedCompletedProposals, accounts);
         } catch (error) {
           console.error("사용자 계정 권한 요청 실패:", error);
         }
