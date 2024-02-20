@@ -24,8 +24,8 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
                   내용 작성 내용 작성
                 </p>
-                <a className="text-indigo-500 inline-flex items-center mt-8">
-                  바로가기 <IoArrowForward />
+                <a className="text-indigo-500 inline-flex items-center mt-8 cursor-pointer">
+                  웹페이지 우측 상단 Sign in에서 진행해 주세요.
                 </a>
               </div>
             </div>
@@ -41,7 +41,10 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
                   내용 작성 내용 작성
                 </p>
-                <a className="text-indigo-500 inline-flex items-center mt-8">
+                <a
+                  className="text-indigo-500 inline-flex items-center mt-8"
+                  href="/Agenda"
+                >
                   바로가기 <IoArrowForward />
                 </a>
               </div>
@@ -58,7 +61,10 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
                   내용 작성 내용 작성
                 </p>
-                <a className="text-indigo-500 inline-flex items-center mt-8">
+                <a
+                  className="text-indigo-500 inline-flex items-center mt-8"
+                  href="/PundingPlaceList"
+                >
                   바로가기 <IoArrowForward />
                 </a>
               </div>
@@ -75,7 +81,10 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
                   내용 작성 내용 작성
                 </p>
-                <a className="text-indigo-500 inline-flex items-center mt-8">
+                <a
+                  className="text-indigo-500 inline-flex items-center mt-8"
+                  href="/SaleNFT"
+                >
                   바로가기 <IoArrowForward />
                 </a>
               </div>
@@ -92,7 +101,10 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
                   내용 작성 내용 작성
                 </p>
-                <a className="text-indigo-500 inline-flex items-center mt-8">
+                <a
+                  className="text-indigo-500 inline-flex items-center mt-8"
+                  href="/SuccessAgenda"
+                >
                   바로가기 <IoArrowForward />
                 </a>
               </div>

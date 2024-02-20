@@ -25,6 +25,7 @@ import AdminWarning from "./pages/AdminWarning";
 import AdminLab from "./pages/AdminLab";
 import AdminAllProposals from "./pages/AdminAllProposals";
 import AdminProposalDetail from "./components/AdminProposalDetail";
+import PriceQuotes from "./pages/PriceQuotes";
 
 //account 여기로 옮김 useeffect 만들어서 localstorage.getitem? 가져오기 - 강사님 피드백
 
@@ -89,6 +90,7 @@ const App = () => {
           <Route path="/AdminWarning" element={<AdminWarning />} />
           <Route path="/AdminLab" element={<AdminLab />} />
           <Route path="/AdminAllProposal" element={<AdminAllProposals />} />
+          <Route path="/PriceQuotes" element={<PriceQuotes />} />
           <Route
             path="/admin/proposal-detail/:proposalId"
             element={<AdminProposalDetail />}

@@ -45,7 +45,7 @@ const DropDown = () => {
             <Link to="/SaleNFT">NFT 판매</Link>
           </li>
           <li>
-            <Link>시세조회</Link>
+            <Link to="/PriceQuotes">시세조회</Link>
           </li>
           <li>
             <Link>?</Link>
