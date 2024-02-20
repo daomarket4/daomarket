@@ -1,5 +1,6 @@
-# <img src="https://github.com/daomarket4/daomarket/assets/148733543/87f6c438-b67c-4aba-9399-58ab1ba8a48d" /> DAOM
+# <img width="156" alt="DAOMLOGO" src="https://github.com/daomarket4/daomarket/assets/148733543/a7f6af5d-3d39-4022-8d6b-b3ba031c8ff9"> DAOM
 <img src="https://github.com/daomarket4/daomarket/assets/148733543/17a66737-4d2d-45ec-9b59-0c8625eb7ee3" />
+
 
 <p align="center">
   <a href="https://daomarket.vercel.app/">사이트 바로가기</a>
