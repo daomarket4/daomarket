@@ -1,94 +1,120 @@
 const HowCanIUseDaoMarket = () => {
   return (
     <>
-      <h1 class="sm:text-5xl text-3xl font-medium title-font text-gray-900 mt-32 mb-4">
+      <h1 className="sm:text-5xl text-3xl font-medium title-font text-gray-900 mt-32 mb-4">
         DAOM은 어떻게 사용하나요?
       </h1>
-      <p class="text-2xl leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500 text-center">
-        아래 순서를 참고하여 주십시오. (자세한 순서는 프론트엔드 완성 후 재작성
-        예정)
+      <p className="text-2xl leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500 text-center">
+        아래 순서를 참고하여 DAOM을 사용해 보세요!
       </p>
-      <div class="flex mt-6 justify-center">
-        <div class="w-16 h-1 rounded-full bg-gray-500 inline-flex"></div>
-      </div>
-      <div class="container px-5 py-24 mx-auto flex flex-wrap">
-        <div class="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
-          <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-          </div>
-          <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-white text-black border-black border-2 relative z-10 title-font font-medium text-sm">
-            1
-          </div>
-          <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-            <div class="flex-shrink-0 w-24 h-24 inline-flex items-center justify-center">
-              이미지 완
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 py-24 mx-auto">
+          <div className="flex flex-wrap -m-4">
+            <div className="p-4 lg:w-1/3">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                  STEP 1.
+                </h2>
+                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+                  메타마스크 회원가입 및 로그인
+                </h1>
+                <p className="leading-relaxed mb-3">
+                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
+                  내용 작성 내용 작성
+                </p>
+                <a className="text-indigo-500 inline-flex items-center mt-8">
+                  바로가기
+                </a>
+              </div>
             </div>
-            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-              <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
-                MetaMask를 회원가입하고 로그인합니다.
-              </h2>
-              <p class="leading-relaxed">부가설명</p>
+            <div className="p-4 lg:w-1/3">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                  STEP 2.
+                </h2>
+                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+                  안건 제출
+                </h1>
+                <p className="leading-relaxed mb-3">
+                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
+                  내용 작성 내용 작성
+                </p>
+                <a className="text-indigo-500 inline-flex items-center mt-8">
+                  바로가기
+                </a>
+              </div>
+            </div>
+            <div className="p-4 lg:w-1/3">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                  STEP 3.
+                </h2>
+                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+                  펀딩 참여
+                </h1>
+                <p className="leading-relaxed mb-3">
+                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
+                  내용 작성 내용 작성
+                </p>
+                <a className="text-indigo-500 inline-flex items-center mt-8">
+                  바로가기
+                </a>
+              </div>
+            </div>
+            <div className="p-4 lg:w-1/3">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                  STEP 4.
+                </h2>
+                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+                  NFT 지분 거래
+                </h1>
+                <p className="leading-relaxed mb-3">
+                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
+                  내용 작성 내용 작성
+                </p>
+                <a className="text-indigo-500 inline-flex items-center mt-8">
+                  바로가기
+                </a>
+              </div>
+            </div>
+            <div className="p-4 lg:w-1/3">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                  STEP 5.
+                </h2>
+                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+                  투표 및 매각
+                </h1>
+                <p className="leading-relaxed mb-3">
+                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
+                  내용 작성 내용 작성
+                </p>
+                <a className="text-indigo-500 inline-flex items-center mt-8">
+                  바로가기
+                </a>
+              </div>
+            </div>
+            <div className="p-4 lg:w-1/3">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                  STEP 6.
+                </h2>
+                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
+                  시세 조회
+                </h1>
+                <p className="leading-relaxed mb-3">
+                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
+                  내용 작성 내용 작성
+                </p>
+                <a className="text-indigo-500 inline-flex items-center mt-8">
+                  바로가기
+                </a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
-          <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-          </div>
-          <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-white text-black border border-black border-2 relative z-10 title-font font-medium text-sm">
-            2
-          </div>
-          <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-            <div class="flex-shrink-0 w-24 h-24 inline-flex items-center justify-center">
-              이미지 뚜
-            </div>
-            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-              <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
-                원하는 Dao에 참여를 하거나 제안을 합니다.
-              </h2>
-              <p class="leading-relaxed">부가설명</p>
-            </div>
-          </div>
-        </div>
-        <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
-          <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-          </div>
-          <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-white text-black border border-black border-2 relative z-10 title-font font-medium text-sm">
-            3
-          </div>
-          <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-            <div class="flex-shrink-0 w-24 h-24 inline-flex items-center justify-center">
-              이미지 뜨리
-            </div>
-            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-              <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
-                참여한 Dao에 대한 지분을 NFT로 발행받습니다.
-              </h2>
-              <p class="leading-relaxed">부가설명</p>
-            </div>
-          </div>
-        </div>
-        <div class="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
-          <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-          </div>
-          <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-white text-black border border-black border-2 relative z-10 title-font font-medium text-sm">
-            4
-          </div>
-          <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-            <div class="flex-shrink-0 w-24 h-24 inline-flex items-center justify-center">
-              이미지 뽀
-            </div>
-            <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-              <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
-                Dao NFT Marketplace에서 지분을 거래합니다.
-              </h2>
-              <p class="leading-relaxed">부가설명</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </>
   );
 };
