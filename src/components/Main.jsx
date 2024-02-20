@@ -145,7 +145,7 @@ const Main = () => {
           className="slider-container lg:flex-grow md:w-1/2 ml-72"
           style={nftStyles}
         >
-          <Slider {...settings}>
+          <Slider {...settings} className="w-[420px]">
             {proposals.map((proposal, index) => {
               return (
                 <div key={index}>
