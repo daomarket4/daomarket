@@ -1,3 +1,5 @@
+import { IoArrowForward } from "react-icons/io5";
+
 const HowCanIUseDaoMarket = () => {
   return (
     <>
@@ -11,8 +13,8 @@ const HowCanIUseDaoMarket = () => {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
-                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 1.
                 </h2>
                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
@@ -23,13 +25,13 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성
                 </p>
                 <a className="text-indigo-500 inline-flex items-center mt-8">
-                  바로가기
+                  바로가기 <IoArrowForward />
                 </a>
               </div>
             </div>
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
-                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 2.
                 </h2>
                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
@@ -40,13 +42,13 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성
                 </p>
                 <a className="text-indigo-500 inline-flex items-center mt-8">
-                  바로가기
+                  바로가기 <IoArrowForward />
                 </a>
               </div>
             </div>
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
-                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 3.
                 </h2>
                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
@@ -57,13 +59,13 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성
                 </p>
                 <a className="text-indigo-500 inline-flex items-center mt-8">
-                  바로가기
+                  바로가기 <IoArrowForward />
                 </a>
               </div>
             </div>
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
-                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 4.
                 </h2>
                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
@@ -74,13 +76,13 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성
                 </p>
                 <a className="text-indigo-500 inline-flex items-center mt-8">
-                  바로가기
+                  바로가기 <IoArrowForward />
                 </a>
               </div>
             </div>
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
-                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 5.
                 </h2>
                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
@@ -91,13 +93,13 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성
                 </p>
                 <a className="text-indigo-500 inline-flex items-center mt-8">
-                  바로가기
+                  바로가기 <IoArrowForward />
                 </a>
               </div>
             </div>
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-2xl border-gray-500 rounded-lg overflow-hidden text-center relative">
-                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+                <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 6.
                 </h2>
                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
@@ -108,7 +110,7 @@ const HowCanIUseDaoMarket = () => {
                   내용 작성 내용 작성
                 </p>
                 <a className="text-indigo-500 inline-flex items-center mt-8">
-                  바로가기
+                  바로가기 <IoArrowForward />
                 </a>
               </div>
             </div>
