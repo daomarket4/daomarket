@@ -4,7 +4,7 @@ const ProgressbarMain = ({ percentage }) => {
   return (
     <div
       className="progress-bar-container rounded-lg mt-6"
-      style={{ width: "100%", backgroundColor: "#fff", padding: "0 10%" }}
+      style={{ width: "100%", backgroundColor: "gray" }}
     >
       <div
         style={{
@@ -15,7 +15,7 @@ const ProgressbarMain = ({ percentage }) => {
           color: "white",
           lineHeight: "24px",
         }}
-        className="rounded-lg"
+        className="rounded-lg pl-2"
       >
         {percentage}%
       </div>

@@ -4,7 +4,7 @@ const ProgressbarList = ({ percentage }) => {
   return (
     <div
       className="progress-bar-container rounded-lg mt-6"
-      style={{ width: "100%", backgroundColor: "#eee" }}
+      style={{ width: "100%", backgroundColor: "gray" }}
     >
       <div
         style={{
