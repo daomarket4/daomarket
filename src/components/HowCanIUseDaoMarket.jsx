@@ -21,11 +21,17 @@ const HowCanIUseDaoMarket = () => {
                   메타마스크 회원가입 및 로그인
                 </h1>
                 <p className="leading-relaxed mb-3">
-                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
-                  내용 작성 내용 작성
+                  메타마스크를 설치하고 회원가입 및 로그인을 해 주세요.
+                  <br />
+                  회원가입을 하신 후에는 우측 상단 Sign in을 통해
+                  <br />
+                  로그인 하실 수 있습니다.
                 </p>
-                <a className="text-indigo-500 inline-flex items-center mt-8 cursor-pointer">
-                  웹페이지 우측 상단 Sign in에서 진행해 주세요.
+                <a
+                  className="text-indigo-500 inline-flex items-center mt-8 cursor-pointer"
+                  href="https://support.metamask.io/hc/ko/articles/360015489531-MetaMask-시작하기"
+                >
+                  바로가기 <IoArrowForward />
                 </a>
               </div>
             </div>
@@ -38,8 +44,8 @@ const HowCanIUseDaoMarket = () => {
                   안건 제출
                 </h1>
                 <p className="leading-relaxed mb-3">
-                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
-                  내용 작성 내용 작성
+                  함께 공동구매를 희망하시는 상품이 있으신가요?
+                  <br /> 간단한 양식 작성을 통해 안건을 제출해 주세요.
                 </p>
                 <a
                   className="text-indigo-500 inline-flex items-center mt-8"
@@ -58,8 +64,9 @@ const HowCanIUseDaoMarket = () => {
                   펀딩 참여
                 </h1>
                 <p className="leading-relaxed mb-3">
-                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
-                  내용 작성 내용 작성
+                  DAOM의 다른 유저들이 올린 공동구매 안건을
+                  <br /> 확인하고 같이 투자해 보세요.
+                  <br /> 투자한 만큼 NFT 지분을 받을 수 있습니다.
                 </p>
                 <a
                   className="text-indigo-500 inline-flex items-center mt-8"
@@ -78,8 +85,8 @@ const HowCanIUseDaoMarket = () => {
                   NFT 지분 거래
                 </h1>
                 <p className="leading-relaxed mb-3">
-                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
-                  내용 작성 내용 작성
+                  투자한 NFT 지분을 거래해 보세요.
+                  <br /> NFT 지분을 거래하면서 수익을 창출해 보세요.
                 </p>
                 <a
                   className="text-indigo-500 inline-flex items-center mt-8"
@@ -98,8 +105,8 @@ const HowCanIUseDaoMarket = () => {
                   투표 및 매각
                 </h1>
                 <p className="leading-relaxed mb-3">
-                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
-                  내용 작성 내용 작성
+                  구매한 NFT 지분을 통해 투표에 참여해 보세요.
+                  <br /> 또한, 매각을 통해 수익을 창출하실 수 있습니다.
                 </p>
                 <a
                   className="text-indigo-500 inline-flex items-center mt-8"
@@ -118,10 +125,13 @@ const HowCanIUseDaoMarket = () => {
                   시세 조회
                 </h1>
                 <p className="leading-relaxed mb-3">
-                  내용 작성 내용 작성 내용 작성 내용 작성 내용 작성 내용 작성
-                  내용 작성 내용 작성
+                  NFT의 시세를 조회해 보세요.
+                  <br /> 시세를 통해 투자 및 매각을 결정해 보세요.
                 </p>
-                <a className="text-indigo-500 inline-flex items-center mt-8">
+                <a
+                  className="text-indigo-500 inline-flex items-center mt-8"
+                  href="/PriceQuotes"
+                >
                   바로가기 <IoArrowForward />
                 </a>
               </div>
