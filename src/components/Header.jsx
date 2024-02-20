@@ -99,7 +99,9 @@ const Header = ({ profileImage }) => {
                     />
                   </div>
                   {/* 프로필 이미지만 표시 */}
-                  <div className="mx-4 text-lg">{nickname || "DAOM"}</div>
+                  <div className="mx-4 text-lg cursor-pointer">
+                    {nickname || "DAOM"}
+                  </div>
                   {view ? (
                     <MdKeyboardArrowUp className="w-6 h-6 hover:cursor-pointer" />
                   ) : (

@@ -142,7 +142,7 @@ const Main = () => {
         </div>
         {/* 애니메이션 */}
         <div
-          className="slider-container lg:flex-grow md:w-1/2 ml-24"
+          className="slider-container lg:flex-grow md:w-1/2 ml-72"
           style={nftStyles}
         >
           <Slider {...settings}>
@@ -153,7 +153,7 @@ const Main = () => {
                     <img
                       src={proposal.imageLink}
                       alt="proposal"
-                      className="w-96 ml-52 rounded-2xl"
+                      className="w-96 rounded-2x ml-4"
                     />
                   </Link>
                 </div>
