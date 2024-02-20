@@ -1,4 +1,4 @@
-# <img width="156" alt="DAOMLOGO" src="https://github.com/daomarket4/daomarket/assets/148733543/a7f6af5d-3d39-4022-8d6b-b3ba031c8ff9"> DAOM
+# <img width="29" alt="DAOMLOGO" src="https://github.com/daomarket4/daomarket/assets/148733543/5b5b0075-c884-4f2c-98b5-06fc638570af"> DAOM
 <img src="https://github.com/daomarket4/daomarket/assets/148733543/17a66737-4d2d-45ec-9b59-0c8625eb7ee3" />
 
 
