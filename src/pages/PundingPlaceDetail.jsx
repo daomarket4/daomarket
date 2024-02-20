@@ -43,7 +43,7 @@ const ProposalDetail = () => {
       try {
         const parsedProposalId = parseInt(proposalId);
         const fetchedProposal = await contract.methods
-          .getProposal(parsedProposalId)
+          .getProposalDetails(parsedProposalId)
           .call();
         setProposal(fetchedProposal);
       } catch (error) {

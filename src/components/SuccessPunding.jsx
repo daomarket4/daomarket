@@ -20,13 +20,13 @@ const SuccessPunding = () => {
             PROPOSAL_CONTRACT
           );
           const proposalsCount = await contractInstance.methods
-            .getProposalsCount()
+            .getTotalProposals()
             .call();
           const fetchedCompletedProposals = [];
 
           for (let i = 0; i < proposalsCount; i++) {
             const proposal = await contractInstance.methods
-              .getProposal(i)
+              .getProposalDetails(i)
               .call();
             const isFundingGoalReached = await contractInstance.methods
               .isFundingGoalReached(i)
