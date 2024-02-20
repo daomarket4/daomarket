@@ -142,18 +142,20 @@ const Main = () => {
         </div>
         {/* 애니메이션 */}
         <div
-          className="slider-container lg:flex-grow md:w-1/2"
+          className="slider-container lg:flex-grow md:w-1/2 ml-24"
           style={nftStyles}
         >
           <Slider {...settings}>
             {proposals.map((proposal, index) => {
               return (
                 <div key={index}>
-                  <img
-                    src={proposal.imageLink}
-                    alt="proposal"
-                    className="w-96 ml-52 rounded-2xl"
-                  />
+                  <Link to={`/proposal/${index}`}>
+                    <img
+                      src={proposal.imageLink}
+                      alt="proposal"
+                      className="w-96 ml-52 rounded-2xl"
+                    />
+                  </Link>
                 </div>
               );
             })}
