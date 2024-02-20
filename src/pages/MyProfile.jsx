@@ -54,14 +54,18 @@ const MyProfile = ({ onImageChange, onDeleteImage, setNickname }) => {
   };
 
   // 닉네임 변경 기능
-  const [tempNickname, setTempNickname] = useState(""); // 임시 닉네임 상태
+  const [tempNickname, setTempNickname] = useState(
+    localStorage.getItem("nickname") || ""
+  );
 
   const handleNicknameChange = (event) => {
-    setTempNickname(event.target.value); // 입력 필드의 값을 임시 상태에 저장
+    setTempNickname(event.target.value);
   };
 
   const handleNicknameSubmit = () => {
-    setNickname(tempNickname); // 확인 버튼을 눌렀을 때만 닉네임 상태 업데이트
+    setNickname(tempNickname);
+    localStorage.setItem("nickname", tempNickname);
+    window.location.reload();
   };
 
   return (
@@ -116,6 +120,7 @@ const MyProfile = ({ onImageChange, onDeleteImage, setNickname }) => {
                   type="text"
                   onChange={handleNicknameChange}
                   className="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="다섯 글자 제한"
                   onKeyPress={(event) => {
                     if (event.key === "Enter") {
                       handleNicknameSubmit();

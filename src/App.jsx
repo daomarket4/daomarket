@@ -33,7 +33,9 @@ const App = () => {
     localStorage.getItem("profileImage") || defaultProfileImage
   );
 
-  const [nickname, setNickname] = useState("");
+  const [nickname, setNickname] = useState(
+    localStorage.getItem("nickname") || "DAOM"
+  );
 
   // 이미지 변경 핸들러
   const handleImageChange = (imageURL) => {
@@ -53,6 +55,11 @@ const App = () => {
       setProfileImage(storedImage);
     }
   }, []);
+
+  useEffect(() => {
+    // 닉네임 상태가 변경될 때마다 로컬 스토리지에 저장
+    localStorage.setItem("nickname", nickname);
+  }, [nickname]);
 
   return (
     <ThemeProvider attribute="class">

@@ -9,10 +9,25 @@ import DropDown from "./DropDown";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 import defaultProfileImage from "../images/img.png";
 
-const Header = ({ profileImage, nickname }) => {
+const Header = ({ profileImage }) => {
   const { sdk } = useSDK();
   const [account, setAccount] = useState(null);
   const [view, setView] = useState(false);
+  const [nickname, setNickname] = useState(
+    localStorage.getItem("nickname") || "DAOM"
+  );
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setNickname(localStorage.getItem("nickname") || "DAOM");
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   // 새로고침 로그아웃 방지
   useEffect(() => {
