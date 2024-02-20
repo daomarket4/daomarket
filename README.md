@@ -1,7 +1,7 @@
 # DAOM
 <img src="https://github.com/daomarket4/daomarket/assets/148733543/17a66737-4d2d-45ec-9b59-0c8625eb7ee3" />
 
-[사이트 바로가기](https://daomarket.vercel.app/)
+<center>[사이트 바로가기](https://daomarket.vercel.app/)</center>  
 
 
 # 프로젝트 소개
