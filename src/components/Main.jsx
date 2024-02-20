@@ -7,6 +7,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ProgressbarMain from "./\bProgressbarMain.jsx";
+import CountdownTimerMain from "./CountdownTimerMain.jsx";
 
 const Main = () => {
   // 스마트 컨트랙트에서 데이터를 가져오는 부분
@@ -92,21 +94,20 @@ const Main = () => {
 
   // slick 애니메이션
   const settings = {
-    fade: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    waitForAnimate: false,
     autoplay: true,
-    autoplaySpeed: 1500,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
   };
   // slick 애니메이션
 
   return (
     <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
-      <div className="container mx-auto flex -mt-20 px-5 md:flex-row flex-col items-center">
-        <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+      <div className="container mx-auto flex mt-64 px-5 md:flex-row flex-col items-center">
+        <div className="lg:flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1
             style={titleStyles}
             className="title-font sm:text-5xl text-3xl mb-4 font-thin text-gray-900"
@@ -139,29 +140,56 @@ const Main = () => {
               </button>
             </Link>
           </div>
+          {/* 애니메이션 */}
+          <div
+            className="slider-container lg:flex-grow my-56 ml-20"
+            style={nftStyles}
+          >
+            <Slider {...settings} className="w-[1300px]">
+              {proposals.map((proposal, index) => {
+                const web3 = new Web3(window.ethereum);
+                const amountRaisedInEther = web3.utils.fromWei(
+                  proposal.amountRaised,
+                  "ether"
+                );
+                const fundingGoalInEther = web3.utils.fromWei(
+                  proposal.fundingGoal,
+                  "ether"
+                );
+                const percentage =
+                  (Number(amountRaisedInEther) / Number(fundingGoalInEther)) *
+                  100;
+
+                return (
+                  <div key={index}>
+                    <Link to={`/proposal/${index}`}>
+                      <img
+                        src={proposal.imageLink}
+                        alt="proposal"
+                        className="w-96 object-cover h-96 mx-auto"
+                      />
+                      <ProgressbarMain
+                        className="px-4"
+                        percentage={
+                          isNaN(percentage) ? 0 : percentage.toFixed(2)
+                        }
+                      />
+                      <div className="font-semibold text-1xl text-center mb-2">
+                        <CountdownTimerMain
+                          endTime={proposal.endTime}
+                          percentage={
+                            isNaN(percentage) ? 0 : percentage.toFixed(2)
+                          }
+                        />
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
+            </Slider>
+          </div>
+          {/* 애니메이션 */}
         </div>
-        {/* 애니메이션 */}
-        <div
-          className="slider-container lg:flex-grow md:w-1/2 ml-72"
-          style={nftStyles}
-        >
-          <Slider {...settings} className="w-[420px]">
-            {proposals.map((proposal, index) => {
-              return (
-                <div key={index}>
-                  <Link to={`/proposal/${index}`}>
-                    <img
-                      src={proposal.imageLink}
-                      alt="proposal"
-                      className="w-96 rounded-2xl ml-4"
-                    />
-                  </Link>
-                </div>
-              );
-            })}
-          </Slider>
-        </div>
-        {/* 애니메이션 */}
       </div>
     </section>
   );
