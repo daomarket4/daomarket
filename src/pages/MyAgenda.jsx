@@ -23,9 +23,25 @@ const MyAgenda = () => {
     setAccounts(fetchedAccounts);
   };
 
+  const handleCompletedDataFetched = (
+    fetchedCompletedProposals,
+    fetchedAccounts
+  ) => {
+    const filteredProposals = fetchedCompletedProposals.filter((proposal) => {
+      return (
+        proposal.proposer.toLowerCase() === fetchedAccounts[0]?.toLowerCase()
+      );
+    });
+    setProposals((prevProposals) => [...prevProposals, ...filteredProposals]);
+    setAccounts(fetchedAccounts);
+  };
+
   return (
     <>
-      <ProposalDataFetcher onOngoingDataFetched={handleOngoingDataFetched} />
+      <ProposalDataFetcher
+        onOngoingDataFetched={handleOngoingDataFetched}
+        onCompletedDataFetched={handleCompletedDataFetched}
+      />
       <div className="bg-darkMode">
         <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
           <h1 className="text-3xl mb-4">나의 안건 페이지</h1>
@@ -35,6 +51,7 @@ const MyAgenda = () => {
                 key={index}
                 className="p-4 border border-gray-300 rounded w-[250px] h-fit"
               >
+                {/* Render proposals */}
                 <Link to={`/proposal/${index}`}>
                   <img
                     src={proposal.imageLink}
