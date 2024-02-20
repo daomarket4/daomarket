@@ -7,7 +7,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ProgressbarMain from "./\bProgressbarMain.jsx";
+import ProgressbarMain from "./ProgressbarMain.jsx";
 import CountdownTimerMain from "./CountdownTimerMain.jsx";
 
 const Main = () => {
@@ -106,7 +106,7 @@ const Main = () => {
 
   return (
     <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
-      <div className="container mx-auto flex mt-64 px-5 md:flex-row flex-col items-center">
+      <div className="container mx-auto flex mt-24 px-5 md:flex-row flex-col items-center">
         <div className="lg:flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1
             style={titleStyles}
@@ -142,7 +142,7 @@ const Main = () => {
           </div>
           {/* 애니메이션 */}
           <div
-            className="slider-container lg:flex-grow my-56 ml-20"
+            className="slider-container lg:flex-grow my-56 ml-20 mt-12"
             style={nftStyles}
           >
             <Slider {...settings} className="w-[1300px]">
@@ -161,13 +161,18 @@ const Main = () => {
                   100;
 
                 return (
-                  <div key={index}>
+                  <div key={index} className="relative">
                     <Link to={`/proposal/${index}`}>
                       <img
                         src={proposal.imageLink}
                         alt="proposal"
-                        className="w-96 object-cover h-96 mx-auto"
+                        className="w-96 object-cover rounded-2xl h-96 mx-auto"
                       />
+                    </Link>
+                    <div
+                      key={index}
+                      className="absolute bottom-1 left-8 w-[370px] h-[85px] bg-white opacity-45 font-bold rounded-2xl text-black p-2"
+                    >
                       <ProgressbarMain
                         className="px-4"
                         percentage={
@@ -182,7 +187,7 @@ const Main = () => {
                           }
                         />
                       </div>
-                    </Link>
+                    </div>
                   </div>
                 );
               })}
