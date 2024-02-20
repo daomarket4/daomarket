@@ -153,7 +153,7 @@ const Main = () => {
                     <img
                       src={proposal.imageLink}
                       alt="proposal"
-                      className="w-96 rounded-2x ml-4"
+                      className="w-96 rounded-2xl ml-4"
                     />
                   </Link>
                 </div>
