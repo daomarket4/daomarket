@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+// ProposalDataFetcher.jsx
+
+import React, { useEffect } from "react";
 import Web3 from "web3";
 import proposal_ABI from "../abis/proposal_ABI";
 import { PROPOSAL_CONTRACT } from "../abis/contractsaddress.js";
 
-const ProposalDataFetcher = ({
-  onOngoingDataFetched,
-  onCompletedDataFetched,
-}) => {
+const ProposalDataFetcher = ({ onDataFetched }) => {
   useEffect(() => {
     const loadWeb3 = async () => {
       if (window.ethereum) {
@@ -22,27 +21,20 @@ const ProposalDataFetcher = ({
           const proposalsCount = await contractInstance.methods
             .getProposalsCount()
             .call();
-          const fetchedOngoingProposals = [];
-          const fetchedCompletedProposals = [];
+          const fetchedProposals = [];
 
           for (let i = 0; i < proposalsCount; i++) {
             const proposal = await contractInstance.methods
               .getProposal(i)
               .call();
-
-            const isFundingGoalReached = await contractInstance.methods
-              .isFundingGoalReached(i)
-              .call();
-
-            if (isFundingGoalReached) {
-              fetchedCompletedProposals.push(proposal);
-            } else {
-              fetchedOngoingProposals.push(proposal);
-            }
+            const proposalWithId = {
+              ...proposal,
+              id: i, // 고유한 id를 할당합니다.
+            };
+            fetchedProposals.push(proposalWithId);
           }
 
-          onOngoingDataFetched(fetchedOngoingProposals, accounts);
-          onCompletedDataFetched(fetchedCompletedProposals, accounts);
+          onDataFetched(fetchedProposals, accounts);
         } catch (error) {
           console.error("사용자 계정 권한 요청 실패:", error);
         }
@@ -52,7 +44,7 @@ const ProposalDataFetcher = ({
     };
 
     loadWeb3();
-  }, [onOngoingDataFetched, onCompletedDataFetched]);
+  }, [onDataFetched]);
 
   return null;
 };
