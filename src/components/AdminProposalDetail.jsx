@@ -108,6 +108,9 @@ const AdminProposalDetail = () => {
             />
             <div className="ml-8">
               <p>
+                <strong>펀딩 번호:</strong> {proposalId}
+              </p>
+              <p>
                 <strong>펀딩 희망 NFT URL:</strong>{" "}
                 <a
                   href={proposalDetail.nftLink}
@@ -120,10 +123,7 @@ const AdminProposalDetail = () => {
               <p>
                 <strong>제안자 지갑 주소:</strong> {proposalDetail.proposer}
               </p>
-              <p>
-                <strong>펀딩 목표 금액:</strong>{" "}
-                {web3.utils.fromWei(proposalDetail.fundingGoal, "ether")} ETH
-              </p>
+
               <p>
                 <strong>펀딩 시작 시간:</strong>{" "}
                 {new Date(
@@ -137,12 +137,23 @@ const AdminProposalDetail = () => {
                 ).toLocaleString()}
               </p>
               <p>
-                <strong>펀딩 번호:</strong> {proposalId}
+                <strong>펀딩 목표 금액:</strong>{" "}
+                {web3.utils.fromWei(proposalDetail.fundingGoal, "ether")} ETH
               </p>
               <p>
                 <strong>현재까지 모금된 금액:</strong>{" "}
                 {web3.utils.fromWei(proposalDetail.amountRaised, "ether")} ETH
               </p>
+
+              <h3>펀딩 참여자:</h3>
+              <ul>
+                {contributors.map((contributor, index) => (
+                  <li key={index}>
+                    {contributor.address} - {contributor.amount} ETH - 참여
+                    시간: {contributor.timestamp}
+                  </li>
+                ))}
+              </ul>
               <p>
                 <strong>펀딩 상태:</strong>{" "}
                 {new Date().getTime() <
@@ -153,15 +164,6 @@ const AdminProposalDetail = () => {
                   ? "진행 중"
                   : "종료"}
               </p>
-              <h3>펀딩 참여자:</h3>
-              <ul>
-                {contributors.map((contributor, index) => (
-                  <li key={index}>
-                    {contributor.address} - {contributor.amount} ETH - 참여
-                    시간: {contributor.timestamp}
-                  </li>
-                ))}
-              </ul>
               {refundSuccess ? (
                 <p>펀딩 환불 완료</p>
               ) : (
