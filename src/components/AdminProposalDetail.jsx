@@ -62,6 +62,8 @@ const AdminProposalDetail = () => {
 
       setContributors(contributions);
 
+      const currentFundingStatus = getFundingStatus(detail);
+
       const isFundingGoalReached = await contract.methods
         .isFundingGoalReached(proposalId)
         .call();
@@ -70,6 +72,32 @@ const AdminProposalDetail = () => {
 
     fetchProposalDetail();
   }, [proposalId, contract, web3]);
+
+  // getFundingStatus 함수 내에 null 체크 추가
+  const getFundingStatus = (proposal) => {
+    if (!proposal) return "정보를 불러오는 중...";
+
+    const now = new Date().getTime();
+    const startTime = parseInt(proposal.startTime) * 1000;
+    const endTime = parseInt(proposal.endTime) * 1000;
+    const isFundingActive = now >= startTime && now <= endTime;
+    const isFundingGoalReached =
+      web3.utils.fromWei(proposal.amountRaised, "ether") >=
+      web3.utils.fromWei(proposal.fundingGoal, "ether");
+    const isFundingCancelled = proposal.fundingClosed && !isFundingGoalReached;
+
+    if (isFundingCancelled) return "펀딩 취소";
+    if (isFundingGoalReached) return "펀딩 성공";
+    if (isFundingActive) return "펀딩 진행 중";
+    if (!isFundingActive && !isFundingGoalReached) return "펀딩 종료";
+
+    return "상태 불명";
+  };
+
+  // 상태 확인 후 getFundingStatus 호출
+  const fundingStatus = proposalDetail
+    ? getFundingStatus(proposalDetail)
+    : "정보를 불러오는 중...";
 
   const finalizeAndRefund = async () => {
     try {
@@ -88,6 +116,19 @@ const AdminProposalDetail = () => {
       setRefundSuccess(true);
     } catch (error) {
       console.error("펀딩 종료 및 환불 과정에서 오류가 발생했습니다:", error);
+    }
+  };
+
+  const cancelFundingAndRefund = async () => {
+    try {
+      const accounts = await web3.eth.getAccounts();
+      await contract.methods
+        .cancelFundingAndRefund(proposalId)
+        .send({ from: accounts[0] });
+      console.log("펀딩이 성공적으로 취소되고 환불되었습니다.");
+      // 상태 업데이트 또는 사용자에게 피드백 제공
+    } catch (error) {
+      console.error("펀딩 취소 및 환불 과정에서 오류가 발생했습니다:", error);
     }
   };
 
@@ -155,26 +196,31 @@ const AdminProposalDetail = () => {
                 ))}
               </ul>
               <p>
-                <strong>펀딩 상태:</strong>{" "}
-                {new Date().getTime() <
-                parseInt(proposalDetail.startTime) * 1000
-                  ? "대기 중"
-                  : new Date().getTime() <
-                    parseInt(proposalDetail.endTime) * 1000
-                  ? "진행 중"
-                  : "종료"}
+                <strong>펀딩 상태:</strong> {getFundingStatus(proposalDetail)}
               </p>
-              {refundSuccess ? (
-                <p>펀딩 환불 완료</p>
-              ) : (
+              {fundingStatus === "펀딩 진행 중" && (
+                <button
+                  onClick={cancelFundingAndRefund}
+                  className="py-2 px-4 bg-red-500 hover:bg-red-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
+                >
+                  펀딩 취소
+                </button>
+              )}
+
+              {fundingStatus === "펀딩 종료" && !refundSuccess && (
                 <button
                   onClick={finalizeAndRefund}
-                  disabled={refundSuccess} // refundSuccess가 true이면 버튼 비활성화
-                  className={`py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline ${
-                    refundSuccess ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
                 >
                   만료된 펀딩 환불
+                </button>
+              )}
+              {fundingStatus === "펀딩 종료" && refundSuccess && (
+                <button
+                  disabled={true}
+                  className="py-2 px-4 opacity-50 cursor-not-allowed bg-blue-500 text-white font-bold rounded focus:outline-none focus:shadow-outline"
+                >
+                  펀딩 환불 완료
                 </button>
               )}
             </div>
