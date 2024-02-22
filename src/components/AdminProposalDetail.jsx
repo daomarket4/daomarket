@@ -137,7 +137,21 @@ const AdminProposalDetail = () => {
                 ).toLocaleString()}
               </p>
               <p>
-                <strong>컨트랙트 주소:</strong> {PROPOSAL_CONTRACT}
+                <strong>펀딩 번호:</strong> {proposalId}
+              </p>
+              <p>
+                <strong>현재까지 모금된 금액:</strong>{" "}
+                {web3.utils.fromWei(proposalDetail.amountRaised, "ether")} ETH
+              </p>
+              <p>
+                <strong>펀딩 상태:</strong>{" "}
+                {new Date().getTime() <
+                parseInt(proposalDetail.startTime) * 1000
+                  ? "대기 중"
+                  : new Date().getTime() <
+                    parseInt(proposalDetail.endTime) * 1000
+                  ? "진행 중"
+                  : "종료"}
               </p>
               <h3>펀딩 참여자:</h3>
               <ul>
