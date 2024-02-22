@@ -119,6 +119,8 @@ const AdminProposalDetail = () => {
     }
   };
 
+  const [isFundingCancelled, setIsFundingCancelled] = useState(false);
+
   const cancelFundingAndRefund = async () => {
     try {
       const accounts = await web3.eth.getAccounts();
@@ -126,7 +128,7 @@ const AdminProposalDetail = () => {
         .cancelFundingAndRefund(proposalId)
         .send({ from: accounts[0] });
       console.log("펀딩이 성공적으로 취소되고 환불되었습니다.");
-      // 상태 업데이트 또는 사용자에게 피드백 제공
+      setIsFundingCancelled(true); // 펀딩 취소 상태 업데이트
     } catch (error) {
       console.error("펀딩 취소 및 환불 과정에서 오류가 발생했습니다:", error);
     }
@@ -198,7 +200,7 @@ const AdminProposalDetail = () => {
               <p>
                 <strong>펀딩 상태:</strong> {getFundingStatus(proposalDetail)}
               </p>
-              {fundingStatus === "펀딩 진행 중" && (
+              {fundingStatus === "펀딩 진행 중" && !isFundingCancelled && (
                 <button
                   onClick={cancelFundingAndRefund}
                   className="py-2 px-4 bg-red-500 hover:bg-red-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
@@ -206,7 +208,11 @@ const AdminProposalDetail = () => {
                   펀딩 취소
                 </button>
               )}
-
+              {isFundingCancelled && (
+                <p className="text-lg font-semibold text-green-500">
+                  펀딩 취소 완료
+                </p>
+              )}
               {fundingStatus === "펀딩 종료" && !refundSuccess && (
                 <button
                   onClick={finalizeAndRefund}
