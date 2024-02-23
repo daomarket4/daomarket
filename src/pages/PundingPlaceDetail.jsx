@@ -12,19 +12,26 @@ import CountdownTimer from "../components/CountdownTimer";
 const ProposalDetail = () => {
   const { proposalId } = useParams();
   const navigate = useNavigate();
-  const [web3, setWeb3] = useState(null);
+  const [web3, setWeb3] = useState(null); // Hook가 최상위에서 호출됨
   const [contract, setContract] = useState(null);
   const [proposal, setProposal] = useState({});
+  const [showCancelForm, setShowCancelForm] = useState(false);
+  const [cancelReason, setCancelReason] = useState("");
+  const [account, setAccount] = useState("");
 
+  // useEffect를 최상위에서 호출
   useEffect(() => {
     const loadWeb3 = async () => {
       if (window.ethereum) {
         const web3Instance = new Web3(window.ethereum);
         setWeb3(web3Instance);
+        const accounts = await web3Instance.eth.getAccounts();
+        setAccount(accounts[0]);
       } else {
         console.error("MetaMask가 설치되어 있지 않습니다.");
       }
     };
+
     loadWeb3();
   }, []);
 
@@ -51,7 +58,9 @@ const ProposalDetail = () => {
       }
     };
 
-    fetchProposal();
+    if (contract) {
+      fetchProposal();
+    }
   }, [contract, proposalId]);
 
   // ether 단위로 변환 usestate로
@@ -77,6 +86,28 @@ const ProposalDetail = () => {
   if (!proposal.title) {
     return <div>Loading...</div>;
   }
+
+  // 펀딩 취소 처리 함수
+  const handleCancelFunding = async () => {
+    if (!showCancelForm) {
+      setShowCancelForm(true);
+      return;
+    }
+
+    try {
+      // 스마트 계약의 취소 함수 호출 (여기서는 사유를 사용하지 않음)
+      await contract.methods
+        .cancelFundingAndRefund(proposalId)
+        .send({ from: account });
+      alert("펀딩이 취소되었습니다.");
+      setShowCancelForm(false); // 취소 폼 숨기기
+      setCancelReason(""); // 취소 사유 초기화
+      navigate("/"); // 메인 페이지로 이동 또는 새로고침
+    } catch (error) {
+      console.error("펀딩 취소 중 오류 발생:", error);
+      alert("펀딩 취소에 실패하였습니다.");
+    }
+  };
 
   return (
     <div className="bg-darkMode">
@@ -139,6 +170,36 @@ const ProposalDetail = () => {
                 proposalId={proposalId}
                 onClosePopup={handleClosePopup}
               />
+            </div>
+            <div className="flex justify-center items-center mt-3">
+              {proposal.proposer === account && (
+                <div className="cancel-funding-form flex flex-col items-center">
+                  {showCancelForm ? (
+                    <>
+                      <input
+                        type="text"
+                        value={cancelReason}
+                        onChange={(e) => setCancelReason(e.target.value)}
+                        placeholder="펀딩 취소 사유"
+                        className="mb-4 py-2 px-4" // 추가적인 스타일링
+                      />
+                      <button
+                        onClick={handleCancelFunding}
+                        className="py-2 px-4 bg-red-500 hover:bg-red-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
+                      >
+                        펀딩 취소 확인
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => setShowCancelForm(true)}
+                      className="py-2 px-4 bg-red-500 hover:bg-red-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
+                    >
+                      펀딩 취소
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </section>
