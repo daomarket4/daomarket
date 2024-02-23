@@ -139,101 +139,103 @@ const AdminProposalDetail = () => {
   }
 
   return (
-    <Layout>
-      <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
-        <div className="container mx-auto p-4 -mt-48">
-          <h2 className="text-2xl font-bold mb-4">{proposalDetail.title}</h2>
-          <div className="flex">
-            <img
-              src={proposalDetail.imageLink}
-              alt="NFT"
-              className="mb-4 w-[500px] h-[500px]"
-            />
-            <div className="ml-8">
-              <p>
-                <strong>펀딩 번호:</strong> {proposalId}
-              </p>
-              <p>
-                <strong>펀딩 희망 NFT URL:</strong>{" "}
-                <a
-                  href={proposalDetail.nftLink}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {proposalDetail.nftLink}
-                </a>
-              </p>
-              <p>
-                <strong>제안자 지갑 주소:</strong> {proposalDetail.proposer}
-              </p>
-
-              <p>
-                <strong>펀딩 시작 시간:</strong>{" "}
-                {new Date(
-                  parseInt(proposalDetail.startTime) * 1000
-                ).toLocaleString()}
-              </p>
-              <p>
-                <strong>펀딩 종료 시간:</strong>{" "}
-                {new Date(
-                  parseInt(proposalDetail.endTime) * 1000
-                ).toLocaleString()}
-              </p>
-              <p>
-                <strong>펀딩 목표 금액:</strong>{" "}
-                {web3.utils.fromWei(proposalDetail.fundingGoal, "ether")} ETH
-              </p>
-              <p>
-                <strong>현재까지 모금된 금액:</strong>{" "}
-                {web3.utils.fromWei(proposalDetail.amountRaised, "ether")} ETH
-              </p>
-
-              <h3>펀딩 참여자:</h3>
-              <ul>
-                {contributors.map((contributor, index) => (
-                  <li key={index}>
-                    {contributor.address} - {contributor.amount} ETH - 참여
-                    시간: {contributor.timestamp}
-                  </li>
-                ))}
-              </ul>
-              <p>
-                <strong>펀딩 상태:</strong> {getFundingStatus(proposalDetail)}
-              </p>
-              {fundingStatus === "펀딩 진행 중" && !isFundingCancelled && (
-                <button
-                  onClick={cancelFundingAndRefund}
-                  className="py-2 px-4 bg-red-500 hover:bg-red-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
-                >
-                  펀딩 취소
-                </button>
-              )}
-              {isFundingCancelled && (
-                <p className="text-lg font-semibold text-green-500">
-                  펀딩 취소 완료
+    <div className="bg-darkMode">
+      <Layout>
+        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
+          <div className="container mx-auto p-4 -mt-48">
+            <h2 className="text-2xl font-bold mb-4">{proposalDetail.title}</h2>
+            <div className="flex">
+              <img
+                src={proposalDetail.imageLink}
+                alt="NFT"
+                className="mb-4 w-[500px] h-[500px]"
+              />
+              <div className="ml-8">
+                <p>
+                  <strong>펀딩 번호:</strong> {proposalId}
                 </p>
-              )}
-              {fundingStatus === "펀딩 종료" && !refundSuccess && (
-                <button
-                  onClick={finalizeAndRefund}
-                  className="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
-                >
-                  만료된 펀딩 환불
-                </button>
-              )}
-              {fundingStatus === "펀딩 종료" && refundSuccess && (
-                <button
-                  disabled={true}
-                  className="py-2 px-4 opacity-50 cursor-not-allowed bg-blue-500 text-white font-bold rounded focus:outline-none focus:shadow-outline"
-                >
-                  펀딩 환불 완료
-                </button>
-              )}
+                <p>
+                  <strong>펀딩 희망 NFT URL:</strong>{" "}
+                  <a
+                    href={proposalDetail.nftLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {proposalDetail.nftLink}
+                  </a>
+                </p>
+                <p>
+                  <strong>제안자 지갑 주소:</strong> {proposalDetail.proposer}
+                </p>
+
+                <p>
+                  <strong>펀딩 시작 시간:</strong>{" "}
+                  {new Date(
+                    parseInt(proposalDetail.startTime) * 1000
+                  ).toLocaleString()}
+                </p>
+                <p>
+                  <strong>펀딩 종료 시간:</strong>{" "}
+                  {new Date(
+                    parseInt(proposalDetail.endTime) * 1000
+                  ).toLocaleString()}
+                </p>
+                <p>
+                  <strong>펀딩 목표 금액:</strong>{" "}
+                  {web3.utils.fromWei(proposalDetail.fundingGoal, "ether")} ETH
+                </p>
+                <p>
+                  <strong>현재까지 모금된 금액:</strong>{" "}
+                  {web3.utils.fromWei(proposalDetail.amountRaised, "ether")} ETH
+                </p>
+
+                <h3>펀딩 참여자:</h3>
+                <ul>
+                  {contributors.map((contributor, index) => (
+                    <li key={index}>
+                      {contributor.address} - {contributor.amount} ETH - 참여
+                      시간: {contributor.timestamp}
+                    </li>
+                  ))}
+                </ul>
+                <p>
+                  <strong>펀딩 상태:</strong> {getFundingStatus(proposalDetail)}
+                </p>
+                {fundingStatus === "펀딩 진행 중" && !isFundingCancelled && (
+                  <button
+                    onClick={cancelFundingAndRefund}
+                    className="py-2 px-4 bg-red-500 hover:bg-red-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
+                  >
+                    펀딩 취소
+                  </button>
+                )}
+                {isFundingCancelled && (
+                  <p className="text-lg font-semibold text-green-500">
+                    펀딩 취소 완료
+                  </p>
+                )}
+                {fundingStatus === "펀딩 종료" && !refundSuccess && (
+                  <button
+                    onClick={finalizeAndRefund}
+                    className="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
+                  >
+                    만료된 펀딩 환불
+                  </button>
+                )}
+                {fundingStatus === "펀딩 종료" && refundSuccess && (
+                  <button
+                    disabled={true}
+                    className="py-2 px-4 opacity-50 cursor-not-allowed bg-blue-500 text-white font-bold rounded focus:outline-none focus:shadow-outline"
+                  >
+                    펀딩 환불 완료
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </Layout>
+        </section>
+      </Layout>
+    </div>
   );
 };
 
