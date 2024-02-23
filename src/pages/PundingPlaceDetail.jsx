@@ -16,9 +16,9 @@ const ProposalDetail = () => {
   const [contract, setContract] = useState(null);
   const [proposal, setProposal] = useState({});
   const [showCancelForm, setShowCancelForm] = useState(false);
-  const [isCancelled, setIsCancelled] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
   const [account, setAccount] = useState("");
+  const [fundingCancelled, setFundingCancelled] = useState(false);
 
   useEffect(() => {
     const loadWeb3 = async () => {
@@ -54,6 +54,18 @@ const ProposalDetail = () => {
             .getProposal(parsedProposalId)
             .call();
           setProposal(fetchedProposal);
+
+          const isCancelled = localStorage.getItem(
+            `fundingCancelled_${parsedProposalId}`
+          );
+          setFundingCancelled(!!isCancelled); // Convert to boolean
+
+          const savedCancelReason = localStorage.getItem(
+            `cancelReason_${parsedProposalId}`
+          );
+          if (savedCancelReason) {
+            setCancelReason(savedCancelReason);
+          }
         }
       } catch (error) {
         console.error("안건 정보를 불러오는 중 오류 발생:", error);
@@ -61,23 +73,6 @@ const ProposalDetail = () => {
     };
 
     fetchProposal();
-  }, [contract, proposalId]);
-
-  useEffect(() => {
-    const checkFundingCancellation = async () => {
-      try {
-        if (contract) {
-          const isProposalCancelled = await contract.methods
-            .isFundingCancelled(parseInt(proposalId))
-            .call();
-          setIsCancelled(isProposalCancelled);
-        }
-      } catch (error) {
-        console.error("펀딩 취소 여부를 확인하는 중 오류 발생:", error);
-      }
-    };
-
-    checkFundingCancellation();
   }, [contract, proposalId]);
 
   // ether 단위로 변환 usestate로
@@ -94,12 +89,6 @@ const ProposalDetail = () => {
   const percentage =
     (Number(amountRaisedInEther) / Number(fundingGoalInEther)) * 100;
 
-  // 펀딩 성공 팝업 닫기
-  const handleClosePopup = () => {
-    // 팝업 닫을 때 페이지 새로고침
-    window.location.reload();
-  };
-
   if (!proposal.title) {
     return <div>Loading...</div>;
   }
@@ -115,12 +104,21 @@ const ProposalDetail = () => {
       await contract.methods
         .cancelFundingAndRefund(parseInt(proposalId))
         .send({ from: account });
-      setIsCancelled(true); // 펀딩 취소 상태를 true로 설정
+      setFundingCancelled(true);
+      localStorage.setItem(`fundingCancelled_${proposalId}`, true);
+      localStorage.setItem(`cancelReason_${proposalId}`, cancelReason);
       setShowCancelForm(false);
     } catch (error) {
       console.error("펀딩 취소 중 오류 발생:", error);
       alert("펀딩 취소에 실패하였습니다.");
     }
+  };
+
+  // 펀딩 성공 팝업 닫기
+  const handleClosePopup = () => {
+    // 팝업 닫을 때 페이지 새로고침
+    setShowCancelForm(false); // 취소 폼 숨기기
+    window.location.reload();
   };
 
   return (
@@ -186,7 +184,7 @@ const ProposalDetail = () => {
               />
             </div>
             <div>
-              {!isCancelled && proposal.proposer === account && (
+              {!fundingCancelled && proposal.proposer === account && (
                 <div className="cancel-funding-form text-center mt-5">
                   {showCancelForm ? (
                     <>
@@ -214,7 +212,7 @@ const ProposalDetail = () => {
                   )}
                 </div>
               )}
-              {isCancelled && (
+              {fundingCancelled && (
                 <div className="text-center mt-5">
                   <p className="text-lg">
                     제안자의 요청에 의해 펀딩이 취소되었습니다.
