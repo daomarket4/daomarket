@@ -12,14 +12,14 @@ import CountdownTimer from "../components/CountdownTimer";
 const ProposalDetail = () => {
   const { proposalId } = useParams();
   const navigate = useNavigate();
-  const [web3, setWeb3] = useState(null); // Hook가 최상위에서 호출됨
+  const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
   const [proposal, setProposal] = useState({});
   const [showCancelForm, setShowCancelForm] = useState(false);
+  const [isCancelled, setIsCancelled] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
   const [account, setAccount] = useState("");
 
-  // useEffect를 최상위에서 호출
   useEffect(() => {
     const loadWeb3 = async () => {
       if (window.ethereum) {
@@ -49,18 +49,35 @@ const ProposalDetail = () => {
     const fetchProposal = async () => {
       try {
         const parsedProposalId = parseInt(proposalId);
-        const fetchedProposal = await contract.methods
-          .getProposal(parsedProposalId)
-          .call();
-        setProposal(fetchedProposal);
+        if (contract) {
+          const fetchedProposal = await contract.methods
+            .getProposal(parsedProposalId)
+            .call();
+          setProposal(fetchedProposal);
+        }
       } catch (error) {
         console.error("안건 정보를 불러오는 중 오류 발생:", error);
       }
     };
 
-    if (contract) {
-      fetchProposal();
-    }
+    fetchProposal();
+  }, [contract, proposalId]);
+
+  useEffect(() => {
+    const checkFundingCancellation = async () => {
+      try {
+        if (contract) {
+          const isProposalCancelled = await contract.methods
+            .isFundingCancelled(parseInt(proposalId))
+            .call();
+          setIsCancelled(isProposalCancelled);
+        }
+      } catch (error) {
+        console.error("펀딩 취소 여부를 확인하는 중 오류 발생:", error);
+      }
+    };
+
+    checkFundingCancellation();
   }, [contract, proposalId]);
 
   // ether 단위로 변환 usestate로
@@ -95,14 +112,11 @@ const ProposalDetail = () => {
     }
 
     try {
-      // 스마트 계약의 취소 함수 호출 (여기서는 사유를 사용하지 않음)
       await contract.methods
-        .cancelFundingAndRefund(proposalId)
+        .cancelFundingAndRefund(parseInt(proposalId))
         .send({ from: account });
-      alert("펀딩이 취소되었습니다.");
-      setShowCancelForm(false); // 취소 폼 숨기기
-      setCancelReason(""); // 취소 사유 초기화
-      navigate("/"); // 메인 페이지로 이동 또는 새로고침
+      setIsCancelled(true); // 펀딩 취소 상태를 true로 설정
+      setShowCancelForm(false);
     } catch (error) {
       console.error("펀딩 취소 중 오류 발생:", error);
       alert("펀딩 취소에 실패하였습니다.");
@@ -171,9 +185,9 @@ const ProposalDetail = () => {
                 onClosePopup={handleClosePopup}
               />
             </div>
-            <div className="flex justify-center items-center mt-3">
-              {proposal.proposer === account && (
-                <div className="cancel-funding-form flex flex-col items-center">
+            <div>
+              {!isCancelled && proposal.proposer === account && (
+                <div className="cancel-funding-form text-center mt-5">
                   {showCancelForm ? (
                     <>
                       <input
@@ -181,11 +195,11 @@ const ProposalDetail = () => {
                         value={cancelReason}
                         onChange={(e) => setCancelReason(e.target.value)}
                         placeholder="펀딩 취소 사유"
-                        className="mb-4 py-2 px-4" // 추가적인 스타일링
+                        className="input border rounded px-4 py-2"
                       />
                       <button
                         onClick={handleCancelFunding}
-                        className="py-2 px-4 bg-red-500 hover:bg-red-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
+                        className="ml-4 py-2 px-4 bg-red-500 hover:bg-red-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
                       >
                         펀딩 취소 확인
                       </button>
@@ -198,6 +212,14 @@ const ProposalDetail = () => {
                       펀딩 취소
                     </button>
                   )}
+                </div>
+              )}
+              {isCancelled && (
+                <div className="text-center mt-5">
+                  <p className="text-lg">
+                    제안자의 요청에 의해 펀딩이 취소되었습니다.
+                  </p>
+                  <p className="text-lg">취소 사유: {cancelReason}</p>
                 </div>
               )}
             </div>
