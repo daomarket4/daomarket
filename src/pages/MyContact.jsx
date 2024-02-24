@@ -1,3 +1,4 @@
+// 최종 프로젝트에서 페이지 삭제
 import Layout from "../components/Layout";
 
 const MyContact = () => {

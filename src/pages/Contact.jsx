@@ -88,7 +88,7 @@ const Contact = () => {
               <div className="lg:w-2/3 mx-auto leading-relaxed text-xl font-semi-bold">
                 사용 중에 어려움을 겪고 계시거나 문의사항이 있으신가요?
                 <br />
-                아래의 양식을 작성해 주시면 빠르게 답변드리겠습니다.
+                아래의 양식을 작성해 주시면 이메일로 빠르게 답변드리겠습니다.
               </div>
             </div>
             <div className="p-2 w-full">

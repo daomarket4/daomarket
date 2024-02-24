@@ -86,9 +86,10 @@ const DropDown = () => {
           <li className="py-2">
             <Link to="/Contact">1:1 문의</Link>
           </li>
-          <li>
+          {/* 최종 프로젝트에서 문의내역 페이지 삭제 */}
+          {/* <li>
             <Link to="/MyContact">문의 내역</Link>
-          </li>
+          </li> */}
           <li>
             <Link>?</Link>
           </li>
