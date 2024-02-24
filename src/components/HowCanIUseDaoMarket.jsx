@@ -13,7 +13,7 @@ const HowCanIUseDaoMarket = () => {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-24 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
                 <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 1.
                 </h2>
@@ -36,7 +36,7 @@ const HowCanIUseDaoMarket = () => {
               </div>
             </div>
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-24 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
                 <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 2.
                 </h2>
@@ -46,6 +46,7 @@ const HowCanIUseDaoMarket = () => {
                 <p className="leading-relaxed mb-3">
                   함께 공동구매를 희망하시는 상품이 있으신가요?
                   <br /> 간단한 양식 작성을 통해 안건을 제출해 주세요.
+                  <br /> &nbsp;
                 </p>
                 <a
                   className="text-indigo-500 inline-flex items-center mt-8"
@@ -56,7 +57,7 @@ const HowCanIUseDaoMarket = () => {
               </div>
             </div>
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-24 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
                 <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 3.
                 </h2>
@@ -77,7 +78,7 @@ const HowCanIUseDaoMarket = () => {
               </div>
             </div>
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-24 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
                 <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 4.
                 </h2>
@@ -97,7 +98,7 @@ const HowCanIUseDaoMarket = () => {
               </div>
             </div>
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-24 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
                 <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 5.
                 </h2>
@@ -117,7 +118,7 @@ const HowCanIUseDaoMarket = () => {
               </div>
             </div>
             <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-white bg-opacity-75 px-8 pt-16 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
+              <div className="h-full bg-white bg-opacity-75 px-8 pt-24 pb-24 border-2 shadow-xl border-gray-300 rounded-lg overflow-hidden text-center relative">
                 <h2 className="tracking-widest text-s title-font font-medium text-gray-400 mb-4">
                   STEP 6.
                 </h2>

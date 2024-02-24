@@ -18,9 +18,16 @@ const AboutUs = () => {
               <h1 className="text-4xl font-medium title-font mb-4 text-gray-900">
                 블록체인스쿨 4기 - Team DAOM
               </h1>
-              <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                안녕하세요. 프로젝트 Dao Market을 진행한 팀 다옴입니다. <br />
-                소개소개소개
+              <p className="lg:w-2/3 mx-auto leading-relaxed text-xl">
+                안녕하세요. 프로젝트 DAOM을 진행한 팀 다옴입니다. <br />
+                저희는 블록체인 스쿨 4기에 참여하여 DAOM이라는 프로젝트를
+                진행하였습니다.
+                <br /> DAOM은 DAO를 활용한 공동구매 플랫폼으로, 공동구매를
+                희망하는 사용자들이
+                <br />
+                보다 쉽게 DAO를 통해 상품을 구매하는 것을 목표로 하고
+                제작하였습니다.
+                <br /> 감사합니다.
               </p>
             </div>
             <div className="flex flex-wrap -m-4">
@@ -65,8 +72,8 @@ const AboutUs = () => {
                     </h2>
                     <h3 className="text-gray-500 mb-3">웹페이지 UI / UX</h3>
                     <p className="mb-4">
-                      프로젝트 웹페이지의 디자인과 기능 구현을 담당하였으며, UI
-                      / UX 개선을 하였습니다.
+                      프론트엔드를 담당하여 프로젝트 웹페이지의 디자인과 기능
+                      구현을 개발하였으며, UI / UX 개선을 하였습니다.
                     </p>
                     <span className="inline-flex">
                       <div className="text-gray-500">
