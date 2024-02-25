@@ -22,9 +22,6 @@ const DropDown = () => {
           <li className="py-2">
             <Link to="/AboutUs">팀원소개</Link>
           </li>
-          <li>
-            <Link>?</Link>
-          </li>
         </ul>
       </li>
       {/* 다옴 */}
@@ -47,9 +44,6 @@ const DropDown = () => {
           <li>
             <Link to="/PriceQuotes">시세조회</Link>
           </li>
-          <li>
-            <Link>?</Link>
-          </li>
         </ul>
       </li>
       {/* 참여 */}
@@ -68,7 +62,6 @@ const DropDown = () => {
           <li className="py-2">
             <Link to="/SuccessAgenda">완료된 안건</Link>
           </li>
-          <li>?</li>
         </ul>
       </li>
       <li className=" mainmenu">
@@ -90,9 +83,6 @@ const DropDown = () => {
           {/* <li>
             <Link to="/MyContact">문의 내역</Link>
           </li> */}
-          <li>
-            <Link>?</Link>
-          </li>
         </ul>
       </li>
     </ul>
