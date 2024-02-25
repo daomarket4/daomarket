@@ -35,7 +35,7 @@ const FAQ = () => {
                     DAOM이 무엇인가요?
                   </h2>
                   {selectedFAQ === 0 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       참여하시는 모든 분들이 공평하고 자유롭게 공동구매를
                       희망하는 아이템에 안건을 제출하고, 투자하고, 투표하여
                       원하는 물건에 공동구매를 하는 것에 목적이 있습니다.
@@ -50,7 +50,7 @@ const FAQ = () => {
                     DAOM만의 차별점은 무엇이 있나요?
                   </h2>
                   {selectedFAQ === 1 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       누구나 참여 가능한 시스템과 본인이 참여한 지분을 NFT로
                       증명하여 안전성 강화, MultiSig를 통한 안전한 거래 보장
                       등이 있습니다. 궁금한 점은
@@ -61,28 +61,6 @@ const FAQ = () => {
                     </div>
                   )}
                   {/* 1 */}
-                  {/* 2 */}
-                  <h2
-                    onClick={() => toggleAnswer(2)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뜨리
-                  </h2>
-                  {selectedFAQ === 2 && (
-                    <div className="mt-4 ml-1">답변 뜨리</div>
-                  )}
-                  {/* 2 */}
-                  {/* 3 */}
-                  <h2
-                    onClick={() => toggleAnswer(3)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뽀
-                  </h2>
-                  {selectedFAQ === 3 && (
-                    <div className="mt-4 ml-1">답변 뽀</div>
-                  )}
-                  {/* 3 */}
                 </div>
               </div>
               {/* DAOM */}
@@ -100,7 +78,7 @@ const FAQ = () => {
                     어떻게 안건을 제안하고 펀딩을 시작할 수 있나요?
                   </h2>
                   {selectedFAQ === 4 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       안건-안건제출을 통해 공동구매를 원하시는 NFT의 정보와 목표
                       금액, 기간을 양식에 맞게 입력하시면 함께 공동구매에 참여할
                       유저들을 모집하게 됩니다.
@@ -115,7 +93,7 @@ const FAQ = () => {
                     안건을 제안하거나 펀딩을 하려면 어떤 조건이 필요한가요?
                   </h2>
                   {selectedFAQ === 5 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       DAOM을 이용하시는 모든 유저 분들은 안건을 제안하거나
                       펀딩을 참여하실 수 있습니다.
                     </div>
@@ -129,7 +107,7 @@ const FAQ = () => {
                     안건 제안에 필요한 정보는 무엇인가요?
                   </h2>
                   {selectedFAQ === 6 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       안건 제안에는 안건의 제목, 구매를 희망하시는 NFT와 이미지
                       각각의 URL, 희망하는 모금 금액과 펀딩기간, 안건 내용을
                       필수적으로 작성해 주셔야 진행됩니다.
@@ -144,7 +122,7 @@ const FAQ = () => {
                     펀딩 금액은 어떻게 결정되나요?
                   </h2>
                   {selectedFAQ === 7 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       최초 공동구매 신청자가 안건을 제출할 때 희망하는 모금
                       금액을 지정하여 금액이 결정됩니다.
                     </div>
@@ -167,7 +145,7 @@ const FAQ = () => {
                     펀딩 과정은 어떻게 되나요?
                   </h2>
                   {selectedFAQ === 8 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       마켓-펀딩플레이스를 통해 구매하고 싶은 아이템을 고른 후,
                       원하시는 펀딩 금액을 입력하여 펀딩하고 펀딩 종료 시간 내
                       목표 금액에 도달하게 될 시 공동 구매가 이루어 지게 됩니다.
@@ -182,7 +160,7 @@ const FAQ = () => {
                     펀딩이 성공하면 어떻게 처리되나요?
                   </h2>
                   {selectedFAQ === 9 && (
-                    <div className="mt-4 ml-1">답변 뚜</div>
+                    <div className="mt-4 ml-1 text-lg">답변 뚜</div>
                   )}
                   {/* 1 */}
                   {/* 2 */}
@@ -193,7 +171,7 @@ const FAQ = () => {
                     펀딩이 실패하면 어떻게 환불되나요?
                   </h2>
                   {selectedFAQ === 10 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       기간 내에 목표 모금액이 모이지 않았을 때, 펀딩이 종료되면
                       참여하신 메타마스크 주소로 자동으로 환불될 예정입니다.
                     </div>
@@ -207,7 +185,7 @@ const FAQ = () => {
                     다른 네트워크로 펀딩에 참여할 수 있나요?
                   </h2>
                   {selectedFAQ === 11 && (
-                    <div className="mt-4 ml-1">답변 뽀</div>
+                    <div className="mt-4 ml-1 text-lg">답변 뽀</div>
                   )}
                   {/* 3 */}
                 </div>
@@ -227,42 +205,9 @@ const FAQ = () => {
                     모금된 자산은 어떻게 보관되나요?
                   </h2>
                   {selectedFAQ === 12 && (
-                    <div className="mt-4 ml-1">답변 완</div>
+                    <div className="mt-4 ml-1 text-lg">답변 완</div>
                   )}
                   {/* 0 */}
-                  {/* 1 */}
-                  <h2
-                    onClick={() => toggleAnswer(13)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뚜
-                  </h2>
-                  {selectedFAQ === 13 && (
-                    <div className="mt-4 ml-1">답변 뚜</div>
-                  )}
-                  {/* 1 */}
-                  {/* 2 */}
-                  <h2
-                    onClick={() => toggleAnswer(14)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뜨리
-                  </h2>
-                  {selectedFAQ === 14 && (
-                    <div className="mt-4 ml-1">답변 뜨리</div>
-                  )}
-                  {/* 2 */}
-                  {/* 3 */}
-                  <h2
-                    onClick={() => toggleAnswer(15)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뽀
-                  </h2>
-                  {selectedFAQ === 15 && (
-                    <div className="mt-4 ml-1">답변 뽀</div>
-                  )}
-                  {/* 3 */}
                 </div>
               </div>
               {/* 자산 */}
@@ -280,7 +225,7 @@ const FAQ = () => {
                     NFT 매각을 위한 투표 시스템은 어떻게 구현되나요?
                   </h2>
                   {selectedFAQ === 16 && (
-                    <div className="mt-4 ml-1">답변 완</div>
+                    <div className="mt-4 ml-1 text-lg">답변 완</div>
                   )}
                   {/* 0 */}
                   {/* 1 */}
@@ -291,7 +236,7 @@ const FAQ = () => {
                     매각된 수익은 어떻게 분배되나요?
                   </h2>
                   {selectedFAQ === 17 && (
-                    <div className="mt-4 ml-1">답변 뚜</div>
+                    <div className="mt-4 ml-1 text-lg">답변 뚜</div>
                   )}
                   {/* 1 */}
                   {/* 2 */}
@@ -302,7 +247,7 @@ const FAQ = () => {
                     지분을 거래할 때 수수료가 발생하나요?
                   </h2>
                   {selectedFAQ === 18 && (
-                    <div className="mt-4 ml-1">답변 뜨리</div>
+                    <div className="mt-4 ml-1 text-lg">답변 뜨리</div>
                   )}
                   {/* 2 */}
                   {/* 3 */}
@@ -313,7 +258,7 @@ const FAQ = () => {
                     투표 기간은 어떻게 설정되나요?
                   </h2>
                   {selectedFAQ === 19 && (
-                    <div className="mt-4 ml-1">답변 뽀</div>
+                    <div className="mt-4 ml-1 text-lg">답변 뽀</div>
                   )}
                   {/* 3 */}
                   {/* 4 */}
@@ -324,7 +269,7 @@ const FAQ = () => {
                     멀티시그니처가 무엇인가요?
                   </h2>
                   {selectedFAQ === 20 && (
-                    <div className="mt-4 ml-1">답변 뽀</div>
+                    <div className="mt-4 ml-1 text-lg">답변 뽀</div>
                   )}
                   {/* 4 */}
                 </div>
@@ -344,42 +289,9 @@ const FAQ = () => {
                     지분 거래는 어떻게 이루어지나요?
                   </h2>
                   {selectedFAQ === 16 && (
-                    <div className="mt-4 ml-1">답변 완</div>
+                    <div className="mt-4 ml-1 text-lg">답변 완</div>
                   )}
                   {/* 0 */}
-                  {/* 1 */}
-                  <h2
-                    onClick={() => toggleAnswer(17)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뚜
-                  </h2>
-                  {selectedFAQ === 17 && (
-                    <div className="mt-4 ml-1">답변 뚜</div>
-                  )}
-                  {/* 1 */}
-                  {/* 2 */}
-                  <h2
-                    onClick={() => toggleAnswer(18)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뜨리
-                  </h2>
-                  {selectedFAQ === 18 && (
-                    <div className="mt-4 ml-1">답변 뜨리</div>
-                  )}
-                  {/* 2 */}
-                  {/* 3 */}
-                  <h2
-                    onClick={() => toggleAnswer(19)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뽀
-                  </h2>
-                  {selectedFAQ === 19 && (
-                    <div className="mt-4 ml-1">답변 뽀</div>
-                  )}
-                  {/* 3 */}
                 </div>
               </div>
               {/* 목록4 */}
@@ -397,7 +309,7 @@ const FAQ = () => {
                     메타마스크가 무엇인가요?
                   </h2>
                   {selectedFAQ === 20 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       메타마스크는 이더리움 개인 키를 관리할 수 있는 웹 브라우저
                       확장 프로그램과 모바일 앱입니다. 메타마스크는 이더리움 및
                       기타 토큰의 지갑 역할을 합니다. 자세한 정보는{" "}
@@ -419,7 +331,7 @@ const FAQ = () => {
                     메타마스크 회원가입은 어디서 하나요?
                   </h2>
                   {selectedFAQ === 21 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       <a
                         href="https://metamask.io/download/"
                         className="text-blue-600"
@@ -440,79 +352,16 @@ const FAQ = () => {
                     메타마스크와 연동을 어떻게 하나요?
                   </h2>
                   {selectedFAQ === 22 && (
-                    <div className="mt-4 ml-1">
+                    <div className="mt-4 ml-1 text-lg">
                       DAOM 웹페이지 우측 상단에서 Sign in을 통해 로그인 하시면
                       DAOM과 연동되어 모든 시스템을 이용하실 수 있습니다.
                     </div>
                   )}
                   {/* 2 */}
-                  {/* 3 */}
-                  <h2
-                    onClick={() => toggleAnswer(23)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뽀
-                  </h2>
-                  {selectedFAQ === 23 && (
-                    <div className="mt-4 ml-1">답변 뽀</div>
-                  )}
-                  {/* 3 */}
                 </div>
               </div>
               {/* 목록4 */}
-              {/* 목록4 */}
-              <div className="py-8 flex flex-wrap md:flex-nowrap">
-                <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col text-2xl">
-                  목록
-                </div>
-                <div className="md:flex-grow">
-                  {/* 0 */}
-                  <h2
-                    onClick={() => toggleAnswer(24)}
-                    className="text-xl font-medium text-gray-900 title-font mb-2 cursor-pointer"
-                  >
-                    모금된 자산은 어떻게 보관되나요?
-                  </h2>
-                  {selectedFAQ === 24 && (
-                    <div className="mt-4 ml-1">답변 완</div>
-                  )}
-                  {/* 0 */}
-                  {/* 1 */}
-                  <h2
-                    onClick={() => toggleAnswer(25)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뚜
-                  </h2>
-                  {selectedFAQ === 25 && (
-                    <div className="mt-4 ml-1">답변 뚜</div>
-                  )}
-                  {/* 1 */}
-                  {/* 2 */}
-                  <h2
-                    onClick={() => toggleAnswer(26)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뜨리
-                  </h2>
-                  {selectedFAQ === 26 && (
-                    <div className="mt-4 ml-1">답변 뜨리</div>
-                  )}
-                  {/* 2 */}
-                  {/* 3 */}
-                  <h2
-                    onClick={() => toggleAnswer(27)}
-                    className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
-                  >
-                    질문 뽀
-                  </h2>
-                  {selectedFAQ === 27 && (
-                    <div className="mt-4 ml-1">답변 뽀</div>
-                  )}
-                  {/* 3 */}
-                </div>
-              </div>
-              {/* 목록4 */}
+
               {/* 1:1 문의 유도 */}
               <div className="py-8 text-center text-3xl text-gray-900">
                 아직 궁금증이 해결되지 않으셨나요?
