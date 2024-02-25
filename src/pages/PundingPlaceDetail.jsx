@@ -184,6 +184,12 @@ const ProposalDetail = () => {
               />
             </div>
             <div>
+              {/* 취소 사유 표시 */}
+              {cancelReason && (
+                <div className="text-center mt-5">
+                  <p className="text-lg">펀딩 취소 사유: {cancelReason}</p>
+                </div>
+              )}
               {!fundingCancelled && proposal.proposer === account && (
                 <div className="cancel-funding-form text-center mt-5">
                   {showCancelForm ? (

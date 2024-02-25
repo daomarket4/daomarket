@@ -31,6 +31,11 @@ const ProposalDataFetcher = ({ onDataFetched }) => {
               ...proposal,
               id: i, // 고유한 id를 할당합니다.
             };
+
+            // 로컬 스토리지에서 펀딩 취소 상태를 가져옵니다.
+            const isCancelled = localStorage.getItem(`fundingCancelled_${i}`);
+            proposalWithId.fundingCancelled = !!isCancelled; // Convert to boolean
+
             fetchedProposals.push(proposalWithId);
           }
 

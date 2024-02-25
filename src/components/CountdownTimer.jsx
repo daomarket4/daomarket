@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-const CountdownTimer = ({ endTime, percentage }) => {
+const CountdownTimer = ({ endTime, percentage, fundingCancelled }) => {
   const calculateTimeLeft = () => {
     const difference = +new Date(Number(endTime) * 1000) - +new Date();
     let timeLeft = {};
@@ -33,7 +33,9 @@ const CountdownTimer = ({ endTime, percentage }) => {
 
   return (
     <div>
-      {timerIsFinished ? (
+      {fundingCancelled ? (
+        <span>펀딩 취소</span>
+      ) : timerIsFinished ? (
         <span>펀딩 종료</span>
       ) : percentage >= 100 ? (
         <span>펀딩율 100% 도달!!</span>
@@ -42,7 +44,6 @@ const CountdownTimer = ({ endTime, percentage }) => {
           if (!timeLeft[interval]) {
             return null;
           }
-
           return (
             <span key={interval}>
               {timeLeft[interval]}
