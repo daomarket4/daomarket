@@ -170,7 +170,7 @@ const AboutUs = () => {
                     <h2 className="title-font font-medium text-lg text-gray-900">
                       정주영
                     </h2>
-                    <h3 className="text-gray-500 mb-3">스마트 컨트랙트 개발</h3>
+                    <h3 className="text-gray-500 mb-3">Dao 개발</h3>
                     <p className="mb-4">
                       스마트 컨트랙트 개발에 보조로 참여했으며, dao와 관련하여
                       코드 개발을 담당하였습니다.
