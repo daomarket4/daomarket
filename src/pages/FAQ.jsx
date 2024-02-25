@@ -361,7 +361,6 @@ const FAQ = () => {
                 </div>
               </div>
               {/* 목록4 */}
-
               {/* 1:1 문의 유도 */}
               <div className="py-8 text-center text-3xl text-gray-900">
                 아직 궁금증이 해결되지 않으셨나요?
