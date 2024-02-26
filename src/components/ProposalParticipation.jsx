@@ -126,7 +126,7 @@ const ProposalParticipation = ({ proposalId, onClosePopup }) => {
       ) : (
         <>
           <label
-            className="block text-gray-700 text-md font-bold mb-2"
+            className="block text-gray-700 text-md font-semibold mb-2 text-center"
             htmlFor="funding-amount"
           >
             펀딩할 ETH 금액을 입력하세요.
@@ -135,7 +135,14 @@ const ProposalParticipation = ({ proposalId, onClosePopup }) => {
             type="text"
             id="funding-amount"
             value={fundAmount}
-            onChange={(e) => setFundAmount(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value === "" || !isNaN(value)) {
+                setFundAmount(value);
+              } else {
+                alert("숫자만 입력해 주세요.");
+              }
+            }}
             placeholder="숫자만 입력해 주세요."
             className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
