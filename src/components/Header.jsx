@@ -109,7 +109,7 @@ const Header = ({ profileImage }) => {
                   )}
                   {view && (
                     <>
-                      <ul className="absolute mt-2 -ml-8 bg-slate-300 dark:bg-slate-600 top-28 p-4 rounded-xl">
+                      <ul className="absolute mt-2 ml-8 bg-slate-300 dark:bg-slate-600 top-28 p-4 rounded-xl">
                         <li className="pb-4">
                           <Link to="/MyPage">마이페이지</Link>
                         </li>

@@ -6,18 +6,23 @@ import kihyunkim from "../images/kihyunkim.png";
 import junhyukjung from "../images/junhyukjung.png";
 import juyoungjung from "../images/juyoungjung.png";
 import jungbinkim from "../images/jungbinkim.png";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
     <div className="bg-darkMode">
       <Layout>
         <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
-          <img src={DAOMLOGO} alt="DAOMLOGO" className="mb-8 w-72 mr-2" />
+          <Link to="https://github.com/daomarket4/daomarket">
+            <img src={DAOMLOGO} alt="DAOMLOGO" className="mb-8 w-72 mr-2" />
+          </Link>
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-col text-center w-full mb-20">
-              <h1 className="text-4xl font-medium title-font mb-4 text-gray-900">
-                블록체인스쿨 4기 - Team DAOM
-              </h1>
+              <Link to="https://github.com/daomarket4/daomarket">
+                <h1 className="text-4xl font-medium title-font mb-4 text-gray-900">
+                  블록체인스쿨 4기 - Team DAOM
+                </h1>
+              </Link>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-xl">
                 안녕하세요. 프로젝트 DAOM을 진행한 팀 다옴입니다. <br />
                 저희는 블록체인 스쿨 4기에 참여하여 DAOM이라는 프로젝트를
