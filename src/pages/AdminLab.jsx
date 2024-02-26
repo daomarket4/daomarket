@@ -35,7 +35,7 @@ const AdminLab = () => {
         account !== "0xeFfC9eAf0CB26B4CA0614Ea99aCa0908Ca468FB3" &&
         account !== "0x32C1B6C8261F665Ac41a2b176C488d16ccD4109C" &&
         account !== "0x11D539b3339A89633e4067E6036Ea2729E225467" &&
-        account !== ""
+        account !== "0x3f3Bf2769726264CFeAA1E87865af438F10190D7"
       ) {
         navigate("/AdminWarning");
       }
