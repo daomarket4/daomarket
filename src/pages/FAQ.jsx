@@ -160,7 +160,11 @@ const FAQ = () => {
                     펀딩이 성공하면 어떻게 처리되나요?
                   </h2>
                   {selectedFAQ === 9 && (
-                    <div className="mt-4 ml-1 text-lg">답변 뚜</div>
+                    <div className="mt-4 ml-1 text-lg">
+                      펀딩에 성공하게 되면 해당 아이템에 대한 지분을 NFT로
+                      지급받게 됩니다. 이 NFT 지분에 비례하여 투표에 영향력을
+                      끼칠 수 있고, NFT를 판매 또한 하실 수 있습니다.
+                    </div>
                   )}
                   {/* 1 */}
                   {/* 2 */}
@@ -185,7 +189,10 @@ const FAQ = () => {
                     다른 네트워크로 펀딩에 참여할 수 있나요?
                   </h2>
                   {selectedFAQ === 11 && (
-                    <div className="mt-4 ml-1 text-lg">답변 뽀</div>
+                    <div className="mt-4 ml-1 text-lg">
+                      현재 DAOM은 Arbitrum Network에서만 사용 가능하십니다. 추후
+                      다른 네트워크 추가를 고려 중이므로 잠시만 기다려 주세요!
+                    </div>
                   )}
                   {/* 3 */}
                 </div>
@@ -205,7 +212,10 @@ const FAQ = () => {
                     모금된 자산은 어떻게 보관되나요?
                   </h2>
                   {selectedFAQ === 12 && (
-                    <div className="mt-4 ml-1 text-lg">답변 완</div>
+                    <div className="mt-4 ml-1 text-lg">
+                      모금된 자산은 DAOM에서 안전하게 보관됩니다. 모금된 자산에
+                      대한 지분 증명은 NFT로 발급되어 투표 및 매각에 사용됩니다.
+                    </div>
                   )}
                   {/* 0 */}
                 </div>
@@ -225,7 +235,15 @@ const FAQ = () => {
                     NFT 매각을 위한 투표 시스템은 어떻게 구현되나요?
                   </h2>
                   {selectedFAQ === 16 && (
-                    <div className="mt-4 ml-1 text-lg">답변 완</div>
+                    <div className="mt-4 ml-1 text-lg">
+                      아이템에 대한 판매가 결정이 되면 NFT의 지분에 따라
+                      투표권을 얻으실 수 있습니다. 투표는&nbsp;
+                      <a href="/MyInvest" className="text-blue-600">
+                        이곳
+                      </a>
+                      에서 하실 수 있습니다. 투표는 정해진 기간 내에 참여해
+                      주셔야 합니다.
+                    </div>
                   )}
                   {/* 0 */}
                   {/* 1 */}
@@ -236,7 +254,10 @@ const FAQ = () => {
                     매각된 수익은 어떻게 분배되나요?
                   </h2>
                   {selectedFAQ === 17 && (
-                    <div className="mt-4 ml-1 text-lg">답변 뚜</div>
+                    <div className="mt-4 ml-1 text-lg">
+                      매각된 수익은 아이템 투자에 인한 NFT로 발급된 지분에
+                      비례하여 지급됩니다.
+                    </div>
                   )}
                   {/* 1 */}
                   {/* 2 */}
