@@ -31,7 +31,8 @@ const TopPopup = () => {
         <div className="flex justify-center items-center w-full">
           <Link to="/PundingPlaceList">
             <div className="flex mt-[6px] w-full text-center font-semibold">
-              DAOM에서 현재 진행 중인 펀딩을 지금 바로 확인하세요!
+              🙌 팝업을 클릭하여 DAOM에서 현재 진행 중인 펀딩을 지금 바로
+              확인하세요!
             </div>
           </Link>
           <button

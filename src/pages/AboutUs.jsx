@@ -42,7 +42,9 @@ const AboutUs = () => {
                     <h2 className="title-font font-medium text-lg text-gray-900">
                       박준현
                     </h2>
-                    <h3 className="text-gray-500 mb-3">프로젝트 팀장</h3>
+                    <h3 className="text-gray-500 mb-3 font-semibold">
+                      프로젝트 팀장
+                    </h3>
                     <p className="mb-4">
                       프로젝트 팀장으로서 프로젝트 전체적인 관리 및 솔루션을
                       제시하였고, MultiSig 관련 코드 개발을 담당하였습니다.
@@ -70,7 +72,9 @@ const AboutUs = () => {
                     <h2 className="title-font font-medium text-lg text-gray-900">
                       정준혁
                     </h2>
-                    <h3 className="text-gray-500 mb-3">웹페이지 UI / UX</h3>
+                    <h3 className="text-gray-500 mb-3 font-semibold">
+                      웹페이지 UI / UX
+                    </h3>
                     <p className="mb-4">
                       프론트엔드를 담당하여 프로젝트 웹페이지의 디자인과 기능
                       구현을 개발하였으며, UI / UX 개선을 하였습니다.
@@ -102,7 +106,7 @@ const AboutUs = () => {
                     <h2 className="title-font font-medium text-lg text-gray-900">
                       김기현
                     </h2>
-                    <h3 className="text-gray-500 mb-3">
+                    <h3 className="text-gray-500 mb-3 font-semibold">
                       스마트 컨트랙트 & 웹페이지 연동
                     </h3>
                     <p className="mb-4">
@@ -137,7 +141,9 @@ const AboutUs = () => {
                     <h2 className="title-font font-medium text-lg text-gray-900">
                       김정빈
                     </h2>
-                    <h3 className="text-gray-500 mb-3">스마트 컨트랙트 개발</h3>
+                    <h3 className="text-gray-500 mb-3 font-semibold">
+                      스마트 컨트랙트 개발
+                    </h3>
                     <p className="mb-4">
                       프로젝트 스마트 컨트랙트의 전체적인 부분을 개발하였으며,
                       웹페이지에서 스마트 컨트랙트와 연동될 수 있도록
@@ -170,7 +176,9 @@ const AboutUs = () => {
                     <h2 className="title-font font-medium text-lg text-gray-900">
                       정주영
                     </h2>
-                    <h3 className="text-gray-500 mb-3">Dao 개발</h3>
+                    <h3 className="text-gray-500 mb-3 font-semibold">
+                      Dao 개발
+                    </h3>
                     <p className="mb-4">
                       스마트 컨트랙트 개발에 보조로 참여했으며, dao와 관련하여
                       코드 개발을 담당하였습니다.
