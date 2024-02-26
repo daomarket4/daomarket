@@ -31,6 +31,7 @@ const AdminProposalDetail = () => {
         "0xeFfC9eAf0CB26B4CA0614Ea99aCa0908Ca468FB3".toLowerCase(),
         "0x32C1B6C8261F665Ac41a2b176C488d16ccD4109C".toLowerCase(),
         "0x11D539b3339A89633e4067E6036Ea2729E225467".toLowerCase(),
+        "0x3f3Bf2769726264CFeAA1E87865af438F10190D7".toLowerCase(),
       ];
       if (!admins.includes(account)) {
         navigate("/AdminWarning"); // 관리자가 아니면 경고 페이지로 리다이렉션

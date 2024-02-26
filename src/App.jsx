@@ -26,6 +26,7 @@ import AdminLab from "./pages/AdminLab";
 import AdminAllProposals from "./pages/AdminAllProposals";
 import AdminProposalDetail from "./components/AdminProposalDetail";
 import PriceQuotes from "./pages/PriceQuotes";
+import AdminNFTManagement from "./pages/AdminNFTManagement";
 
 //account 여기로 옮김 useeffect 만들어서 localstorage.getitem? 가져오기 - 강사님 피드백
 
@@ -91,6 +92,7 @@ const App = () => {
           <Route path="/AdminLab" element={<AdminLab />} />
           <Route path="/AdminAllProposal" element={<AdminAllProposals />} />
           <Route path="/PriceQuotes" element={<PriceQuotes />} />
+          <Route path="/AdminNFTManagement" element={<AdminNFTManagement />} />
           <Route
             path="/admin/proposal-detail/:proposalId"
             element={<AdminProposalDetail />}
