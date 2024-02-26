@@ -81,8 +81,10 @@ Dao에 대해 간략히 설명하자면, Dao는 탈중앙화된 자율 조직을
 
 ### Cooperation Tool
 
+<div align="left">
 <img src="https://img.shields.io/badge/Github-181717?style=flat&logo=github&logoColor=white" />
 <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" />
+</div>
 
 # 프로젝트 구조
 
