@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import Web3 from "web3";
 import adminLab from "../images/adminLab.png";
+import document from "../images/document.png";
+import nft from "../images/nft.png";
 
 //관리자 권한
 async function getAccount() {
@@ -53,7 +55,7 @@ const Admin = () => {
             <Link to="/AdminAllProposal">
               <div className="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
                 <div className="sm:w-32 sm:h-36 h-24 w-24 sm:mr-10 inline-flex items-center justify-center rounded-full flex-shrink-0">
-                  {/* <img src={invest} alt="invest" className="mb-8 mr-2" /> */}
+                  <img src={document} alt="document" className="mr-2" />
                 </div>
                 <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
                   <h2 className="text-gray-900 text-xl title-font font-medium mb-2">
@@ -68,7 +70,7 @@ const Admin = () => {
             <Link to="/">
               <div className="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
                 <div className="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full flex-shrink-0">
-                  {/* <img src={document} alt="document" className="mb-8 mr-2" /> */}
+                  <img src={nft} alt="nft" className="mr-2 w-28" />
                 </div>
                 <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
                   <h2 className="text-gray-900 text-xl title-font font-medium mb-2">
