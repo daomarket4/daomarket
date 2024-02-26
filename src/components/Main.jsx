@@ -110,7 +110,7 @@ const Main = () => {
         <div className="lg:flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1
             style={titleStyles}
-            className="title-font sm:text-5xl text-3xl mb-4 font-thin text-gray-900"
+            className="title-font sm:text-5xl text-3xl mt-36 mb-4 font-thin text-gray-900"
           >
             <div className="text-7xl text-blue-500 flex">
               <b>DAOM</b>
@@ -142,7 +142,7 @@ const Main = () => {
           </div>
           {/* 애니메이션 */}
           <div
-            className="slider-container lg:flex-grow my-56 ml-20 mt-12"
+            className="slider-container lg:flex-grow my-56 ml-20 mt-56"
             style={nftStyles}
           >
             <Slider {...settings} className="w-[1300px]">
