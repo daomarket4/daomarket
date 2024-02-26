@@ -109,11 +109,20 @@ const ProposalParticipation = ({ proposalId, onClosePopup }) => {
   return (
     <div className="mt-4">
       {isFundingExpired ? (
-        <p>펀딩 기간이 만료되었습니다.</p>
+        <p className="text-center text-red-500 text-2xl">
+          펀딩 기간이 만료되었습니다.
+          <br /> 다음에 참여해 주세요.
+        </p>
       ) : isFundingGoalReached ? (
-        <p>펀딩 목표가 달성되어 더 이상 펀딩에 참여하실 수 없습니다.</p>
+        <p className="text-center text-red-500 text-2xl">
+          펀딩 목표가 달성되었습니다.
+          <br /> 다음에 참여해 주세요.
+        </p>
       ) : isFundingClosed ? ( // fundingClosed 상태에 따라 버튼 비활성화
-        <p>펀딩이 종료되어 더 이상 펀딩에 참여하실 수 없습니다.</p>
+        <p className="text-center text-red-500 text-2xl">
+          펀딩이 종료되었습니다.
+          <br /> 다음에 참여해 주세요.
+        </p>
       ) : (
         <>
           <label
