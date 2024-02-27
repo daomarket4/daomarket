@@ -75,7 +75,7 @@ const AdminNFTManagement = () => {
             <div className="grid grid-cols-3 gap-4">
               {proposals.map((proposal, index) => (
                 <Link
-                  to={`/admin/proposal-detail/${proposal.proposalId}`}
+                  to={`/admin/nft-detail/${proposal.proposalId}`}
                   key={index}
                   className="border rounded-lg p-4 hover:shadow-lg"
                 >
