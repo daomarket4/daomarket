@@ -1,9 +1,12 @@
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import Web3 from "web3";
-import { useEffect } from "react";
+import proposal_ABI from "../abis/proposal_ABI.json";
+import { PROPOSAL_CONTRACT } from "../abis/contractsaddress";
+import { Link } from "react-router-dom";
 
-//관리자 권한
+// 관리자 권한 확인 함수
 async function getAccount() {
   if (window.ethereum) {
     const web3 = new Web3(window.ethereum);
@@ -25,10 +28,10 @@ async function getAccount() {
 
 const AdminNFTManagement = () => {
   const navigate = useNavigate();
+  const [proposals, setProposals] = useState([]);
 
-  // 보안 기능입니다. 관리자 계정이 아니여도 주소창에 /admin을 입력하면 들어갈 수 있기 때문에 아래 주소가 아니면 바로 홈으로 보냅니다. 아래까지 입력해야 관리자 페이지에 접속이 가능합니다.
-  // 프로젝트 제출 전 .env 처리 예정
   useEffect(() => {
+    // 관리자 권한 확인
     getAccount().then((account) => {
       if (
         account !== "0xe3cd9fC292B724095874522026Fb68932329296C" &&
@@ -38,16 +41,56 @@ const AdminNFTManagement = () => {
         account !== "0x3f3Bf2769726264CFeAA1E87865af438F10190D7"
       ) {
         navigate("/AdminWarning");
+      } else {
+        loadFundedProposals();
       }
     });
-  }, []);
-  // 관리자 권한
+  }, [navigate]);
+
+  // 펀딩 목표를 달성한 제안들 불러오기
+  const loadFundedProposals = async () => {
+    const web3 = new Web3(window.ethereum);
+    const contract = new web3.eth.Contract(proposal_ABI, PROPOSAL_CONTRACT);
+    const proposalsCount = await contract.methods.getProposalsCount().call();
+
+    const loadedProposals = [];
+    for (let i = 0; i < proposalsCount; i++) {
+      const proposal = await contract.methods.getProposal(i).call();
+      if (parseInt(proposal.amountRaised) >= parseInt(proposal.fundingGoal)) {
+        loadedProposals.push({
+          ...proposal,
+          proposalId: i,
+        });
+      }
+    }
+    setProposals(loadedProposals);
+  };
 
   return (
     <div className="bg-darkMode">
       <Layout>
         <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
-          관리자 NFT 발행 및 관리 페이지
+          <div className="container p-8">
+            <h1 className="mb-8 text-3xl font-bold">NFT 발행 및 관리 목록</h1>
+            <div className="grid grid-cols-3 gap-4">
+              {proposals.map((proposal, index) => (
+                <Link
+                  to={`/admin/proposal-detail/${proposal.proposalId}`}
+                  key={index}
+                  className="border rounded-lg p-4 hover:shadow-lg"
+                >
+                  <img
+                    src={proposal.imageLink}
+                    alt="Proposal"
+                    className="w-full h-64 object-cover rounded-t-lg"
+                  />
+                  <h2 className="text-xl font-semibold mt-2">
+                    {proposal.title}
+                  </h2>
+                </Link>
+              ))}
+            </div>
+          </div>
         </section>
       </Layout>
     </div>
