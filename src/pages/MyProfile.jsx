@@ -71,7 +71,7 @@ const MyProfile = ({ onImageChange, onDeleteImage, setNickname }) => {
   return (
     <div className="bg-darkMode">
       <Layout>
-        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
+        <section className="flex min-h-screen -mt-8 flex-col items-center justify-center text-gray-600 body-font">
           {/* 프로필 이미지 미리보기 */}
           <div className="container px-5 py-8 mx-auto flex flex-wrap">
             <div className="mb-4 md:w-2/5 flex justify-center">
@@ -164,14 +164,14 @@ const MyProfile = ({ onImageChange, onDeleteImage, setNickname }) => {
           </div>
           {/* 메타마스크 주소 */}
           {/* 목록 */}
-          <div className="container px-5 py-8 mx-auto flex flex-wrap">
+          {/* <div className="container px-5 py-8 mx-auto flex flex-wrap">
             <h2 className="sm:text-3xl text-2xl text-gray-900 font-medium title-font mb-2 md:w-2/5 text-center flex items-center justify-center">
               목록
             </h2>
             <div className="md:w-3/5 md:pl-6">
               <p className="leading-relaxed text-xl">목록</p>
             </div>
-          </div>
+          </div> */}
           {/* 목록 */}
         </section>
       </Layout>
