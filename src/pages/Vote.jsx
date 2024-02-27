@@ -1,8 +1,9 @@
 import Layout from "../components/Layout";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Vote = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleVote = () => {
     setShowPopup(true);
@@ -10,6 +11,10 @@ const Vote = () => {
 
   const handlePopupClose = () => {
     setShowPopup(false);
+  };
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
   };
 
   return (
@@ -25,15 +30,29 @@ const Vote = () => {
             </p>
           </div>
           <div className="box flex flex-col">
-            <button className="option bg-white border border-black hover:bg-gray-300 text-black font-bold py-4 px-6 text-left rounded m-2">
+            <button
+              onClick={() => handleOptionClick("agree")}
+              className={`option ${
+                selectedOption === "agree"
+                  ? "bg-yellow-400 border-2 border-yellow-500"
+                  : "bg-white border border-black hover:bg-gray-300 text-black"
+              } font-bold py-4 px-36 text-left rounded m-2 text-xl`}
+            >
               찬성하기
             </button>
-            <button className="option bg-white border border-black hover:bg-gray-300 text-black font-bold py-4 px-6 text-left rounded m-2">
+            <button
+              onClick={() => handleOptionClick("disagree")}
+              className={`option ${
+                selectedOption === "disagree"
+                  ? "bg-yellow-400 border-2 border-yellow-500"
+                  : "bg-white border border-black hover:bg-gray-300 text-black"
+              } font-bold py-4 px-36 text-left rounded m-2 text-xl`}
+            >
               반대하기
             </button>
           </div>
           <button
-            className="vote-button bg-white border border-black hover:bg-gray-300 text-black font-bold py-4 px-6 text-left rounded m-2"
+            className="vote-button bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 text-left rounded m-2"
             onClick={handleVote}
           >
             투표하기
