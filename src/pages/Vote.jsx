@@ -66,7 +66,7 @@ const Vote = () => {
                         </h3>
                         <div className="mt-2">
                           <p className="text-sm text-gray-500">
-                            투표가 완료되었습니다.
+                            투표가 완료되었습니다. 참여해 주셔서 감사합니다.
                           </p>
                         </div>
                       </div>
