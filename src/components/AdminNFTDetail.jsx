@@ -4,16 +4,24 @@ import Web3 from "web3";
 import proposal_ABI from "../abis/proposal_ABI.json";
 import { PROPOSAL_CONTRACT } from "../abis/contractsaddress";
 import Layout from "./Layout";
+import { MINTNFT_CONTRACT } from "../abis/nftcontract";
+import mintNFT_ABI from "../abis/mintNFT_ABI.json";
 
 const AdminNFTDetail = () => {
   const { proposalId } = useParams();
   const navigate = useNavigate();
   const [proposalDetail, setProposalDetail] = useState(null);
   const [contributors, setContributors] = useState([]);
-  const [refundSuccess, setRefundSuccess] = useState(false);
   const web3 = new Web3(window.ethereum || "http://localhost:8545");
-  const contract = new web3.eth.Contract(proposal_ABI, PROPOSAL_CONTRACT);
+  const proposalContract = new web3.eth.Contract(
+    proposal_ABI,
+    PROPOSAL_CONTRACT
+  );
+  const nftContract = new web3.eth.Contract(mintNFT_ABI, MINTNFT_CONTRACT);
   const [nftIssued, setNftIssued] = useState(false);
+  const [nftImageUrl, setNftImageUrl] = useState("");
+  const [nftCountsByContributor, setNftCountsByContributor] = useState({});
+  const [nftIssueTimestamps, setNftIssueTimestamps] = useState({});
 
   useEffect(() => {
     const getAccount = async () => {
@@ -23,7 +31,7 @@ const AdminNFTDetail = () => {
         return accounts[0].toLowerCase();
       } catch (error) {
         console.error("Access denied or not an admin");
-        navigate("/"); // Access denied or not an admin page redirection
+        navigate("/");
       }
     };
 
@@ -43,16 +51,18 @@ const AdminNFTDetail = () => {
 
   useEffect(() => {
     const fetchProposalDetail = async () => {
-      const detail = await contract.methods.getProposal(proposalId).call();
+      const detail = await proposalContract.methods
+        .getProposal(proposalId)
+        .call();
       setProposalDetail(detail);
 
-      const contributorAddresses = await contract.methods
+      const contributorAddresses = await proposalContract.methods
         .getContributors(proposalId)
         .call();
 
       const contributions = await Promise.all(
         contributorAddresses.map(async (address) => {
-          const contribution = await contract.methods
+          const contribution = await proposalContract.methods
             .getContributionDetails(proposalId, address)
             .call();
           return {
@@ -68,20 +78,116 @@ const AdminNFTDetail = () => {
       setContributors(contributions);
     };
 
-    if (proposalId && contract) {
+    if (proposalId && proposalContract) {
       fetchProposalDetail();
     }
-  }, [proposalId, contract, web3]);
+  }, [proposalId, proposalContract, web3]);
+
+  useEffect(() => {
+    const fetchNftData = async () => {
+      try {
+        // 펀딩에 발행된 NFT가 있는지 확인
+        const issued = await nftContract.methods.isNftIssued(proposalId).call();
+        setNftIssued(issued);
+
+        if (issued) {
+          // 발행된 NFT의 이미지 URI 가져오기
+          const tokenId = await nftContract.methods
+            .getTokenId(proposalId)
+            .call();
+          const imageUrl = await nftContract.methods.tokenURI(tokenId).call();
+          setNftImageUrl(imageUrl);
+
+          // 펀딩 참여자별 NFT 발행 개수 및 발행 시간 정보 가져오기
+          const contributorAddresses = await proposalContract.methods
+            .getContributors(proposalId)
+            .call();
+          const nftCounts = {};
+          const timestamps = {};
+          for (const address of contributorAddresses) {
+            const count = await nftContract.methods
+              .getNftCountForContributor(proposalId, address)
+              .call();
+            const timestamp = await nftContract.methods
+              .getNftIssueTimestamp(proposalId, address)
+              .call();
+            nftCounts[address] = count;
+            timestamps[address] = timestamp;
+          }
+          setNftCountsByContributor(nftCounts);
+          setNftIssueTimestamps(timestamps);
+        }
+      } catch (error) {
+        console.error("Error fetching NFT data:", error);
+      }
+    };
+
+    const fetchProposalDetail = async () => {
+      const detail = await proposalContract.methods
+        .getProposal(proposalId)
+        .call();
+      setProposalDetail(detail);
+
+      const contributorAddresses = await proposalContract.methods
+        .getContributors(proposalId)
+        .call();
+
+      const contributions = await Promise.all(
+        contributorAddresses.map(async (address) => {
+          const contribution = await proposalContract.methods
+            .getContributionDetails(proposalId, address)
+            .call();
+          return {
+            address,
+            amount: web3.utils.fromWei(contribution[0], "ether"),
+            timestamp: new Date(
+              Number(contribution[1]) * 1000
+            ).toLocaleString(),
+          };
+        })
+      );
+
+      setContributors(contributions);
+    };
+
+    if (proposalId && proposalContract && nftContract) {
+      fetchProposalDetail();
+      fetchNftData();
+    }
+  }, [proposalId, proposalContract, nftContract]);
 
   if (!proposalDetail) {
     return <div>Loading...</div>;
   }
 
   const issueNFT = async () => {
-    // NFT 발행 로직 구현
-    console.log("NFT 발행 중...");
-    // 발행 성공 후 상태 업데이트
-    setNftIssued(true);
+    try {
+      // 스마트 컨트랙트와 상호 작용을 위해 관리자 계정 얻기
+      const accounts = await web3.eth.getAccounts();
+      const adminAccount = accounts[0];
+
+      // 스마트 컨트랙트의 mintNFT 함수 호출하여 NFT 발행
+      await nftContract.methods
+        .mintNFT(proposalId)
+        .send({ from: adminAccount });
+
+      // 발행된 NFT의 tokenId 가져오기
+      const tokenId = await nftContract.methods.getTokenId(proposalId).call();
+
+      // 발행된 NFT의 URI 정보 설정
+      await nftContract.methods
+        .setTokenURI(
+          tokenId,
+          "https://violet-immediate-lizard-852.mypinata.cloud/ipfs/QmaHTj3CRU5DLcFUTC2KuXBDTtsE8LD92d6WhxMXdZ9L7p"
+        )
+        .send({ from: adminAccount });
+
+      // 발행 성공 후 상태 업데이트
+      setNftIssued(true);
+      console.log("NFT 발행 및 URI 설정 완료");
+    } catch (error) {
+      console.error("NFT 발행 오류:", error);
+    }
   };
 
   return (
@@ -120,7 +226,22 @@ const AdminNFTDetail = () => {
                   )}
                 </ul>
                 {nftIssued ? (
-                  <p>NFT가 발행되었습니다.</p>
+                  <div>
+                    <img src={nftImageUrl} alt="NFT" className="mb-4" />
+                    <h3>펀딩 참여자별 NFT 발행 정보:</h3>
+                    <ul>
+                      {Object.entries(nftCountsByContributor).map(
+                        ([address, count]) => (
+                          <li key={address}>
+                            {address} - 발행 개수: {count} - 발행 시간:{" "}
+                            {new Date(
+                              nftIssueTimestamps[address] * 1000
+                            ).toLocaleString()}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
                 ) : (
                   <button
                     onClick={issueNFT}
