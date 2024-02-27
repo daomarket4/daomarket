@@ -6,6 +6,10 @@ const Vote = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleVote = () => {
+    if (selectedOption === null) {
+      alert("찬성 또는 반대를 선택 후에 제출해 주세요.");
+      return;
+    }
     setShowPopup(true);
   };
 
