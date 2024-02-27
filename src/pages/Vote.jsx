@@ -38,8 +38,8 @@ const Vote = () => {
               onClick={() => handleOptionClick("agree")}
               className={`option ${
                 selectedOption === "agree"
-                  ? "bg-yellow-400 border-2 border-yellow-500"
-                  : "bg-white border border-black hover:bg-gray-300 text-black"
+                  ? "bg-green-400 border-2 border-green-500 text-black"
+                  : "bg-white border border-black hover:bg-green-400 text-black"
               } font-bold py-4 px-36 text-left rounded m-2 text-xl`}
             >
               찬성하기
@@ -48,8 +48,8 @@ const Vote = () => {
               onClick={() => handleOptionClick("disagree")}
               className={`option ${
                 selectedOption === "disagree"
-                  ? "bg-yellow-400 border-2 border-yellow-500"
-                  : "bg-white border border-black hover:bg-gray-300 text-black"
+                  ? "bg-red-400 border-2 border-red-500 text-black"
+                  : "bg-white border border-black hover:bg-red-400 text-black"
               } font-bold py-4 px-36 text-left rounded m-2 text-xl`}
             >
               반대하기
