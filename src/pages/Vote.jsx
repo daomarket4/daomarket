@@ -5,6 +5,7 @@ const Vote = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
+  // 찬성 또는 반대를 눌렀을 때만 투표하기 버튼을 활성화
   const handleVote = () => {
     if (selectedOption === null) {
       alert("찬성 또는 반대를 선택 후에 제출해 주세요.");
@@ -13,12 +14,14 @@ const Vote = () => {
     setShowPopup(true);
   };
 
+  // 투표 완료했을 때 뜨는 팝업
   const handlePopupClose = () => {
     setShowPopup(false);
   };
 
+  // 찬성 또는 반대를 눌렀을 때 선택된 옵션을 표시, 다시 누르면 선택 취소
   const handleOptionClick = (option) => {
-    setSelectedOption(option);
+    setSelectedOption((prevOption) => (prevOption === option ? null : option));
   };
 
   return (
@@ -39,7 +42,7 @@ const Vote = () => {
               className={`option ${
                 selectedOption === "agree"
                   ? "bg-green-400 border-2 border-green-500 text-black"
-                  : "bg-white border border-black hover:bg-green-400 text-black"
+                  : "bg-white border border-black hover:bg-green-100 text-black"
               } font-bold py-4 px-36 text-left rounded m-2 text-xl`}
             >
               찬성하기
@@ -49,7 +52,7 @@ const Vote = () => {
               className={`option ${
                 selectedOption === "disagree"
                   ? "bg-red-400 border-2 border-red-500 text-black"
-                  : "bg-white border border-black hover:bg-red-400 text-black"
+                  : "bg-white border border-black hover:bg-red-100 text-black"
               } font-bold py-4 px-36 text-left rounded m-2 text-xl`}
             >
               반대하기
