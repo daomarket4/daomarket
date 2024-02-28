@@ -108,17 +108,51 @@ Dao에 대해 간략히 설명하자면, Dao는 탈중앙화된 자율 조직을
 
 ### 유저들이 펀딩을 희망하는 아이템을 직접 제출하고, 펀딩을 할 수 있는 페이지 입니다.
 
-## 투표 페이지
+## 투표
 
 ![image](https://github.com/daomarket4/daomarket/assets/148733543/743606e1-7019-41b7-8423-aa5234f654a2)
 
 ### 매각을 희망하는 아이템을 투표를 통해 결정하여 단독 권한이 아닌 다수에게 권한을 분배하였습니다.
 
-## NFT 판매 페이지
+## NFT 판매
 
 ![image](https://github.com/daomarket4/daomarket/assets/148733543/730d25df-7652-43fa-b708-d6571e62cc19)
 
 ### 본인이 소유한 지분을 NFT로 지급받으며, 이 지분을 타인에게 판매할 수 있는 페이지 입니다.
+
+## 안건 제출
+
+![image](https://github.com/daomarket4/daomarket/assets/148733543/14837b77-1942-4753-bd56-d9a654a6c5d8)
+
+### 함께 공동구매를 희망하는 아이템을 직접 제안하고 참여할 수 있습니다.
+
+## FAQ
+
+![image](https://github.com/daomarket4/daomarket/assets/148733543/a121e437-59ae-49fe-a49c-ae774468559e)
+
+### 유저들의 DAOM에 대한 궁금증 등을 미리 예상하여 작성하였습니다.
+
+## 고객센터
+
+<img width="1616" alt="image" src="https://github.com/daomarket4/daomarket/assets/148733543/f253d78b-0135-4dd3-ae23-bbd305caab2c">
+
+### 텔레그램 API를 사용하였기 때문에 궁금한 점이 있다면 문의를 통해 답변을 받을 수 있습니다.
+
+## 마이페이지
+
+![image](https://github.com/daomarket4/daomarket/assets/148733543/e4fd62c2-8ef2-42de-91cc-cd25231732f8)
+
+### 마이페이지를 통해 내가 작성한 안건과 투자한 내역을 확인할 수 있고, 개인정보 등을 변경할 수 있습니다.
+
+## 관리자 페이지
+
+![image](https://github.com/daomarket4/daomarket/assets/148733543/551694c3-28b0-4ee4-a762-13c6ce8b26be)
+
+### 메타마스크 주소를 기준으로 프로젝트 관계자만 접근할 수 있는 페이지 입니다. 유저들의 안건과 NFT 지분 발급, 실험적인 기능을 테스트한 공간입니다. 관리자가 아닌 유저들의 접근을 차단하고, 접근 시 경고페이지로 리다이렉트 됩니다.
+
+
+
+
 
 
 
