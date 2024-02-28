@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Web3 from "web3";
 import { useEffect } from "react";
 
@@ -47,7 +47,110 @@ const AdminLab = () => {
     <div className="bg-darkMode">
       <Layout>
         <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
-          실험실
+          <div className="container px-5 py-24 mx-auto">
+            <div className="flex flex-col text-center w-full mb-12">
+              <h1 className="sm:text-5xl text-4xl font-medium title-font mb-4 text-gray-900">
+                실험실
+              </h1>
+              <p className="lg:w-2/3 mx-auto leading-relaxed text-2xl">
+                실험적인 기능을 바로갈 수 있도록 만들어 놓은 페이지입니다.
+              </p>
+            </div>
+            <div className="flex flex-wrap">
+              {/* 멀티시그니처 */}
+              <div className="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                <h2 className="text-xl sm:text-2xl text-gray-900 font-medium title-font mb-2">
+                  Multi Signiture
+                </h2>
+                <p className="leading-relaxed text-base mb-4">
+                  멀티 시그니처 기능을 테스트 하였습니다. 기능은 미완성이나 멀티
+                  시그니처를 이런 식으로 적용하면 될 것 같습니다.
+                </p>
+                <Link to="/MultiSig">
+                  <a className="text-indigo-500 inline-flex items-center">
+                    페이지 바로가기
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      className="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </Link>
+              </div>
+              {/* 멀티시그니처 */}
+              <div className="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                <h2 className="text-xl sm:text-2xl text-gray-900 font-medium title-font mb-2">
+                  Vote
+                </h2>
+                <p className="leading-relaxed text-base mb-4">
+                  투표 기능입니다. 선택지 중 한 개만 선택이 가능하도록 하였고,
+                  투표를 하기 전에는 제출하기 버튼을 못 누르게 하였습니다.
+                </p>
+                <Link to="/Vote">
+                  <a className="text-indigo-500 inline-flex items-center">
+                    페이지 바로가기
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      className="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </Link>
+              </div>
+              <div className="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                <h2 className="text-xl sm:text-2xl text-gray-900 font-medium title-font mb-2">
+                  TEST
+                </h2>
+                <p className="leading-relaxed text-base mb-4">TESTING</p>
+                <a className="text-indigo-500 inline-flex items-center">
+                  페이지 바로가기
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    className="w-4 h-4 ml-2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+              <div className="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                <h2 className="text-xl sm:text-2xl text-gray-900 font-medium title-font mb-2">
+                  TEST
+                </h2>
+                <p className="leading-relaxed text-base mb-4">TESTING</p>
+                <a className="text-indigo-500 inline-flex items-center">
+                  페이지 바로가기
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    className="w-4 h-4 ml-2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
         </section>
       </Layout>
     </div>
