@@ -34,11 +34,11 @@ const CountdownTimer = ({ endTime, percentage, fundingCancelled }) => {
   return (
     <div>
       {fundingCancelled ? (
-        <span>펀딩 취소</span>
+        <span className="text-red-500">펀딩 취소</span>
       ) : timerIsFinished ? (
-        <span>펀딩 종료</span>
+        <span className="text-blue-500">펀딩 종료</span>
       ) : percentage >= 100 ? (
-        <span>펀딩율 100% 도달!!</span>
+        <span className="text-green-500">펀딩율 100% 도달!!</span>
       ) : (
         Object.keys(timeLeft).map((interval) => {
           if (!timeLeft[interval]) {
