@@ -168,4 +168,7 @@ src
 
 # 페이지 소개
 
-(스샷 찍어서 업로드 예정)
+![image](https://github.com/daomarket4/daomarket/assets/148733543/54e69f8c-60d6-45c4-ac03-e474d4569d67)
+![image](https://github.com/daomarket4/daomarket/assets/148733543/ab37c8e5-5c62-4ccc-ab83-994e8c4f26f4)
+
+
