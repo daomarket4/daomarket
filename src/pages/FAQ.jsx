@@ -268,7 +268,10 @@ const FAQ = () => {
                     지분을 거래할 때 수수료가 발생하나요?
                   </h2>
                   {selectedFAQ === 18 && (
-                    <div className="mt-4 ml-1 text-lg">답변 뜨리</div>
+                    <div className="mt-4 ml-1 text-lg">
+                      현재 DAOM 내에 거래 수수료는 1.8% 입니다. 이는 차후에
+                      변동될 수 있습니다.
+                    </div>
                   )}
                   {/* 2 */}
                   {/* 3 */}
@@ -276,10 +279,13 @@ const FAQ = () => {
                     onClick={() => toggleAnswer(19)}
                     className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
                   >
-                    투표 기간은 어떻게 설정되나요?
+                    투표 기간은 어떻게 되나요?
                   </h2>
                   {selectedFAQ === 19 && (
-                    <div className="mt-4 ml-1 text-lg">답변 뽀</div>
+                    <div className="mt-4 ml-1 text-lg">
+                      투표는 투표 시작 기준 72시간 동안 유지되며 이후에
+                      종료됩니다.
+                    </div>
                   )}
                   {/* 3 */}
                   {/* 4 */}
@@ -290,7 +296,11 @@ const FAQ = () => {
                     멀티시그니처가 무엇인가요?
                   </h2>
                   {selectedFAQ === 20 && (
-                    <div className="mt-4 ml-1 text-lg">답변 뽀</div>
+                    <div className="mt-4 ml-1 text-lg">
+                      멀티 시그니처란 다중 서명을 통해 안전한 거래를 보장하는
+                      시스템입니다. 독단적인 결정을 막고 여러 명의 서명이 완료된
+                      후에 거래가 이루어지게 됩니다.
+                    </div>
                   )}
                   {/* 4 */}
                 </div>
@@ -304,13 +314,16 @@ const FAQ = () => {
                 <div className="md:flex-grow">
                   {/* 0 */}
                   <h2
-                    onClick={() => toggleAnswer(16)}
+                    onClick={() => toggleAnswer(21)}
                     className="text-xl font-medium text-gray-900 title-font mb-2 cursor-pointer"
                   >
                     지분 거래는 어떻게 이루어지나요?
                   </h2>
-                  {selectedFAQ === 16 && (
-                    <div className="mt-4 ml-1 text-lg">답변 완</div>
+                  {selectedFAQ === 21 && (
+                    <div className="mt-4 ml-1 text-lg">
+                      지분 거래는 판매하실 NFT의 갯수와 가격을 입력하여 제출하신
+                      후 구매를 희망하는 사람이 나타나면 지분 거래가 완료됩니다.
+                    </div>
                   )}
                   {/* 0 */}
                 </div>
@@ -324,12 +337,12 @@ const FAQ = () => {
                 <div className="md:flex-grow">
                   {/* 0 */}
                   <h2
-                    onClick={() => toggleAnswer(20)}
+                    onClick={() => toggleAnswer(22)}
                     className="text-xl font-medium text-gray-900 title-font mb-2 cursor-pointer"
                   >
                     메타마스크가 무엇인가요?
                   </h2>
-                  {selectedFAQ === 20 && (
+                  {selectedFAQ === 22 && (
                     <div className="mt-4 ml-1 text-lg">
                       메타마스크는 이더리움 개인 키를 관리할 수 있는 웹 브라우저
                       확장 프로그램과 모바일 앱입니다. 메타마스크는 이더리움 및
@@ -346,12 +359,12 @@ const FAQ = () => {
                   {/* 0 */}
                   {/* 1 */}
                   <h2
-                    onClick={() => toggleAnswer(21)}
+                    onClick={() => toggleAnswer(23)}
                     className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
                   >
                     메타마스크 회원가입은 어디서 하나요?
                   </h2>
-                  {selectedFAQ === 21 && (
+                  {selectedFAQ === 23 && (
                     <div className="mt-4 ml-1 text-lg">
                       <a
                         href="https://metamask.io/download/"
@@ -367,12 +380,12 @@ const FAQ = () => {
                   {/* 1 */}
                   {/* 2 */}
                   <h2
-                    onClick={() => toggleAnswer(22)}
+                    onClick={() => toggleAnswer(24)}
                     className="text-xl font-medium text-gray-900 title-font mt-4 cursor-pointer"
                   >
                     메타마스크와 연동을 어떻게 하나요?
                   </h2>
-                  {selectedFAQ === 22 && (
+                  {selectedFAQ === 24 && (
                     <div className="mt-4 ml-1 text-lg">
                       DAOM 웹페이지 우측 상단에서 Sign in을 통해 로그인 하시면
                       DAOM과 연동되어 모든 시스템을 이용하실 수 있습니다.
