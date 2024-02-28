@@ -105,7 +105,7 @@ const Main = () => {
   // slick 애니메이션
 
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
+    <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font mt-32">
       <div className="container mx-auto flex mt-24 px-5 md:flex-row flex-col items-center">
         <div className="lg:flex-grow lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1

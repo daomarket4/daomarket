@@ -12,7 +12,7 @@ const AboutUs = () => {
   return (
     <div className="bg-darkMode">
       <Layout>
-        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
+        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font mt-32">
           <Link to="https://github.com/daomarket4/daomarket">
             <img src={DAOMLOGO} alt="DAOMLOGO" className="mb-8 w-72 mr-2" />
           </Link>

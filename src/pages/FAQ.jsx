@@ -12,7 +12,7 @@ const FAQ = () => {
   return (
     <div className="bg-darkMode">
       <Layout>
-        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font overflow-hidden">
+        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font overflow-hidden mt-32">
           <h1 className="sm:text-5xl text-4xl font-medium title-font mb-4 text-gray-900 mt-16">
             안녕하세요! 궁금한 점이 있으신가요?
           </h1>

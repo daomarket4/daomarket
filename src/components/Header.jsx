@@ -68,7 +68,7 @@ const Header = ({ profileImage }) => {
   return (
     <>
       <TopPopup />
-      <header className="text-gray-600 pb-16 body-font dark:text-white dark:bg-slate-800">
+      <header className="text-gray-600 body-font dark:text-white dark:bg-slate-800 sticky top-0 bg-white  z-50">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link to="/">
             <div className="flex mt-1 title-font font-medium items-center text-gray-900 mb-4 md:mb-0 dark:text-white">
@@ -109,7 +109,7 @@ const Header = ({ profileImage }) => {
                   )}
                   {view && (
                     <>
-                      <ul className="absolute mt-2 ml-8 bg-slate-300 dark:bg-slate-600 top-28 p-4 rounded-xl">
+                      <ul className="absolute mt-2 ml-8 bg-slate-300 dark:bg-slate-600 top-20 p-4 rounded-xl">
                         <li className="pb-4">
                           <Link to="/MyPage">마이페이지</Link>
                         </li>

@@ -15,7 +15,7 @@ const PundingPlaceList = () => {
   return (
     <div className="bg-darkMode">
       <Layout>
-        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
+        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font mt-36">
           <div className="flex flex-col text-center w-full mb-24">
             <h1 className="sm:text-5xl text-4xl font-medium title-font mb-4 text-gray-900">
               펀딩하고 싶은 아이템을 찾아보세요!

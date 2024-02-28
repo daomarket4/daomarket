@@ -65,7 +65,7 @@ const AdminAllProposalsComponent = () => {
   return (
     <div className="bg-darkMode">
       <Layout>
-        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
+        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font mt-20">
           <div className="container p-8">
             <h1 className="mb-8 text-3xl font-bold">전체 안건 보기</h1>
             <div className="grid grid-cols-3 gap-4">

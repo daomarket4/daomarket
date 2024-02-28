@@ -19,7 +19,7 @@ const MyAgenda = () => {
     <>
       <ProposalDataFetcher onDataFetched={handleDataFetched} />
       <div className="bg-darkMode">
-        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
+        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font mt-36">
           <h1 className="text-3xl mb-4">나의 안건 페이지</h1>
           <div className="container px-5 py-14 mx-auto grid grid-cols-3 gap-4 place-items-center">
             {proposals.map((proposal) => {

@@ -34,7 +34,7 @@ const Contact = () => {
     <div className="bg-darkMode">
       <Layout>
         {/* 텔레그램 api */}
-        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font relative">
+        <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font relative mt-12">
           <div className="flex pt-24">
             <div className="box border border-gray-300 p-4 py-8 rounded-md mx-16 w-3/12 h-6/12 flex flex-col items-center justify-center text-center">
               <img
