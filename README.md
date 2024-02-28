@@ -3,7 +3,7 @@
 <img src="https://github.com/daomarket4/daomarket/assets/148733543/17a66737-4d2d-45ec-9b59-0c8625eb7ee3" />
 
 <p align="center">
-  <a href="https://daomarket.vercel.app/">사이트 바로가기</a>
+  <a href="www.naver.com/">사이트 바로가기(미작동)</a>
 </p>
 
 # 프로젝트 소개
