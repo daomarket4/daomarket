@@ -168,7 +168,13 @@ src
 
 # 페이지 소개
 
+## 이용가이드
+
 ![image](https://github.com/daomarket4/daomarket/assets/148733543/54e69f8c-60d6-45c4-ac03-e474d4569d67)
 ![image](https://github.com/daomarket4/daomarket/assets/148733543/ab37c8e5-5c62-4ccc-ab83-994e8c4f26f4)
 
+### Dao라는 생소한 주제로 프로젝트를 시작했기 때문에 유저들에게 DAOM이 어떤 시스템을 기반으로 운영되고 있는지 소개를 목적으로 작성된 페이지 입니다.
 
+## 팀원 소개
+
+### DAOM 프로젝트를 함께 진행한 팀원들의 소개 페이지입니다.
