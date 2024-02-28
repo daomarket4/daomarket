@@ -85,87 +85,6 @@ Dao에 대해 간략히 설명하자면, Dao는 탈중앙화된 자율 조직을
 <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" />
 </div>
 
-# 프로젝트 구조
-
-src  
- ┣ abis  
- ┃ ┣ contractsaddress.js  
- ┃ ┗ proposal_ABI.json  
- ┣ components  
- ┃ ┣ AdminProposalDetail.jsx  
- ┃ ┣ CountdownTimer.jsx  
- ┃ ┣ CountdownTimerMain.jsx  
- ┃ ┣ DarkmodeToggle.jsx  
- ┃ ┣ DropDown.jsx  
- ┃ ┣ Footer.jsx  
- ┃ ┣ Header.jsx  
- ┃ ┣ HowCanIUseDaoMarket.jsx  
- ┃ ┣ Layout.jsx  
- ┃ ┣ Main.jsx  
- ┃ ┣ ProgressbarDetail.jsx  
- ┃ ┣ ProgressbarList.jsx  
- ┃ ┣ ProgressbarMain.jsx  
- ┃ ┣ ProposalDataFetcher.jsx  
- ┃ ┣ ProposalParticipation.jsx  
- ┃ ┣ PundingList.jsx  
- ┃ ┣ SuccessPunding.jsx  
- ┃ ┣ TopPopup.jsx  
- ┃ ┣ WhatIsDaoMarket.jsx  
- ┃ ┗ WhyChooseDaoMarket.jsx  
- ┣ images  
- ┃ ┣ DAOM.png  
- ┃ ┣ DAOMLOGO.png  
- ┃ ┣ Metamask.png  
- ┃ ┣ adminLab.png  
- ┃ ┣ consultationCall.png  
- ┃ ┣ consultationChat.png  
- ┃ ┣ consultationOnline.png  
- ┃ ┣ document.png  
- ┃ ┣ img.png  
- ┃ ┣ invest.png  
- ┃ ┣ jungbinkim.png  
- ┃ ┣ junhyukjung.png  
- ┃ ┣ junhyunpark.png  
- ┃ ┣ juyoungjung.png  
- ┃ ┣ kihyunkim.png  
- ┃ ┣ multiSig.png  
- ┃ ┣ profile.png  
- ┃ ┣ safe.png  
- ┃ ┣ suggestion.png  
- ┃ ┣ trade.png  
- ┃ ┣ warning.png  
- ┃ ┗ whatIsDao.png  
- ┣ pages  
- ┃ ┣ AboutUs.jsx  
- ┃ ┣ Admin.jsx  
- ┃ ┣ AdminAllProposals.jsx  
- ┃ ┣ AdminLab.jsx  
- ┃ ┣ AdminWarning.jsx  
- ┃ ┣ Agenda.jsx  
- ┃ ┣ Contact.jsx  
- ┃ ┣ FAQ.jsx  
- ┃ ┣ Home.jsx  
- ┃ ┣ IntroduceDaoMarket.jsx  
- ┃ ┣ Join.jsx  
- ┃ ┣ MultiSig.jsx  
- ┃ ┣ MyAgenda.jsx  
- ┃ ┣ MyContact.jsx  
- ┃ ┣ MyInvest.jsx  
- ┃ ┣ MyPage.jsx  
- ┃ ┣ MyProfile.jsx  
- ┃ ┣ PriceQuotes.jsx  
- ┃ ┣ PundingPlaceDetail.jsx  
- ┃ ┣ PundingPlaceList.jsx  
- ┃ ┣ SaleNFT.jsx  
- ┃ ┣ SuccessAgenda.jsx  
- ┃ ┗ Vote.jsx  
- ┣ App.jsx  
- ┣ App.test.js  
- ┣ index.css  
- ┣ index.js  
- ┣ reportWebVitals.js  
- ┗ setupTests.js
-
 # 페이지 소개
 
 ## 이용가이드
@@ -177,4 +96,31 @@ src
 
 ## 팀원 소개
 
+![image](https://github.com/daomarket4/daomarket/assets/148733543/fe075941-23c9-4c94-a743-b190aa2ebedb)
+
 ### DAOM 프로젝트를 함께 진행한 팀원들의 소개 페이지입니다.
+
+## 펀딩 플레이스
+
+<img width="1508" alt="image" src="https://github.com/daomarket4/daomarket/assets/148733543/a47aaedb-cf52-45ff-aa96-45e74e2ed1be">
+<img width="1207" alt="image" src="https://github.com/daomarket4/daomarket/assets/148733543/bdcb8dc8-e0a6-44c4-ae2f-5c3c3c79529d">
+
+
+### 유저들이 펀딩을 희망하는 아이템을 직접 제출하고, 펀딩을 할 수 있는 페이지 입니다.
+
+## 투표 페이지
+
+![image](https://github.com/daomarket4/daomarket/assets/148733543/743606e1-7019-41b7-8423-aa5234f654a2)
+
+### 매각을 희망하는 아이템을 투표를 통해 결정하여 단독 권한이 아닌 다수에게 권한을 분배하였습니다.
+
+## NFT 판매 페이지
+
+![image](https://github.com/daomarket4/daomarket/assets/148733543/730d25df-7652-43fa-b708-d6571e62cc19)
+
+### 본인이 소유한 지분을 NFT로 지급받으며, 이 지분을 타인에게 판매할 수 있는 페이지 입니다.
+
+
+
+
+
