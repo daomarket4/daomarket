@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import React, { useState } from "react";
+import Monkey from "../images/Monkey.png";
 
 const Vote = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -28,90 +29,37 @@ const Vote = () => {
     <div className="bg-darkMode">
       <Layout>
         <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
-          <div className="flex flex-col text-center w-full mb-12">
+          <div className="flex flex-col text-center w-full">
             <h1 className="sm:text-5xl text-4xl font-medium title-font mb-4 text-gray-900">
-              선택지 중 하나를 선택하신 후 투표하기 버튼을 눌러주세요.
+              하단의 아이템에 대한 매각 투표가 진행 중입니다.
             </h1>
-            <p className="lg:w-2/3 mx-auto leading-relaxed text-3xl">
+            <p className="lg:w-2/3 mx-auto leading-relaxed text-2xl">
+              선택지 중 하나를 선택하신 후 투표하기 버튼을 눌러주세요. <br />
               투표는 한 번만 가능하며, 투표가 완료되면 변경이 불가능합니다.
             </p>
           </div>
-          <div className="box flex flex-col">
-            <button
-              onClick={() => handleOptionClick("agree")}
-              className={`option ${
-                selectedOption === "agree"
-                  ? "bg-green-400 border-2 border-green-500 text-black"
-                  : "bg-white border border-black hover:bg-green-100 text-black"
-              } font-bold py-4 px-36 text-left rounded m-2 text-xl`}
-            >
-              찬성하기
-            </button>
-            <button
-              onClick={() => handleOptionClick("disagree")}
-              className={`option ${
-                selectedOption === "disagree"
-                  ? "bg-red-400 border-2 border-red-500 text-black"
-                  : "bg-white border border-black hover:bg-red-100 text-black"
-              } font-bold py-4 px-36 text-left rounded m-2 text-xl`}
-            >
-              반대하기
-            </button>
-          </div>
-          <button
-            className="vote-button bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 text-left rounded m-2"
-            onClick={handleVote}
-          >
-            투표하기
-          </button>
-          {/* 투표 완료 팝업 */}
-          {showPopup && (
-            <div className="fixed z-10 inset-0 overflow-y-auto">
-              <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                <div
-                  className="fixed inset-0 transition-opacity"
-                  aria-hidden="true"
-                >
-                  <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-                </div>
-                <span
-                  className="hidden sm:inline-block sm:align-middle sm:h-screen"
-                  aria-hidden="true"
-                >
-                  &#8203;
-                </span>
-                <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                  <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <div className="sm:flex sm:items-start">
-                      <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <h3
-                          className="text-lg leading-6 font-medium text-gray-900"
-                          id="modal-title"
-                        >
-                          투표 완료
-                        </h3>
-                        <div className="mt-2">
-                          <p className="text-sm text-gray-500">
-                            투표가 완료되었습니다. 참여해 주셔서 감사합니다.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button
-                      type="button"
-                      className="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                      onClick={handlePopupClose}
-                    >
-                      확인
-                    </button>
-                  </div>
-                </div>
+          <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+            <img src={Monkey} alt="Monkey" className="mb-8 w-64 rounded-xl" />
+            <div class="text-center lg:w-2/3 w-full">
+              <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+                고뇌하는 원숭이
+              </h1>
+              <p class="mb-8 leading-relaxed">
+                고뇌하는 원숭이 입니다. 예술적인 면에서 매우 뛰어나지만, 그의
+                작품은 누구에게도 인정받지 못하고 있습니다.
+                <br />이 작품은 잠재적으로 가치가 분명히 있는 아이템입니다. 함께
+                공동구매를 통해 이 작품에 대한 가치를 올려주세요.
+              </p>
+              <div class="flex justify-center">
+                <button class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">
+                  승인하기
+                </button>
+                <button class="ml-4 inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">
+                  거절하기
+                </button>
               </div>
             </div>
-          )}
-          {/* 투표 완료 팝업 */}
+          </div>
         </section>
       </Layout>
     </div>
